@@ -74,7 +74,7 @@ Run the commands: <br/>
 `git add .` or `git add filename`  - adds a file/files to the git staging area <br/>
 `git commit -m "commit message in double quotes"`<br/><br/>
 
-`git branch -b main` - sets main branch as main<br/>
+`git branch -m main` - sets main branch as main<br/>
 `git remote add origin https://github.com/ShinuShaju/flask-app`<br/>
 `git remote set-url origin https://github.com/ShinuShaju/flask-app`<br/>
 
