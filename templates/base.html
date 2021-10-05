@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+    {% block head %}
+    <title> O-Learn - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    {% endblock %}
+</head>
+
+<body>
+
+    <!-- navbar starts here -->
+    <header class="w3-top nav-shadow">
+        <div class="w3-bar w3-mobile w3-white w3-padding-8 w3-padding-large">
+            <a href="{{ url_for('home') }}" class="w3-bar-item" style="text-decoration: none;font-size: 1.5rem; font-weight: bold;">O-Learn<span style="font-size: 2.5rem; line-height: 0rem; color: #6E44FF;">.</span></a>
+            <span class="w3-display-middle">
+                <a href="{{ url_for('programs') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Programs</a>
+                <a href="{{ url_for('courses') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Courses</a>
+                <a href="{{ url_for('students') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Students</a>
+                <a href="{{ url_for('faculty') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Faculty</a>
+            </span>
+            <div class=" w3-right" style="margin-top: 4px;">
+                <a href="{{ url_for('login') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small w3-margin-right">Login</a>
+                <a href="{{ url_for('sign_up') }}" class="w3-bar-item w3-button w3-black w3-hover-black w3-round-xxlarge w3-hide-small">Join Free</a>    
+            </div>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hover-white w3-right w3-hide-large w3-hide-medium" onclick="navbarCollapse()">&#9776;</a>
+        </div>
+
+        <div id="demo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-center w3-padding-large">
+            <a href="{{ url_for('programs') }}" class="w3-bar-item w3-button w3-hover-white menu-item">Programs</a>
+            <a href="{{ url_for('courses') }}" class="w3-bar-item w3-button w3-hover-white menu-item">Courses</a>
+            <a href="{{ url_for('students') }}" class="w3-bar-item w3-button w3-hover-white menu-item">Students</a>
+            <a href="{{ url_for('faculty') }}" class="w3-bar-item w3-button w3-hover-white menu-item">Faculty</a>
+            <hr />
+            <div style="padding-bottom:16px;">
+                <a href="{{ url_for('sign_up') }}" class="w3-bar-item w3-button w3-hover-white">Login</a>
+                <a href="{{ url_for('login') }}" class="w3-bar-item w3-button w3-black w3-hover-black w3-btn w3-round-xxlarge w3-center">Join Free</a>
+            </div>
+        </div>
+    </header>
+    <!-- navbar ends here -->
+
+    <div class="w3-container w3-padding-64 w3-padding-large">{% block content %}{% endblock %}</div>
+
+    <!-- footer starts here -->
+    <footer class="w3-container w3-padding-large">
+        <div class="w3-row w3-padding-large w3-padding-48 w3-black" style="border-radius: 48px;">
+            <div class="w3-half w3-container">
+                <a href="{{ url_for('home') }}" class="w3-bar-item" style="text-decoration: none;font-size: 2.5rem; font-weight: bold;">
+                    O-Learn<span style="font-size: 2.5rem; line-height: 0rem; color: #6E44FF;">.</span></a>
+                <h3>Grow you skills and advance <br />your career path.</h3>
+            </div>
+            <div class="w3-quarter w3-container">
+                <h4 style="font-weight: 800;">Quick Links</h4>
+                <div class="w3-padding-16">
+                    <div style="margin-bottom: 8px;"><a href="{{ url_for('about') }}" style="text-decoration: none;">About Us</a></div>
+                    <div style="margin-bottom: 8px;"><a href="{{ url_for('testimonials') }}" style="text-decoration: none;">Success Stories</a></div>
+                    <div style="margin-bottom: 8px;"><a href="{{ url_for('careers') }}" style="text-decoration: none;">Careers</a></div>
+                    <div style="margin-bottom: 8px;"><a href="{{ url_for('contact') }}" style="text-decoration: none;">Contact Us</a></div>
+                </div>
+            </div>
+            <div class="w3-quarter w3-container">
+                <h4 style="font-weight: 800;">Follow Us</h4>
+                <div class="w3-padding-16">
+                    <div style="margin-bottom: 8px;"><a href="#" style="text-decoration: none;">Twitter</a></div>
+                    <div style="margin-bottom: 8px;"><a href="#" style="text-decoration: none;">Instagram</a></div>
+                    <div style="margin-bottom: 8px;"><a href="#" style="text-decoration: none;">LinkedIn</a></div>
+                    <div style="margin-bottom: 8px;"><a href="#" style="text-decoration: none;">Facebook</a></div>
+                </div>
+            </div>
+        </div>
+        <p class="w3-center w3-padding-24">&copy; Copyright 2021 @ O-Learn.</p>
+    </footer>
+    <!-- footer ends here -->
+
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/main.js') }}" ></script>
+
+</body>
+
+</html>
