@@ -48,6 +48,18 @@ p, h1, h2, h3, h4, h5, h6{
     border-radius: 24px !important;
 }
 
+.lessonButton{
+    background-color: #f1ecff !important;
+    /* color: white !important; */
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.lessonButton:hover{
+    background-color: #6e44ff !important;
+    color: white !important;
+}
+
 /* Faculty CSS starts here*/
 /* Style the counter cards */
 .card {
@@ -81,7 +93,6 @@ p, h1, h2, h3, h4, h5, h6{
       padding-left: 2.5%;
       padding-right:2.5%;
   }
-
 /* Faculty CSS ends here */
 
 @media only screen and (max-width: 768px) {
