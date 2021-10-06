@@ -2,11 +2,43 @@
 
 {% block title %} Faculty{% endblock %}
 
-{%block content%}
+{% block customcss %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/faculties.css') }}">
+{% endblock%}
 
+{%block content%}
+<!-- Body Section -->
 <div class="w3-container w3-padding-32">
-    <h1>This is the Faculty Screen</h1>
-    <p>Write code here...</p>
+    <div class="w3-container w3-padding-32 w3-center" >
+        <div class="row w3-center">
+            <div class="w3-third w3-padding">
+                <div class="card">
+                    <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty1.jpg')}}">
+                    <h3 class="name">Stephen Grider</h3>                                                                                                                                    
+                    <p class="title">Engineering Architect</p>
+                    <p class="description">Builds complex Javascript front ends for top corporations in the San Francisco Bay Area. 
+                        With an innate ability to simplify complex topics, mentors engineers beginning their careers in software development for years.</p>
+                </div>
+            </div>
+            <div class="w3-third w3-padding">
+                <div class="card">
+                    <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty2.jpg')}}">
+                    <h3 class="name">Sebastien Sebu</h3>
+                    <p class="title">CEO Devsl | iOS | Android | Freelancing</p>
+                    <p class="description">I am a veteran mobile developer having built over 57 mobile apps for iOS and Android, and I've also build multiple Unity 3D games, including Call of Duty Ghosts mobile.</p>
+                </div>
+            </div>
+            <div class="w3-third w3-padding">
+                <div class="card">
+                    <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty3.jpg')}}">
+                    <h3 class="name">Ben Johnson</h3>
+                    <p class="title">Head of Data Science | Data Inc</p>
+                    <p class="description">A professional instructor and trainer for Data Science and programming. He has publications and patents in various fields such as microfluidics, materials science, and data science technologies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Body section ends here -->
 
 {% endblock %}
