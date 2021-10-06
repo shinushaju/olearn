@@ -2,11 +2,35 @@
 
 {% block title %} Login{% endblock %}
 
+
+{% block customcss %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock%}
+
+
 {%block content%}
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <div class="w3-container w3-padding-32">
-    <h1>This is the Login Screen</h1>
-    <p>Write code here...</p>
+    <div class=" w3-padding-32 w3-display-container" style="height:75vh" >
+        <div class=" w3-display-middle">
+            
+                            
+                    <form class="box" method="post">
+
+                    <h1>Login </h1>           
+                    <label class="form-label" for="inputEmail">Email</label>
+                    <input type="email" class="form-control w3-round-xxlarge" id="inputEmail" placeholder="Email" required> 
+                    <label class="form-label" for="inputPassword">Password</label>
+                    <input type="password" class="form-control w3-round-xxlarge" id="inputPassword" placeholder="Password" required>   
+                    <br>        
+                    <button class="w3-button w3-section w3-block w3-large w3-round-xxlarge w3-hover-indigo" style="background-color:#6E44FF;color:#FFFFFF">Log in</button>
+                  
+                    </form>                                       
+            
+        </div>
+    </div>
 </div>
 
 {% endblock %}
