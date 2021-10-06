@@ -1,0 +1,29 @@
+   /* Style the counter cards */
+   
+   .card {
+       padding: 24px;
+       border-radius: 36px;
+       box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px;
+       text-align: center;
+   }
+   /*card_contents*/
+   
+   .cardimage {
+       height: 180px;
+       width: 180px;
+       margin-top: 16px;
+   }
+   
+   .name {
+       margin-top: 1rem;
+       justify-content: center;
+   }
+   
+   .title {
+       justify-content: center;
+   }
+   
+   .description {
+       text-align: center;
+       font-style: italic;
+   }

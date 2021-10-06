@@ -1,12 +1,67 @@
-{%extends "base.html" %}
-
-{% block title %} Students{% endblock %}
-
-{%block content%}
-
+{%extends "base.html" %} {% block title %} Students{% endblock %} {% block customcss %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/students.css') }}"> {% endblock%} {%block content%}
+<!-- Body Section -->
 <div class="w3-container w3-padding-32">
-    <h1>This is the Students Screen</h1>
-    <p>Write code here...</p>
+    <div class=" w3-mobile w3-stretch w3-center">
+        <div class="w3-padding-32">
+            <h1 class="w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">Top Performers</h1>
+            <h1 class="w3-xlarge w3-center w3-hide-large w3-hide-medium" style="letter-spacing: -1px; font-weight: 500;">Top Performers</h1>
+        </div>
+        <div class="w3-row w3-center">
+            <div class="w3-quarter w3-center w3-padding">
+                <div class="card">
+                    <img class="w3-center w3-circle cardimage" src="https://images.generated.photos/zJwBEDrZXdCfWQjUVHbRPHAAFx4ophx0DTxYY5egRmY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODkzNTQ5LmpwZw.jpg">
+                    <h3 class="name">San John</h3>
+                </div>
+            </div>
+            <div class="w3-quarter w3-center w3-padding">
+                <div class="card">
+                    <img class="w3-center w3-circle cardimage" src="https://imgproxy.generated.photos/mj6ns1sKQCzU8iib8RSLic7CW--otvMHoNMtSLwK0bM/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wNzQyOTk2LnBu/Zw.png">
+                    <h3 class="name">Stephen Joe</h3>
+                </div>
+            </div>
+            <div class="w3-quarter w3-center w3-padding">
+                <div class="card">
+                    <img class="w3-center w3-circle cardimage" src="https://imgproxy.generated.photos/d2y3eTHwbU5kE-Aub6hqqlulydnXUcUmRA6sx3rMqsE/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wMDYyNTc2LnBu/Zw.png">
+                    <h3 class=" name ">Isabella Abraham</h3>
+                </div>
+            </div>
+            <div class="w3-quarter w3-center w3-padding ">
+                <div class="card ">
+                    <img class="w3-center w3-circle cardimage " src="https://imgproxy.generated.photos/nhwSEOfZIiXENMAF9pvD3l5kGzpLm4_BB5xkSD6fBfs/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wOTg2NTkzLnBu/Zw.png ">
+                    <h3 class="name ">Ben Johnson</h3>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row w3-center " style="margin-top:8px; ">
+            <div class="w3-quarter w3-center w3-padding ">
+                <div class="card ">
+                    <img class="w3-center w3-circle cardimage " src="https://imgproxy.generated.photos/C2H2lDToP3UHJw4hi1YeOXFCaIiPN4MobuLdvKiB-lo/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wOTAyOTUyLnBu/Zw.png ">
+                    <h3 class="name ">Adam John</h3>
+                </div>
+            </div>
+            <div class="w3-quarter w3-center w3-padding ">
+                <div class="card ">
+                    <img class="w3-center w3-circle cardimage " src="https://imgproxy.generated.photos/_HQs1IbZMqJU3mv59CMBHAyyB6fVKo7wkhz7_iURYuo/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wODc4OTYxLnBu/Zw.png">
+                    <h3 class="name ">Alwin Abraham</h3>
+                </div>
+            </div>
+            <div class="w3-quarter w3-center w3-padding ">
+                <div class="card ">
+                    <img class="w3-center w3-circle cardimage " src="https://imgproxy.generated.photos/oIFF94bIPyO0o1r1gfjD7tWR_NvTUX7c3dZN4iLHKL4/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wNDY2NTY4LnBu/Zw.png ">
+                    <h3 class="name ">Aleena Johans</h3>
+                </div>
+            </div>
+            <div class="w3-quarter w3-center w3-padding ">
+                <div class="card ">
+                    <img class="w3-center w3-circle cardimage " src="https://imgproxy.generated.photos/kiJX7VMSgRZgGDdqQR-zUTskwEnLYEO0WW87s-J4h58/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy90cmFu/c3BhcmVudF92My92/M18wNDM1ODUwLnBu/Zw.png ">
+                    <h3 class="name ">Samuel Johnson</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Body section ends here -->
 
 {% endblock %}
