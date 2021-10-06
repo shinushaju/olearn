@@ -50,27 +50,39 @@
     <!-- footer starts here -->
     <footer class="w3-container w3-padding-large">
         <div class="w3-row w3-padding-large w3-padding-48 w3-black" style="border-radius: 48px;">
-            <div class="w3-half w3-container">
+            <div class="w3-third w3-container">
                 <a href="{{ url_for('home') }}" class="w3-bar-item" style="text-decoration: none;font-size: 2.5rem; font-weight: bold;">
                     O-Learn<span style="font-size: 2.5rem; line-height: 0rem; color: #6E44FF;">.</span></a>
                 <h3>Grow you skills and advance <br />your career path.</h3>
             </div>
-            <div class="w3-quarter w3-container">
-                <h4 style="font-weight: 800;">Quick Links</h4>
-                <div class="w3-padding-16">
-                    <div style="margin-bottom: 8px;"><a href="{{ url_for('about') }}" style="text-decoration: none;">About Us</a></div>
-                    <div style="margin-bottom: 8px;"><a href="{{ url_for('testimonials') }}" style="text-decoration: none;">Success Stories</a></div>
-                    <div style="margin-bottom: 8px;"><a href="{{ url_for('careers') }}" style="text-decoration: none;">Careers</a></div>
-                    <div style="margin-bottom: 8px;"><a href="{{ url_for('contact') }}" style="text-decoration: none;">Contact Us</a></div>
-                </div>
-            </div>
-            <div class="w3-quarter w3-container">
-                <h4 style="font-weight: 800;">Follow Us</h4>
-                <div class="w3-padding-16">
-                    <div style="margin-bottom: 8px;"><a href="#" style="text-decoration: none;">Twitter</a></div>
-                    <div style="margin-bottom: 8px;"><a href="#" style="text-decoration: none;">Instagram</a></div>
-                    <div style="margin-bottom: 8px;"><a href="#" style="text-decoration: none;">LinkedIn</a></div>
-                    <div style="margin-bottom: 8px;"><a href="#" style="text-decoration: none;">Facebook</a></div>
+            <div class="w3-twothird w3-container">
+                <div class="w3-row">
+                    <div class="w3-third">
+                        <h4 style="font-weight: 800;">Quick Links</h4>
+                        <div class="w3-padding-16">
+                            <div style="margin-bottom: 12px;"><a href="{{ url_for('about') }}" style="text-decoration: none;">About Us</a></div>
+                            <div style="margin-bottom: 12px;"><a href="{{ url_for('testimonials') }}" style="text-decoration: none;">Success Stories</a></div>
+                            <div style="margin-bottom: 12px;"><a href="{{ url_for('careers') }}" style="text-decoration: none;">Careers</a></div>
+                            <div style="margin-bottom: 12px;"><a href="{{ url_for('contact') }}" style="text-decoration: none;">Contact Us</a></div>
+                        </div>
+                    </div>
+                    <div class="w3-third">
+                        <h4 style="font-weight: 800;">Follow Us</h4>
+                        <div class="w3-padding-16">
+                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;"><i class="bi bi-twitter"></i> Twitter</a></div>
+                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;"><i class="bi bi-instagram"></i> Instagram</a></div>
+                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;"><i class="bi bi-linkedin"></i> LinkedIn</a></div>
+                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;"><i class="bi bi-facebook"></i> Facebook</a></div>
+                        </div>
+                    </div>
+                    <div class="w3-third">
+                        <h4 style="font-weight: 800;">Contact Info</h4>
+                        <div class="w3-padding-16">
+                            <div style="margin-bottom: 12px;"><i class="bi bi-telephone-fill"></i> +65 2244 1100</div>
+                            <div style="margin-bottom: 12px;"><i class="bi bi-envelope-fill"></i> hello@olearn.com</div>
+                            <div style="margin-bottom: 12px;"><i class="bi bi-geo-alt-fill"></i> 1800 dapibus a tortor pretium, Integer nisl dui, ABC 12000</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
