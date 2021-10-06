@@ -1,5 +1,5 @@
-p, h2, h3, h4, h5, h6{
-    font-weight: 300;
+p, h1, h2, h3, h4, h5, h6{
+    font-weight: 200 !important;
 }
 
 /* .course-banner{
@@ -16,7 +16,17 @@ p, h2, h3, h4, h5, h6{
 
 .course-banner-text{
     font-size: 3.5rem;
-    font-weight: 300 !important;
+    /* font-weight: 300 !important; */
+}
+
+.w3-tag{
+    margin: 3px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
 }
 
 .course-side-nav{
@@ -34,7 +44,45 @@ p, h2, h3, h4, h5, h6{
     float: right;
     width: 80%;
     top: 5vw;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px !important;
+    border-radius: 24px !important;
 }
+
+/* Faculty CSS starts here*/
+/* Style the counter cards */
+.card {
+    /* padding: 24px; */
+    border-radius: 24px;
+    /* box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px; */
+    text-align: center;
+    height:20%;
+    width: 100%;
+  }
+  
+  /*card_contents*/
+  .cardimage{
+      height: 60%;
+      width: 60%;
+      /* margin-top: 10px; */
+  }
+  .name{
+      margin-top: 1rem;
+      justify-content: center;
+  }
+  
+  .title{
+      justify-content: center;
+  }
+   
+  .description{
+      text-align: justify; 
+      font-style: italic;
+      padding-block: 5%;
+      padding-left: 2.5%;
+      padding-right:2.5%;
+  }
+
+/* Faculty CSS ends here */
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -53,7 +101,7 @@ p, h2, h3, h4, h5, h6{
     }
 
     .course-banner-text{
-        font-size: 2rem;
+        font-size: 2.5rem;
         /* font-weight: 300 !important; */
         margin: 0 !important;
     }
