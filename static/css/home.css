@@ -1,0 +1,17 @@
+.container {
+    padding: 8px 86px;
+}
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 8px 0px;
+    }
+  }
+
+.card-home {
+    padding: 36px 24px;
+    border-radius: 16px;
+}
+
+.card-home:hover {
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px;
+}

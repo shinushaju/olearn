@@ -5,8 +5,109 @@
 {%block content%}
 
 <div class="w3-container w3-padding-32">
-    <h1>This is the Home Screen</h1>
-    <p>Write code here...</p>
+
+        <div class="w3-row" style="height: 80vh;">
+            <div class="w3-full w3-display-container" style="height: 100%;">
+                <div class="w3-display-middle w3-center" style="width: 100%;">
+                    <h1 class="w3-xxxlarge w3-hide-small" style="letter-spacing: -1px; line-height: 144%; font-weight: 800;">Find the Best Courses and <br /> <span style="color:#6E44FF;">Upgrade Your Skills</span></h1>
+                    <h1 class="w3-xxlarge w3-hide-large w3-hide-medium" style="letter-spacing: -1px; line-height: 144%; font-weight: 800;">Find the Best Courses and <br /> <span style="color:#6E44FF;">Upgrade Your Skills</span></h1>
+                    <p class="w3-xlarge w3-hide-small">Create your own path and drive on your skills on your own to achieve what you seek.</p>
+                    <p class="w3-medium w3-hide-large w3-hide-medium">Create your own path and drive on your skills on your own to achieve what you seek.</p>
+                    <div class="w3-padding" style="margin-top: 24px; margin-bottom: 24px;">
+                        <a href="{{ url_for('sign_up') }}" class="w3-mobile w3-section w3-button w3-large w3-padding-large w3-round-xxlarge w3-black w3-border w3-border-black w3-hover-black w3-hide-small"><b>Create an Account</b></a>
+                        <a href="{{ url_for('sign_up') }}" class="w3-mobile w3-section w3-button w3-large w3-padding w3-round-xxlarge w3-black w3-border w3-border-black w3-hover-black w3-hide-large w3-hide-medium"><b>Create an Account</b></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="w3-padding-32 container">
+
+        <div class="container">
+            <h1 class="w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">Start your journey to a successful career with our online practical courses ✨</h1>
+            <h1 class="w3-xlarge w3-center w3-hide-large w3-hide-medium" style="letter-spacing: -1px; font-weight: 500;"> Start your journey to a better life with online practical courses ✨</h1>
+        </div>
+
+        <div class="w3-row w3-section w3-stretch">
+            <div class="w3-third w3-padding">
+                <div class="card-home w3-center">
+                    <div class="w3-padding-small">
+                        <i class="bi bi-emoji-heart-eyes-fill" style="background-color: #f1ecff; padding: 16px; font-size: 1.5rem; color: #6E44FF; border-radius: 100%;"></i>
+                        <h5 style="font-weight: 700; margin-top: 24px;">Trending Courses</h5>
+                        <p style="color: #333333;">Our online courses are designed by technology leaders to meet industry demands and skills.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-third w3-padding">
+                <div class="card-home w3-center">
+                    <div class="w3-padding-small">
+                        <i class="bi bi-patch-check-fill" style="background-color: #fffbe9; padding: 16px; font-size: 1.5rem; color: #FFD523; border-radius: 100%;"></i>
+                        <h5 style="font-weight: 700; margin-top: 24px;">Experienced Faculty</h5>
+                        <p style="color: #333333;">Courses designed by professionals to fit in your industry supporting all-round with latest technologies.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-third w3-padding">
+                <div class="card-home w3-center">
+                    <div class="w3-padding-small">
+                        <i class="bi bi-clock-fill" style="background-color: #ffeee6; padding: 16px; font-size: 1.5rem; color: #FC5404; border-radius: 100%;"></i>
+                        <h5 style="font-weight: 700; margin-top: 24px;">24/7 Live Support</h5>
+                        <p style="color: #333333;">Highly rated 1-on-1 support with experienced faculty to ensure our student success and productivity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container">
+            <h1 class="w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">The perfected learning model.</h1>
+            <h1 class="w3-xlarge w3-center w3-hide-large w3-hide-medium"
+                style="letter-spacing: -1px; font-weight: 500;">The perfected learning model.</h1>
+            <h5 class="w3-center container" style="font-weight: 400; color: #333333;">Our learning methodology blends
+                the flexibility of online learning with the benefits of human instruction, making it ideal for the
+                current state of digital work.</h5>
+        </div>
+
+        <div class="w3-row w3-section w3-stretch">
+            <div class="w3-half w3-padding w3-center">
+                <img src="https://s.udemycdn.com/home/non-student-cta/instructor-1x-v3.jpg" alt="Career" class="w3-image">
+            </div> 
+            <div class="w3-half w3-padding">
+                <div class="w3-padding-32 w3-section">
+                    <h1 class="w3-xxlarge w3-left w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">Become a Faculty</h1>
+                    <h1 class="w3-xlarge w3-center w3-hide-large w3-hide-medium"
+                        style="letter-spacing: -1px; font-weight: 500;">Become a Faculty</h1>
+                    <h5 class="w3-left w3-hide-small" style="font-weight: 400; color: #333333;">Faculties from around the world teach millions of students on our platform. We provide the tools and skills to teach what you love.</h5>
+                    <h5 class="w3-center w3-hide-large w3-hide-medium" style="font-weight: 400; color: #333333;">Faculties from around the world teach millions of students on our platform. We provide the tools and skills to teach what you love.</h5>
+                    <div style="margin-top: 24px; margin-bottom: 24px;">
+                        <a href="{{ url_for('sign_up') }}" class="w3-mobile w3-section w3-button w3-large w3-padding-large w3-round-xxlarge w3-black w3-border w3-border-black w3-hover-black w3-hide-small"><b>Start Teaching Today</b></a>
+                        <a href="{{ url_for('sign_up') }}" class="w3-mobile w3-section w3-button w3-large w3-padding w3-round-xxlarge w3-black w3-border w3-border-black w3-hover-black w3-hide-large w3-hide-medium"><b>Start Teaching Today</b></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-row w3-stretch">
+            <div class="w3-half w3-padding">
+                <div class="w3-padding-32 w3-section">
+                    <h1 class="w3-xxlarge w3-left w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">Transform your career through education</h1>
+                    <h1 class="w3-xlarge w3-center w3-hide-large w3-hide-medium" style="letter-spacing: -1px; font-weight: 500;">Transform your career through education</h1>
+                    <h5 class="w3-left w3-hide-small" style="font-weight: 400; color: #333333;">Learners around the world are launching new careers, advancing in their fields, and enriching their lives.</h5>
+                    <h5 class="w3-center w3-hide-large w3-hide-medium" style="font-weight: 400; color: #333333;"> Learners around the world are launching new careers, advancing in their fields, and enriching their lives.</h5>
+                    <div style="margin-top: 24px; margin-bottom: 24px;">
+                        <a href="{{ url_for('programs') }}" class="w3-mobile w3-section w3-button w3-large w3-padding-large w3-round-xxlarge w3-black w3-border w3-border-black w3-hover-black w3-hide-small"><b>Explore Programs</b></a>
+                        <a href="{{ url_for('programs') }}" class="w3-mobile w3-section w3-button w3-large w3-padding w3-round-xxlarge w3-black w3-border w3-border-black w3-hover-black w3-hide-large w3-hide-medium"><b>Explore Programs</b></a>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-half w3-padding w3-center">
+                <img src="https://s.udemycdn.com/home/non-student-cta/ub-1x-v3.jpg" alt="Faculty" class="w3-image">
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 {% endblock %}
