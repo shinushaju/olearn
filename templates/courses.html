@@ -2,11 +2,371 @@
 
 {% block title %} Courses{% endblock %}
 
+{% block customcss %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+{% endblock%}
+
 {%block content%}
 
 <div class="w3-container w3-padding-32">
-    <h1>This is the Courses Screen</h1>
-    <p>Write code here...</p>
+
+    <div class="container w3-padding-32">
+
+        <h1 class="w3-padding-large w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">
+            Explore Our Courses - Fast-Track Your Career With High Quality Video Courses & Live Classes
+        </h1>
+        <h1 class="w3-padding-large w3-xlarge w3-center w3-hide-large w3-hide-medium" style="letter-spacing: -1px; font-weight: 500;">
+            Explore Our Courses - Fast-Track Your Career With High Quality Video Courses & Live Classes
+        </h1>
+        <hr/>
+        <div class="w3-padding-16">
+            <h3 class="w3-center" style="font-weight: 500; color:#333333;">
+                Programming and Development Courses
+            </h3>
+            <div class="w3-row w3-padding-16 w3-stretch">
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-code-slash w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Full-Stack Development</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Python, JavaScript, PostgreSQL, Docker, Flask, Kubernetes
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-code-slash w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Data Structures</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Python, C++, Java, Data Structures, Problem Solving
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-code-slash w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Python Programming</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Python, Object-Oriented Programming, Python Packages
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-code-slash w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Algorithms</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Python, C++, Java, Algorithms, Problem Solving
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-center">
+                <button
+                    class="w3-section w3-button w3-small w3-white w3-border w3-border-lightgray w3-hover-white w3-round-xlarge">View
+                    all Courses</button>
+            </div>
+        </div>
+
+        <div class="w3-padding-16">
+            <h3 class="w3-center" style="font-weight: 500; color:#333333;">Data Science Courses</h3>
+            <div class="w3-row w3-padding-16 w3-stretch">
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Practical Statistics</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Data Wrangling, Matplotlib, Pandas, Numpy, Statistics 
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Data Visualization</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Data Wrangling, Matplotlib, Data Visualization, Pandas, Numpy, Statistics 
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Data Analysis</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Data Analysis, Matplotlib, Pandas, Numpy, Jupyter 
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Data Engineering</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Python, Machine Learning, Software Engineering
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-center">
+                <button class="w3-section w3-button w3-small w3-white w3-border w3-border-lightgray w3-hover-white w3-round-xlarge">View all Courses</button>
+            </div>
+        </div>
+
+        <div class="w3-padding-16">
+            <h3 class="w3-center" style="font-weight: 500; color:#333333;">Artificial Intelligence Courses</h3>
+            <div class="w3-row w3-padding-16 w3-stretch">
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-gear w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Supervised Learning</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Python, Introduction to Machine Learning, Supervised Learning
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-gear w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Unsupervised Learning</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Python, Introduction to Machine Learning, Unsupervised Learning
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-gear w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Artificial Intelligence</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            AI Algorithms, Search Algorithms, Optimization, Pattern Recognition
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-gear w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Computer Vision</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Convolutional Neural Networks, Neural Networks, Classification, Deep Learning
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-center">
+                <button class="w3-section w3-button w3-small w3-white w3-border w3-border-lightgray w3-hover-white w3-round-xlarge">View all Courses</button>
+            </div>
+        </div>
+
+        <div class="w3-padding-16">
+            <h3 class="w3-center" style="font-weight: 500; color:#333333;">Cloud Computing Courses</h3>
+            <div class="w3-row w3-padding-16 w3-stretch">
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-cloud w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Cloud DevOps Engineer</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Introduction to DevOps, AWS, CI/CD, CloudFormation
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-cloud w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Cloud Developer</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Introduction to Cloud, AWS, Microservices, Kubernetes
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-cloud w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">AWS Cloud Architect</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Cloud Infrastructure, Cloud  Security, AWS, CloudFormation
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-cloud w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Hybrid Cloud Engineer</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                             Hybrid Cloud, Public Cloud, Private Cloud, HCI Clusters, Workload
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-center">
+                <button class="w3-section w3-button w3-small w3-white w3-border w3-border-lightgray w3-hover-white w3-round-xlarge">View all Courses</button>
+            </div>
+        </div>
+
+        <div class="w3-padding-16">
+            <h3 class="w3-center" style="font-weight: 500; color:#333333;">Blockchain Courses</h3>
+            <div class="w3-row w3-padding-16 w3-stretch">
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-diagram-2 w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Blockchain Associate</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Introduction to Blockchain, Principles, Consensus Algorithms
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-diagram-2 w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Ethereum Development</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Ethereum, DApps, Solidity, Web3.js, Token Standards
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-diagram-2 w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Hyperledger Fabric</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Hyperledger Basics, Chaincode, Client, UI Integration
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-diagram-2 w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Corda Development</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Introduction to Corda, CordApp, Services, Oracles, Accounts
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-center">
+                <button class="w3-section w3-button w3-small w3-white w3-border w3-border-lightgray w3-hover-white w3-round-xlarge">View all Courses</button>
+            </div>
+        </div>
+
+        <div class="w3-padding-16">
+            <h3 class="w3-center" style="font-weight: 500; color:#333333;">Quantum Computing Courses</h3>
+            <div class="w3-row w3-padding-16 w3-stretch">
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-cpu w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Quantum Computer</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Transmon qubits, Silicon spin qubits, diamond NV center qubits, and topological qubits
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-cpu w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Quantum Information</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Quantum circuits, Quantum compiling, universal gate sets, superdense coding
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-cpu w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Quantum Internet</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Micro-architectures, compilers, and programming languages for a quantum processor
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small">
+                    <div class="card-courses">
+                        <i class="bi bi-cpu w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Quantum Technology</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            Quantum communication and sensing technologies, Individual quantum operations
+                        </p>
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}" class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-center">
+                <button class="w3-section w3-button w3-small w3-white w3-border w3-border-lightgray w3-hover-white w3-round-xlarge">View all Courses</button>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 {% endblock %}

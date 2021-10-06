@@ -2,20 +2,131 @@
 
 {% block title %} About Us{% endblock %}
 
+{% block customcss %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock%}
+
 {%block content%}
 
-<div class="w3-container w3-padding-32">
-    <h1>This is the About Us Screen</h1>
+  <div class='w3-container w3-padding32'>
+  <h1 class="w3-padding-32 w3-center">Our Story</h1>
+    <div class="w3-row">
+      
+      <div class="w3-half w3-padding-64">
+        
+        <p><i><b>O-Learn</b> was founded by group of Techies in 2021 with a vision of providing life-transforming learning experiences to learners around the world. Today, <b>O-Learn</b> is a global online learning platform that offers anyone, anywhere, access to online courses and degrees from leading universities and companies.
+           <b>O-Learn</b> received B Corp certification in February 2021, which means that we have a legal duty not only to our shareholders, but to also make a positive impact on society more broadly, as we continue our efforts to reduce barriers to world-class education for all.</p>
+  
+          82 million learners, 100+ Fortune 500 companies, and more than 6,000 campuses, businesses, and governments come to<b> O-Learn</b> to access world-class learning—anytime, anywhere.</i></p>
+    
 
-    <img style="width:100%;" src="{{ url_for('static', filename='images/about.jpg') }}" alt="aboutus" /><br /> 
-       <p>O-learn is the global online learning platform that offers anyone, anywhere access to online courses and degrees from world-class universities and companies.</p>
+      </div>
+      <div class="w3-half w3-padding">
+        <video src="{{ url_for('static', filename='images/study.mp4') }}" alt="video" controls></video>
+  
+      </div>
+    </div>
+  
+  </div>
+
+<br>
+<br>
+<div class="w3-padding-32 w3-center">
+<h1>Our Mission</h1>
+<h4>Making E-Learning better for everyone.</h4> 
+<p class="w3-padding">We help people achieve independence by making it easier to start, run, and grow a business. We believe the future of commerce has more voices, not fewer, so we’re reducing the barriers to business ownership to make commerce better for everyone.<p>
+
 </div>
-<div class="w3-container w3-padding-32">
-    <h1>This is the About Us Screen</h1>
 
-    <img style="width:100%;" src="{{ url_for('static', filename='images/partners.jpg') }}"alt="partners" /><br /> 
-       
+  <div class="w3-padding-32">
+    <h1 class="w3-center">Our Partners</h1>
+   <div class="w3-row">
+     <div class="w3-third w3-padding w3-center" >
+      <img class="w3-image  w3-padding" src="{{ url_for('static', filename='images/mit.jpg') }}" >
+     </div>
+
+     <div class="w3-third w3-padding w3-center">
+      <img class="w3-image  w3-padding" src="{{ url_for('static', filename='images/bombay.jpg') }}" >
+     </div>
+
+     <div class="w3-third w3-padding w3-center">
+      <img class="w3-image  w3-padding" src="{{ url_for('static', filename='images/chennai.jpg') }}" >
+     </div>
+   </div>
+ 
+<div class="w3-row">
+  <div class="w3-third w3-padding w3-center">
+    <img class="w3-image w3-padding" src="{{ url_for('static', filename='images/kharagpur.jpg') }}" >
+   </div>
+
+   <div class="w3-third w3-padding w3-center">
+    <img class="w3-image  w3-padding" src="{{ url_for('static', filename='images/stanf.jpg') }}" >
+   </div>
+
+   <div class="w3-third w3-padding w3-center">
+    <img class="w3-image  w3-padding" src="{{ url_for('static', filename='images/delhi.jpg') }}" >
+   </div>
 </div>
 
+  </div>
 
+
+<!-- <div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 6</div>
+  <img src="{{ url_for('static', filename='images/mit.jpg') }}" style="width:100%">
+  <div class="text">Caption one</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 6</div>
+  <img src="{{ url_for('static', filename='images/kharagpur.jpg') }}" style="width:100%">
+  <div class="text">Caption Two</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 6</div>
+  <img src="{{ url_for('static', filename='images/delhi.jpg') }}" style="width:100%">
+  <div class="text">Caption three</div>
+</div>
+
+<div class="mySlides fade">
+    <div class="numbertext">4 / 6</div>
+    <img src="{{ url_for('static', filename='images/chennai.jpg') }}" style="width:100%">
+    <div class="text">Caption four</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">5 / 6</div>
+    <img src="{{ url_for('static', filename='images/bombay.jpg') }}" style="width:100%">
+    <div class="text">Caption five</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">6 / 6</div>
+    <img src="{{ url_for('static', filename='images/stanf.jpg') }}" style="width:100%">
+    <div class="text">Caption Six</div>
+  </div>
+
+</div> -->
+
+
+<!-- <div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span> 
+</div> -->
+
+
+
+{% endblock %}
+
+{% block customjs %}
+<!-- Replace this block with custom JS exclusive to your page. -->
+<script rel="text/javascript" href="{{ url_for('static', filename='js/about.js') }}">
+</script>
 {% endblock %}
