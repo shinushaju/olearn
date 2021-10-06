@@ -1,0 +1,39 @@
+.box {
+    padding:32px 48px;
+    background: #000000;
+    color: #ffffff;
+    border-radius: 32px;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 10px;
+    align-items: center;
+    width: 360px;
+}
+
+.box input[type="email"],
+.box input[type="password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #838383;
+    padding: 10px 10px;
+    width: 100%;
+    outline: none;
+    color: white;
+    transition: 0.25s
+}
+
+.box h1 {
+    color: white;
+    
+    font-weight: 500
+}
+
+.box input[type="email"]:focus,
+.box input[type="password"]:focus {
+    border-color:#6E44FF;
+}
+
+
