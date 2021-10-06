@@ -2,6 +2,10 @@
 
 {% block title %} Home{% endblock %}
 
+{% block customcss %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock%}
+
 {%block content%}
 
 <div class="w3-container w3-padding-32">
