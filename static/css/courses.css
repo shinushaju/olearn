@@ -1,0 +1,9 @@
+.card-courses {
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.card-courses:hover {
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px;
+}
