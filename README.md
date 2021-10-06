@@ -1,81 +1,77 @@
 # flask-app
 
-> Install Virtual Environment
+## Install Virtual Environment
 
 Python 3 comes with a virtual environment module called venv preinstalled. If you have Python 3 installed, skip this step.<br/>
 If you have Python 2, follow the given instructions:
 
-###### Install virtualenv on Windows:
-`py -2 -m pip install virtualenv`<br/>
-###### Install virtualenv on Linux:
-`sudo apt install python-virtualenv`<br/>
+### Installation:  
+**Windows**:  
+`py -2 -m pip install virtualenv`  
 
-> Create an Environment 'env'
+**Linux**:  
+`sudo apt install python-virtualenv`  
 
-Run the commands: <br/>
-###### Create environment on Windows:
-<b>For Python 3:</b><br/>
+### Creating a new environment named 'env'
 
-`py -3 -m venv env`
+Run the commands:  
+**Windows**:  
+Python 3: `py -3 -m venv env`  
+Python 2: `py -2 -m virtualenv env`
 
-<b>For Python 2:</b><br/>
+**Linux**:  
+Python 3: `python3 -m venv env`  
+Python 2: `python -m virtualenv env`
 
-`py -2 -m virtualenv env`
+### Activating the environment
 
-###### Create environment on Linux:
-<b>For Python 3:</b><br/>
+Run the commands:  
+**Windows**:  
+`env\Scripts\Activate`
 
-`python3 -m venv env`
-
-<b>For Python 2:</b><br/>
-
-`python -m virtualenv env`
-
-> Activate the Environment
-
-Run the commands: <br/>
-
-###### On Windows:
-
-`env\Scripts\Activate.ps1`
-
-###### On Linux:
-
+**Linux**:  
 `source env/bin/activate`
 
-> Install Flask 
-
+## Installing libraries  
+Libraries necessary :  
+* Flask   
 `python -m pip install flask`
 
-> Set the FLASK_APP Environment Variable.
+## Running flask app
 
-Run the commands: <br/>
-###### On Windows:
+### Setting FLASK_APP Environment Variable.
 
-`setx FLASK_APP=app`<br/>
-`setx FLASK_APP=development`<br/>
+Run the commands:  
+**Windows**:  
+`setx FLASK_APP=app`  
+`setx FLASK_APP=development`  
 
-###### On Linux:
+**Linux**:  
+`export FLASK_APP=app`  
+`export FLASK_APP=development`  
 
-`export FLASK_APP=app`<br/>
-`export FLASK_APP=development`<br/>
-
-> Run the Flask App
-
+### Run the flask app  
+Command:  
 `flask run`
 
 
-> Git Commands
+## Git Commands
 
-`git init` - Initializes a git repository <br/><br/>
+* `git init`  
+        Initializes a git repository   
 
-`git pull https://github.com/ShinuShaju/flask-app` - pulls the code from remote repository
+* `git pull https://github.com/ShinuShaju/flask-app`  
+        pulls the code from remote repository  
 
-`git add .` or `git add filename`  - adds a file/files to the git staging area <br/>
-`git commit -m "commit message in double quotes"`<br/><br/>
+* `git add .` or `git add filename`  
+        adds a file/files to the git staging area   
+* `git commit -m "commit message in double quotes"`  
 
-`git branch -m main` - sets main branch as main<br/>
-`git remote add origin https://github.com/ShinuShaju/flask-app`<br/>
-`git remote set-url origin https://github.com/ShinuShaju/flask-app`<br/>
+* `git branch -m main`  
+        sets main branch as main  
+* `git remote add origin https://github.com/ShinuShaju/flask-app`  
+* `git remote set-url origin https://github.com/ShinuShaju/flask-app`  
 
-`git push -u origin main` - push to a remote git repository<br/>
+* `git push -u origin main`  
+        push to a remote git repository  
+
