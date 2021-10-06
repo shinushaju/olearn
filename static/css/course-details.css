@@ -1,4 +1,4 @@
-p{
+p, h2, h3, h4, h5, h6{
     font-weight: 300;
 }
 
@@ -9,14 +9,14 @@ p{
 
 .course-banner-image{
     filter: brightness(75%) !important;
-    height: 20vw;
+    height: 40vh;
     width: 100%;
     object-fit: cover;
 }
 
 .course-banner-text{
     font-size: 3.5rem;
-    font-weight: 300;
+    font-weight: 300 !important;
 }
 
 .course-side-nav{
@@ -43,4 +43,27 @@ p{
         margin-left: 0 !important;
         padding-left: 0 !important;
     }
+
+    .course-banner-image{
+        /* filter: brightness(75%) !important;
+        height: 40vh;
+        width: 100%;
+        object-fit: cover; */
+        height: 60vh;
+    }
+
+    .course-banner-text{
+        font-size: 2rem;
+        /* font-weight: 300 !important; */
+        margin: 0 !important;
+    }
+
+    .course-banner-time, .course-banner-button{
+        margin: 0 !important;
+    }
+    
+    #syllabus, #prerequisites, #tutors{
+        margin: 0 !important;
+    }
+
 }
