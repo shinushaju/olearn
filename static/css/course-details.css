@@ -1,0 +1,46 @@
+p{
+    font-weight: 300;
+}
+
+/* .course-banner{
+    height: 20vw;
+    width: 100vw;
+} */
+
+.course-banner-image{
+    filter: brightness(75%) !important;
+    height: 20vw;
+    width: 100%;
+    object-fit: cover;
+}
+
+.course-banner-text{
+    font-size: 3.5rem;
+    font-weight: 300;
+}
+
+.course-side-nav{
+    float: left;
+    width: 15vw;
+    top: 8vw;
+    position: sticky !important;
+}
+
+.course-side-nav button{
+    width: 100%;
+}
+
+.course-detail-card{
+    float: right;
+    width: 80%;
+    top: 5vw;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .course-detail-card{
+        width: 95vw !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+}
