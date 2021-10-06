@@ -2,77 +2,14 @@
 
 {% block title %} Faculty{% endblock %}
 
+{% block customcss %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/faculties.css') }}">
+{% endblock%}
+
 {%block content%}
-
-<style>
-    /* Float four columns side by side */
-.column {
-  float: right;
-  width: 33.33%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Remove extra left and right margins, due to padding */
-.row {
-  /* margin: 0 0px; */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-  height:550px;
-  width: 350px;
-}
-
-/*card_contents*/
-.cardimage{
-    height: 220px;
-    width: 220px;
-    margin-top: 10px;
-}
-.name{
-    margin-top: 1rem;
-    justify-content: center;
-}
-
-.title{
-    justify-content: center;
-}
- 
-.description{
-    text-align: justify; 
-    font-style: italic;
-    padding-block: 5%;
-    padding-left: 5%;
-    padding-right:5%;
-}
-</style>
-
 <!-- Body Section -->
 <div class="w3-container w3-padding-32">
-    <div class="w3-container w3-padding-32" >
+    <div class="w3-container w3-padding-32 w3-center" >
         <div class="row w3-center">
             <div class="column">
                 <div class="card">
