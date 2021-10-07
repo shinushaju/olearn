@@ -4,9 +4,265 @@
 
 {%block content%}
 
-<div class="w3-container w3-padding-32">
-    <h1>This is the Careers Screen</h1>
-    <p>Write code here...</p>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #13b2fc;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+.about-section {
+  position: relative;
+  text-align: center;
+  color: white;
+  }
+  .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+  }
+
+  .flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  .flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .checked {
+    color: orange;
+  }
+  
+  </style>
+  <div class="w3-container w3-padding-32">
+  
+  <div class="about-section">
+  
+    <img src="{{ url_for('static', filename='images/career_main.jpg') }}" alt="" style="width:100%">
+
+    <div class="bottom-left"><h1>Build Your Powerful Career at O-Learn</h1></div>
+     
+  </div>
+
+  <h2 style="text-align:center">Recent & Featured Jobs</h2>
+  
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <h3>Development Team Lead</h3>
+        <p>Location:Washington.D.C</p>
+        <p>Salary:$1300</p>
+        <p><button class="button">Apply Now</button></p>
+      </div>
+    </div>
+  
+    <div class="column">
+      <div class="card">
+        <h3>DevOps Engineer</h3>
+        <p>Location:New York</p>
+        <p>Salary:$105,540.</p>
+        <p><button class="button">Apply Now</button></p>
+      </div>
+    </div>
+    
+    <div class="column">
+      <div class="card">
+        <h3>Data Scientist</h3>
+        <p>Location:New York</p>
+        <p>Salary:$99,795</p>
+        <p><button class="button">Apply Now</button></p>
+      </div>
+    </div>
+    
+    <div class="column">
+      <div class="card">
+        <h3>Graphic Designer</h3>
+        <p>Location:Washington.D.C</p>
+        <p>Salary:$1200</p>
+        <p><button class="button">Apply Now</button></p>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="text-align:center">Looking For Experts?</h2>
+
+  <div class="row">
+    <div class="column">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="{{ url_for('static', filename='images/jane.jpg') }}" alt="jane" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>Jane Klores</h1> 
+            <p>Data Scientist </p> 
+            <p>27 Jobs Done</p>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="column">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="{{ url_for('static', filename='images/john.jpg') }}" alt="john" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>John Doe</h1> 
+            <p>Architect & Engineer</p> 
+            <p>41 Jobs Done</p>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked "></span>
+            <span class="fa fa-star checked"></span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="column">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="{{ url_for('static', filename='images/FL1.jpg') }}" alt="FL1" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>Semanta Anderson</h1> 
+            <p>Graphic Designer</p> 
+            <p>19 Jobs Done</p>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star "></span>
+            <span class="fa fa-star"></span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="column">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="{{ url_for('static', filename='images/mike.jpg') }}" alt="mike" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>Mike Martins</h1> 
+            <p>DevOps Engineer</p> 
+            <p>32 Jobs Done</p>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star  checked"></span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  <p><button class="button">View All Experts</button></p>
 </div>
+  
+</div>
+  
 
 {% endblock %}
