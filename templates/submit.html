@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-{%extends "base.html" %}
-
-{% block title %} Sign-Up{% endblock %}
-
-{%block content%}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .button {
@@ -26,22 +21,15 @@
   border: 3px solid black;
   padding: 10px;
 }
-.active{
-  text-align: center;
-}
 </style>
 </head>
 <body>
-<br>
-<br>
-<div class="center" style="float:center;">
-  <h1 >Register</h1>
-  <a class="active" href="{{ url_for('facregister') }}"><button class="button">Faculty</button></a> 
-  <a class="active" href="{{ url_for('sturegister') }}"><button class="button">Student</button></a> 
+<div class="center">
+  <h3>Submitted Successfully</h3>
+  <a class="active" href="{{ url_for('home') }}"><button class="button"><i class="fa fa-fw fa-home"></i>Go to Home Page</button></a> 
 </div>
 
 </body>
-{% endblock %}
 </html>
 
 

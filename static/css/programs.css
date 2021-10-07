@@ -18,6 +18,10 @@
   clear: both;
 }
 
+.zoom:hover {
+  transform: scale(1.16);
+}
+
 /* Responsive columns */
 @media screen and (max-width: 600px) {
   .columnmob {
