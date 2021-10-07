@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
 html{
     font-family: 'Intern', sans-serif;
-    font-size: 32px;
 }
 .container{
     min-height: 100vh;
@@ -53,22 +52,22 @@ html{
     flex-direction: column;
     background-image: url(/static/images/pattern-quotes.svg);
     background-repeat: no-repeat;
-    background-size: 80px;
+    background-size: 50px;
     background-position: top center;
 }
 .testimonial-text{
     font-weight: 300;
-    font-size: .7rem;
-    line-height: 1rem;
+    font-size: 1.3rem;
     color: hsl(240, 38%, 20%);
 }
 .author-text{
     margin-top: 20px;
     color: hsl(240, 38%, 20%);
-    font-size: .5rem;
+    font-size: 1rem;
     font-weight: 700;
 }
 .author-text span{
+    font-size: 1rem;
     color: hsl(240, 18%, 77%);
     font-weight: 300;
     display: block;
@@ -126,7 +125,7 @@ html{
         text-align: left;
     }
     .slide-text{
-        background-position: 10% top;
+        background-position: 0% top;
         background-size: 100px;
         align-items: flex-start;
     }
