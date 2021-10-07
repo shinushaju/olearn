@@ -53,12 +53,12 @@ Run the commands: <br/>
 ###### On Windows:
 
 `setx FLASK_APP=app`<br/>
-`setx FLASK_APP=development`<br/>
+`setx FLASK_ENV=development`<br/>
 
 ###### On Linux:
 
 `export FLASK_APP=app`<br/>
-`export FLASK_APP=development`<br/>
+`export FLASK_ENV=development`<br/>
 
 > Run the Flask App
 
