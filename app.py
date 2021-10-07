@@ -50,6 +50,18 @@ def students():
 @app.route('/testimonials')
 def testimonials():
     return render_template('testimonials.html')
+
+@app.route('/submit')
+def submit():
+    return render_template('submit.html')
+
+@app.route('/sturegister')
+def sturegister():
+    return render_template('sturegister.html')
+
+@app.route('/facregister')
+def facregister():
+    return render_template('facregister.html')
     
 if __name__ == '__main__':
     app.run(debug=True)
