@@ -3,8 +3,9 @@
 {% block title %} Faculty{% endblock %}
 
 {% block customcss %}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/faculties.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    
 {% endblock%}
 
 {%block content%}
@@ -16,35 +17,80 @@
             <h1 class="w3-xlarge w3-center w3-hide-large w3-hide-medium"
                 style="letter-spacing: -1px; font-weight: 500;">Meet our Experts</h1>
         </div>
-        <div class="row w3-center">
-            <div class="w3-third w3-padding">
-                <div class="card">
-                    <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty1.jpg')}}">
-                    <h3 class="name">Stephen Grider</h3>                                                                                                                                    
-                    <p class="title">Engineering Architect</p>
-                    <p class="description">Builds complex Javascript front ends for top corporations in the San Francisco Bay Area. 
-                        With an innate ability to simplify complex topics, mentors engineers beginning their careers in software development for years.</p>
+        <div class="swiper-container">
+            <div class="swiper w3-padding-large">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                <!-- Slides -->
+                <!-- card 1 -->
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty5.jpg')}}">
+                        <h3 class="name">Deepthi K</h3>                                                                                                                                    
+                        <p class="title">Digital Platform Engineer | Nikea | Freelancing</p>
+                        <p class="description"> Associate of Digital Platform Engineering at Nikea. She is leading the teams accountable for core commerce services, user services, consumer data engineering and global retail solutions.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="w3-third w3-padding">
-                <div class="card">
-                    <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty2.jpg')}}">
-                    <h3 class="name">Sebastien Sebu</h3>
-                    <p class="title">CEO Devsl | iOS | Android | Freelancing</p>
-                    <p class="description">I am a veteran mobile developer having built over 57 mobile apps for iOS and Android, and I've also build multiple Unity 3D games, including Call of Duty Ghosts mobile.</p>
+                <!-- card 2 -->
+                <div class="swiper-slide">
+                    <div class="card ">
+                        <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty2.jpg')}}">
+                        <h3 class="name">Sebastien Sebu</h3>
+                        <p class="title">CEO Devsl | iOS | Android | Freelancing</p>
+                        <p class="description">I am a veteran mobile developer having built over 57 mobile apps for iOS and Android, and I've also build multiple Unity 3D games, including Call of Duty Ghosts mobile.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="w3-third w3-padding">
-                <div class="card">
-                    <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty3.jpg')}}">
-                    <h3 class="name">Ben Johnson</h3>
-                    <p class="title">Head of Data Science | Data Inc</p>
-                    <p class="description">A professional instructor and trainer for Data Science and programming. He has publications and patents in various fields such as microfluidics, materials science, and data science technologies.</p>
+                <!-- card 3 -->
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty6.jpg')}}">
+                        <h3 class="name">Radhika Mehta</h3>
+                        <p class="title">Senior Software Engineer| Data Flow Inc</p>
+                        <p class="description">A senior software engineer with 10+ years experience in IT development including team management, functional and technical leadership roles with a deep experience in full-stack technology. Currently focused on Machine Learning and Artificial Intelligence.</p>
+                    </div>
                 </div>
+                <!-- card 4 -->
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty1.jpg')}}">
+                        <h3 class="name">Stephen Grider</h3>                                                                                                                                    
+                        <p class="title">Engineering Architect</p>
+                        <p class="description">Builds complex Javascript front ends for top corporations in the San Francisco Bay Area. 
+                            With an innate ability to simplify complex topics, mentors engineers beginning their careers in software development for years.</p>
+                    </div>
+                </div>
+                <!-- card 5 -->
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty4.jpg')}}">
+                        <h3 class="name">Aravind Narayanan</h3>
+                        <p class="title">Associate Professor | Princeton University</p>
+                        <p class="description">Arvind Narayanan joined the department as an assistant professor in 2008. He earned his doctorate from the University of Texas, Austin, in 2005 and did post-doctoral work at Stanford University. He studies information privacy and security</p>
+                    </div>
+                </div>
+                <!-- card 6 -->
+                <div class="swiper-slide">
+                    <div class="card">
+                        <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty3.jpg')}}">
+                        <h3 class="name">Joanne Lin</h3>
+                        <p class="title">Head of Data Science | Data Inc</p>
+                        <p class="description">A professional instructor and trainer for Data Science and programming. He has publications and patents in various fields such as microfluidics, materials science, and data science technologies.</p>
+                    </div>
+                </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
             </div>
         </div>
-    </div>
+    </div>  
 </div>
 <!-- Body section ends here -->
+{% endblock %}
 
+{% block customjs %}
+<!-- swiper js -->
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- cutom js -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/faculty.js') }}"></script>
 {% endblock %}
