@@ -1,18 +1,16 @@
-   
-  
   /* Style the counter cards */
   .card {
     padding: 24px;
     border-radius: 36px;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px;
     text-align: center;
-    min-height: 472px; 
+    min-height: 472px;
   }
   
   /*card_contents*/
   .cardimage{
-      height: 180px;
-      width: 180px;
+      height: 150px;
+      width: 150px;
       margin-top: 16px;
   }
   .name{
@@ -28,3 +26,15 @@
       text-align: center; 
       font-style: italic;
   }
+
+  /*Slider stylesheet*/
+  .swiper {
+    width: auto;
+    height: auto;
+    background-color: white;
+    position: absolute;
+    z-index: -99;
+    
+  }
+
+ 
