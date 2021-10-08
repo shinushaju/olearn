@@ -24,11 +24,11 @@ h6 {
 }
 
 .footer {
-  margin: auto 48px;
+  margin: auto 12px;
 }
 
 @media only screen and (max-width: 600px) {
   .footer {
-    margin: auto 0px;
+    margin: auto 8px;
   }
 }
