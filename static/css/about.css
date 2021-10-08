@@ -4,6 +4,15 @@
     margin-top: 05.875%;
   }
 
+  .container {
+    padding: 8px 86px;
+}
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 8px 0px;
+    }
+  }
+
 
 
 
