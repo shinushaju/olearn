@@ -2,10 +2,9 @@
   .card {
     padding: 24px;
     border-radius: 36px;
-    /* box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px; */
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px;
     text-align: center;
     min-height: 472px;
-    border: 1px solid #333333
   }
   
   /*card_contents*/
