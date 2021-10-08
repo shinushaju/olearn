@@ -4,7 +4,7 @@ var swiper = new Swiper(".swiper", {
     spaceBetween: 16,
 
     autoplay: {
-    delay: 5000,
+    delay: 3000,
     },
 
     pagination: {
