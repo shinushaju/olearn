@@ -42,7 +42,7 @@
                 </div>
                 <!-- card 3 -->
                 <div class="swiper-slide">
-                    <div class="card swiper-slide">
+                    <div class="card ">
                         <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty6.jpg')}}">
                         <h3 class="name">Radhika Mehta</h3>
                         <p class="title">Senior Software Engineer| Data Flow Inc</p>
@@ -70,7 +70,7 @@
                 </div>
                 <!-- card 6 -->
                 <div class="swiper-slide">
-                    <div class="card swiper-slide">
+                    <div class="card">
                         <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty3.jpg')}}">
                         <h3 class="name">Joanne Lin</h3>
                         <p class="title">Head of Data Science | Data Inc</p>
@@ -92,8 +92,9 @@
 <script> 
     
     var swiper = new Swiper(".swiper", {
+        
         slidesPerView: 1,
-        spaceBetween: 10,
+        spaceBetween: 16,
 
         autoplay: {
         delay: 5000,
@@ -107,15 +108,12 @@
         breakpoints: {
           640: {
             slidesPerView: 1,
-            spaceBetween: 10,
           },
           768: {
             slidesPerView: 2,
-            spaceBetween: 20,
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 24,
           },
         },
       });
