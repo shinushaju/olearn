@@ -2,11 +2,70 @@
 
 {% block title %} Testimonials{% endblock %}
 
+{% block customcss %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/testimonials.css') }}">
+{% endblock%}
+
 {%block content%}
 
 <div class="w3-container w3-padding-32">
-    <h1>This is the Testimonials Screen</h1>
-    <p>Write code here...</p>
+    <section class="container">
+        <div class="slider">
+            <div class="slide slide1">
+                <div class="slide-text">
+                    <p class="testimonial-text">"I have been interested in coding 
+                        for a while but never taken the jump, until now.I could 
+                        recommend this course.I'm now in the job of my dream and 
+                        so excited about the future."
+                    </p>
+                    <p class="author-text">John Tarkpor
+                        <span>Junior Front-end Developer</span>
+                    </p>
+                </div>
+                <div class="slide-img">
+                    <img src="{{url_for('static',filename='images/john.jpg')}}" alt="profile">
+                </div>
+            </div>
+            <div class="slide slide2">
+                <div class="slide-text">
+                    <p class="testimonial-text">"The depth,the instructor go 
+                        into is incredible.I now feel so confident about starting 
+                        up as a professional developer."
+                    </p>
+                    <p class="author-text">Tanya Sinclair
+                        <span>UX Developer</span>
+                    </p>
+                </div>
+                <div class="slide-img">
+                    <img src="{{url_for('static',filename='images/tanya.jpg')}}" 
+                        alt="profile">
+                </div>
+            </div>
+            <div class="slide slide3">
+                <div class="slide-text">
+                    <p class="testimonial-text">"Course materials were good, 
+                        the mentoring approach was good, and working with other
+                        people via the Internet was good. The instructor did a good
+                        job of communicating and making it a more intimate 
+                        arrangement.I learned a lot.."
+                    </p>
+                    <p class="author-text">Anu
+                        <span>Full-stack Developer</span>
+                    </p>
+                </div>
+                <div class="slide-img">
+                    <img src="{{url_for('static',filename='images/b.jpg')}}" alt="profile">
+                </div>
+            </div>
+            <div class="button">
+                <div class="next"></div>
+                <div class="prev"></div>
+            </div>
+        </div>
+    </section>
 </div>
-
+{% endblock %}
+{% block customjs %}
+<script src="{{ url_for('static', filename='js/testimonials.js') }}">
+</script>
 {% endblock %}
