@@ -8,8 +8,18 @@ h6 {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.nav-shadow {
+.nav-container {
+  background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
+}
+
+.nav-bar {
+  padding: 12px 40px;
+}
+@media only screen and (max-width: 740px) {
+  .nav-bar {
+    padding: 8px 8px;
+  }
 }
 
 .menu-item:hover {
