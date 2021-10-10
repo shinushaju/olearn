@@ -16,6 +16,38 @@
     box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px;
 }
 
+.feature-card {
+    background-color: #ffffff;
+    padding: 24px 24px;
+    margin: 8px;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 0px 0px 1px;
+    border-radius: 12px;
+}
+@media only screen and (max-width: 740px) {
+    .feature-card {
+        padding: 24px 24px;
+        margin: 8px 0px;
+    }
+  }
+
+.feature-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+    transition: 0.3s;
+}
+
+.feature-container {
+    text-align: left;
+    padding: 0px 36px;
+}
+@media only screen and (max-width: 740px) {
+    .feature-container {
+        text-align: center;
+        padding: 24px 0px;
+    }
+  }
+
+
+
 input[type=text] {
     width: 100%;
     padding: 12px 20px;
