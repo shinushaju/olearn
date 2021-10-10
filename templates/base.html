@@ -33,7 +33,7 @@
             </span>
             <div class=" w3-right" style="margin-top: 4px;">
                 <a href="{{ url_for('login') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small w3-margin-right" style="font-weight: 600;">Login</a>
-                <a href="{{ url_for('sign_up') }}" class="w3-bar-item w3-button w3-round-xxlarge w3-hover-indigo w3-hide-small" style="background-color: #6E44FF; color: #FFFFFF;font-weight: 600;">Join Free</a>    
+                <a href="{{ url_for('sign_up') }}" class="w3-bar-item w3-button w3-round-xxlarge w3-hover-indigo w3-hide-small" style="background-color: #6E44FF; color: #FFFFFF;font-weight: 600;">Join Free</a>
             </div>
             <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hover-white w3-right w3-hide-large w3-hide-medium" style="margin-top: 8px;" onclick="navbarCollapse()">&#9776;</a>
         </div>
@@ -54,17 +54,23 @@
     <div class="w3-container w3-padding-64 w3-padding-large">{% block content %}{% endblock %}</div>
 
     <!-- footer starts here -->
-    <footer class="w3-container w3-padding-large">
-        <div class="w3-row w3-padding-large w3-padding-48 footer" style="background-color: #f7f4ff; border-radius: 48px;">
-            <div class="w3-third w3-container">
-                <a href="{{ url_for('home') }}" class="w3-bar-item" style="text-decoration: none;font-size: 2.5rem; font-weight: bold;">
+    <footer class="footer-container">
+        <div class="w3-row w3-padding-32">
+            <div class="w3-half">
+                <a href="{{ url_for('home') }}" class="w3-bar-item" style="text-decoration: none;font-size: 2.3rem; font-weight: bold;">
                     O-Learn<span style="font-size: 2.5rem; line-height: 0rem; color: #6E44FF;">.</span></a>
-                <h3>Grow you skills and advance <br />your career path.</h3>
+                <div class="w3-padding-16 wrap-text">Grow you skills and advance your career path. Build skills with courses, degrees online from world class universities and companies.</div>
+                <div class="w3-padding-16 w3-large">
+                    <a href="#" style="text-decoration: none;"><i class="bi bi-facebook w3-margin-right"></i></a>
+                    <a href="#" style="text-decoration: none;"><i class="bi bi-twitter w3-margin-right"></i></a>
+                    <a href="#" style="text-decoration: none;"><i class="bi bi-instagram w3-margin-right"></i></a>
+                    <a href="#" style="text-decoration: none;"><i class="bi bi-linkedin w3-margin-right"></i></a>
+                </div>
             </div>
-            <div class="w3-twothird w3-container">
+            <div class="w3-half">
                 <div class="w3-row">
                     <div class="w3-third">
-                        <h4 style="font-weight: 800;">Quick Links</h4>
+                        <h5 style="font-weight: 800;">Company</h5>
                         <div class="w3-padding-16">
                             <div style="margin-bottom: 12px;"><a href="{{ url_for('about') }}" style="text-decoration: none;">About Us</a></div>
                             <div style="margin-bottom: 12px;"><a href="{{ url_for('testimonials') }}" style="text-decoration: none;">Success Stories</a></div>
@@ -73,16 +79,15 @@
                         </div>
                     </div>
                     <div class="w3-third">
-                        <h4 style="font-weight: 800;">Follow Us</h4>
+                        <h5 style="font-weight: 800;">Quick Links</h5>
                         <div class="w3-padding-16">
-                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;"><i class="bi bi-twitter"></i> Twitter</a></div>
-                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;"><i class="bi bi-instagram"></i> Instagram</a></div>
-                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;"><i class="bi bi-linkedin"></i> LinkedIn</a></div>
-                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;"><i class="bi bi-facebook"></i> Facebook</a></div>
-                        </div>
+                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;">Help Center</a></div>
+                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;">Privacy Policy</a></div>
+                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;">Media Kit</a></div>
+                            <div style="margin-bottom: 12px;"><a href="#" style="text-decoration: none;">Donate</a></div>                        </div>
                     </div>
                     <div class="w3-third">
-                        <h4 style="font-weight: 800;">Contact Info</h4>
+                        <h5 style="font-weight: 800;">Contact Info</h5>
                         <div class="w3-padding-16">
                             <div style="margin-bottom: 12px;"><i class="bi bi-telephone-fill"></i> +65 2244 1100</div>
                             <div style="margin-bottom: 12px;"><i class="bi bi-envelope-fill"></i> hello@olearn.com</div>
@@ -92,7 +97,7 @@
                 </div>
             </div>
         </div>
-        <p class="w3-center w3-padding-24 w3-text-gray">&copy; Copyright 2021 @ O-Learn.</p>
+        <!-- <p class="w3-center w3-padding-24 w3-text-gray">&copy; Copyright 2021 @ O-Learn.</p> -->
     </footer>
     <!-- footer ends here -->
 

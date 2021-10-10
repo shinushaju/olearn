@@ -23,12 +23,22 @@ h6 {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 50px;
 }
 
-.footer {
-  margin: auto 12px;
+.footer-container {
+  padding: 0px 64px;
+}
+@media only screen and (max-width: 740px) {
+  .footer-container {
+      padding: 0px 24px;
+  }
 }
 
-@media only screen and (max-width: 600px) {
-  .footer {
-    margin: auto 8px;
+.wrap-text {
+  max-width:75%;
+  word-wrap:break-word;
+}
+@media only screen and (max-width: 740px) {
+  .wrap-text {
+    max-width:100%;
+    word-wrap:break-word;
   }
 }
