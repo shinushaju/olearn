@@ -28,7 +28,7 @@ input[type=password] {
 
 input[type=text]:focus,
 input[type=password]:focus {
-    background-color: #fafafa;
+    background-color: #ffffff;
     border: 1px solid rgb(110,68,255,0.5);
     transition: 0.3s;
     outline: none;
