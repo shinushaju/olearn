@@ -83,9 +83,9 @@ def submit():
 def sturegister():
     return render_template('sturegister.html')
 
-@app.route('/facregister')
-def facregister():
-    return render_template('facregister.html')
+@app.route('/faculty/join')
+def faculty_signup():
+    return render_template('faculty-signup.html')
     
 if __name__ == '__main__':
     app.run(debug=True)
