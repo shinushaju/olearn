@@ -6,7 +6,42 @@
     .container {
         padding: 8px 0px;
     }
-  }
+}
+
+.section-height {
+    height: 48vh;
+}
+@media only screen and (max-width: 740px) {
+    .section-height {
+        height: 88vh;
+    }
+}
+
+
+.signup-card {
+    color: #000000;
+    font-weight: 700;
+    font-size: large;
+    background-color: #ffffff;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 24px;
+}
+
+.signup-card:hover {
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    transition: 0.1s;
+}
+
+.signup-card-icon {
+    height: 72px;
+    width: 72px;
+    margin-bottom: 16px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: large;
+}
 
 .form-box-shadow {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;

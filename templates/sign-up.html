@@ -1,47 +1,59 @@
-<!DOCTYPE html>
-<html>
-<head>
 {%extends "base.html" %}
 
-{% block title %} Sign-Up{% endblock %}
-
+{% block title %} Sign Up For Free{% endblock %}
+{% block customcss %}
+    <!-- Replace this block with custom css exclusive to your page. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+{% endblock %}
 {%block content%}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-.center {
-  margin: auto;
-  width: 60%;
-  border: 3px solid black;
-  padding: 10px;
-}
-.active{
-  text-align: center;
-}
-</style>
-</head>
-<body>
-<br>
-<br>
-<div class="center" style="float:center;">
+
+<div class="w3-container">
+  <div class="w3-row" style="min-height: 50vh;">
+    <div class="container w3-padding-32">
+      <h1 class="w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">
+        Join O-Learn For Free Today!
+      </h1>
+      <h1 class="w3-xlarge w3-center w3-hide-large w3-hide-medium" style="letter-spacing: -1px; font-weight: 500;">
+        Join O-Learn For Free Today!
+      </h1>
+      <p class="w3-center">Build your brand by developing courses you want and train future leaders from the comfort of
+        your home.</p>
+    </div>
+
+    <div class="w3-display-container w3-mobile section-height">
+        <div class="w3-row-padding w3-display-middle">
+          <div class="w3-half w3-padding w3-section" style="display: flex;justify-content: center;">
+            <a href="{{ url_for('student_signup') }}">
+              <div class="signup-card w3-display-container" style="background-color: #6E44FF; color: #ffffff;">
+                <div class="w3-display-middle w3-center">
+                  <div class="signup-card-icon w3-display-container" style="background-color: #ffffff; color: #6E44FF;">
+                    <i class="w3-large w3-display-middle bi bi-book-fill"></i>
+                  </div>
+                  Student
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="w3-half w3-padding w3-section" style="display: flex;justify-content: center;">
+            <a href="{{ url_for('faculty_signup') }}">
+              <div class="signup-card w3-display-container" style="background-color: #FC6404; color: #ffffff;">
+                <div class="w3-display-middle w3-center">
+                  <div class="signup-card-icon w3-display-container" style="background-color: #ffffff;color: #FC6404;">
+                    <i class="w3-large w3-display-middle bi bi-people-fill"></i>
+                  </div>
+                  Faculty
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+    </div>
+  </div>
+  <!-- <div class="center" style="float:center;">
   <h1 >Register</h1>
   <a class="active" href="{{ url_for('faculty_signup') }}"><button class="button">Faculty</button></a> 
   <a class="active" href="{{ url_for('student_signup') }}"><button class="button">Student</button></a> 
-</div>
+</div> -->
 
-</body>
-{% endblock %}
-</html>
-
-
+  {% endblock %}
