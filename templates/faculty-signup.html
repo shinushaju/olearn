@@ -1,54 +1,60 @@
-                                                                                                                                                                                                                                                                               <!DOCTYPE html>
-
 {%extends "base.html" %}
 
-{% block title %} Sign-Up{% endblock %}
+{% block title %} Become a Faculty{% endblock %}
 {% block customcss %}
     <!-- Replace this block with custom css exclusive to your page. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/facregister.css') }}">
-    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/faculty-signup.css') }}">
+{% endblock %}
+
 {%block content%}
 
-<div class="w3-container w3-padding-32">
-<h1 class="w3-center w3-padding-32" >Faculty SignUp Form</h1>
+<div class="w3-container">
+  <div class="w3-row" style="min-height: 100vh;">
+    <div class="container w3-padding-32">
+      <h1 class="w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">
+        Join O-Learn's Global Community of Expert Instructors
+      </h1>
+      <h1 class="w3-xlarge w3-center w3-hide-large w3-hide-medium" style="letter-spacing: -1px; font-weight: 500;">
+        Join O-Learn's Global Community of Expert Instructors
+      </h1>
+      <p class="w3-center">Build your brand by developing courses you want and train future leaders from the comfort of your home.</p>
+    </div>
 
-<div class="w3-container w3-center w3-margin" > 
-<p>Please fill in this form to create an account.</p>
-</div>
-<div class="w3-display-container w3-stretch" style="height:100vh;margin-top:24px">
-
-
-<form action="{{url_for('submit')}}" class="w3-display-middle">
-  
-  
-  
-    <label for="First Name"><b>First Name*</b></label>
-    <input type="text" placeholder="Enter First Name" name="First Name" id="first name" required>
-    <br>
-    <label for="Last Name"><b>Last Name*</b></label>
-    <input type="text" placeholder="Enter Last Name" name="Last Name" id="las name" required>
-
-    <br>
-    <label for="email"><b>Email*</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
-    <br>
-    <label for="psw"><b>Password*</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-    <br>
-    <label for="psw-repeat"><b>Reenter Password*</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
-    <br>
-    <br>
-    
-
-    <input type="submit"  class="w3-button w3-block w3-round-xxlarge w3-black w3-hover-black" onclick="alert('Changes may not save. Do you want to submit?') " href="{{ url_for('submit') }}" value="Register">
-  
-  <div class="w3-container w3-center w3-margin">
-    <p>Already have an account? <a class="form-link" href="{{ url_for('login') }}">Sign in</a>.</p>
+    <div class="w3-display-container" style="height:96vh;">
+      <div class="w3-display-middle w3-mobile">
+        <form class="w3-white"  action="{{url_for('submit')}}">
+            <div style="margin-bottom: 8px;">
+              <label for="full-name">First Name</label>
+              <input type="text" placeholder="Your full name" name="full name" id="first name" required>              
+            </div>
+            <div style="margin-bottom: 8px;">
+              <label for="email">Email Address</label>
+              <input type="text" placeholder="Your email" name="email" id="email" required>
+            </div>
+            <div style="margin-bottom: 8px;">
+              <label for="psw">Password</label>
+              <input type="password" placeholder="Enter password" name="psw" id="psw" required>
+            </div>
+            <div style="margin-bottom: 8px;">
+              <label for="psw-repeat">Repeat Password</label>
+              <input type="password" placeholder="Repeat password" name="psw-repeat" id="psw-repeat" required>
+            </div>
+            <div style="margin-bottom: 8px;">
+              <input class="checkbox" type="checkbox">
+              <label> &ensp;I acknowledge and agree with all terms and services.
+              </label>
+            </div>
+            <div class="w3-padding-16">
+              <input type="submit" class="w3-button w3-block w3-round-large w3-padding w3-large w3-black w3-hover-black w3-section" onclick="alert('Changes may not save. Do you want to submit?') " href="{{ url_for('submit') }}" value="Sign Up for Free">
+            </div>
+        </form>
+        <div class="w3-center">
+          <p>Already have an account? <a class="form-link" href="{{ url_for('login') }}"><b>Sign in</b></a>.</p>
+        </div>
+      </div>
+    </div>
   </div>
-</form>
-</div>
 </div>
 
 {% endblock %}
