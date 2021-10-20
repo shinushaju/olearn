@@ -86,6 +86,10 @@ def student_signup():
 @app.route('/faculty/join')
 def faculty_signup():
     return render_template('faculty-signup.html')
+
+@app.route('/student/dashboard')
+def student_dashboard():
+    return render_template('student/dashboard.html')
     
 if __name__ == '__main__':
     app.run(debug=True)

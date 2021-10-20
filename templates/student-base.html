@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+<head>
+    {% block head %}
+    <title> O-Learn for Students - {% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/main.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    {% endblock %}
+
+    {% block customcss %}
+    <!-- Replace this block with custom css exclusive to your page. -->
+    {% endblock %}
+</head>
+
+<body>
+    <div class="w3-sidebar w3-bar-block w3-collapse w3-animate-left" style="width:240px;" id="mySidebar">
+        <div class="w3-padding-large">
+
+            <div style="display: flex; justify-content: space-between;">
+                <a href="{{ url_for('home') }}" class="w3-bar-item"
+                    style="text-decoration: none;font-size: 2rem; font-weight: bold;">O-Learn<span
+                        style="font-size: 2.5rem; line-height: 0rem; color: #6E44FF;">.</span></a>
+                <button class="w3-right w3-button w3-xlarge w3-hide-large w3-text-gray" onclick="w3_close()"><i
+                        class="bi bi-x"></i></button>
+            </div>
+            <div class="w3-padding-24" id="nav">
+                <a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large active"><i class="bi bi-grid-1x2-fill"></i>&emsp;Dashboard</a>
+                <a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-file-earmark-fill"></i>&emsp;My Courses</a>
+                <!-- <button onclick="handleDropDown('links')" class="side-nav-item w3-bar-item w3-round-large">My
+                    Learning</button>
+                <div id="links" class="w3-container w3-hide" style="margin-left:12px;margin-bottom: 16px;">
+                    <a href="#" class="side-nav-sub-menu w3-block w3-left-align submenu-active">My Courses</a>
+                    <a href="#" class="side-nav-sub-menu w3-block w3-left-align">My Programs</a>
+                    <a href="#" class="side-nav-sub-menu w3-block w3-left-align">My Favourites</a>
+                </div> -->
+
+                <a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-layers-half"></i>&emsp;Partners</a>
+                <a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-people-fill"></i>&emsp;Instructors</a>
+                <a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-headset"></i>&emsp;Help Center</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-main w3-padding container-main">
+        <div class="w3-transparent w3-padding-16">
+            <button class="w3-button w3-white w3-large w3-round-xlarge w3-hide-large" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 10px 50px;" onclick="w3_open()">&#9776;</button>
+            <span class="w3-right w3-dropdown-click w3-hide-large w3-hide-medium">
+                <button onclick="handleDropDownMenuMobile()" class="dropdown-btn">
+                    <span style="color: #666666;">Shinu Shaju&ensp;</span>
+                    <img src="https://avatars.githubusercontent.com/u/39211049?v=4" alt="Avatar" class="avatar">
+                </button>
+                <div id="menu-mobile-links" class="w3-dropdown-content w3-bar-block">
+                    <a href="#" class="w3-bar-item w3-button">My Profile</a>
+                    <a href="#" class="w3-bar-item w3-button">Settings</a>
+                    <a href="#" class="w3-bar-item w3-button">Logout</a>
+                  </div>
+            </span>
+            <div class="w3-container" id="topnav">
+                <span class="search-container w3-hide-large w3-hide-medium w3-margin-top w3-block">
+                    <form class="w3-section">
+                        <input type="text" placeholder="Search Courses.." name="search">
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                </span>
+                <span class="search-container w3-hide-small">
+                    <form>
+                        <input type="text" placeholder="Search Courses.." name="search">
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                </span>
+                <span class="w3-right w3-dropdown-click w3-hide-small">
+                    <button onclick="handleDropDownMenu()" class="dropdown-btn">
+                        <span style="color: #666666;">Shinu Shaju&ensp;</span>
+                        <img src="https://avatars.githubusercontent.com/u/39211049?v=4" alt="Avatar" class="avatar">
+                    </button>
+                    <div id="menu-links" class="w3-dropdown-content w3-bar-block">
+                        <a href="#" class="w3-bar-item w3-button">My Profile</a>
+                        <a href="#" class="w3-bar-item w3-button">Settings</a>
+                        <a href="#" class="w3-bar-item w3-button">Logout</a>
+                      </div>
+                </span>
+            </div>
+        </div>
+        {% block content %}{% endblock %}
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dashboard/student/main.js') }}"></script>
+    {% block customjs %}
+    <!-- Replace this block with custom JS exclusive to your page. -->
+    {% endblock %}
+</body>
+
+</html>
