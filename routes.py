@@ -1,6 +1,7 @@
 import re
 from flask.helpers import url_for
 from flask import render_template, redirect, request
+import sqlalchemy
 from app import app, db
 from models import Student
 from passlib.hash import sha256_crypt
@@ -119,7 +120,11 @@ def student_signup():
             psw_hash=sha256_crypt.encrypt(psw)
             student=Student(name=form['name'], email=form['email'], password=psw_hash)
             db.session.add(student)
-            db.session.commit()
+            try:
+                db.session.commit()
+            except sqlalchemy.exc.IntegrityError:
+                errors.append("An account is already registered with this email.")
+                return render_template('student-signup.html', form=form, errors=errors)
 
             return redirect(url_for('submit'))
 
