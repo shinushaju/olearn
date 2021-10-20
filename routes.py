@@ -1,3 +1,4 @@
+import re
 from flask.helpers import url_for
 from flask import render_template, redirect, request
 from app import app, db
@@ -56,9 +57,23 @@ def course_details():
 def faculty():
     return render_template('faculty.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    errors=list()
+    if request.method=='POST':
+        email=request.form['email'].strip()
+        password=request.form['password'].strip()
+
+        # Querying email and password from database
+        student=Student.query.filter_by(email=email).one_or_none()
+        if student is not None:
+            if sha256_crypt.verify(password, student.password):
+                return redirect(url_for('home'))
+
+        # If query did not return any result or password did not match
+        errors.append('Username or password is incorrect!')
+
+    return render_template('login.html', errors=errors)
 
 @app.route('/programs')
 def programs():
@@ -87,10 +102,10 @@ def student_signup():
 
     # If user submits form
     if request.method=='POST':
-        form['name']=request.form['full name']
-        form['email']=request.form['email']
-        psw=request.form['psw']
-        psw_repeat=request.form['psw-repeat']
+        form['name']=request.form['full name'].strip()
+        form['email']=request.form['email'].strip()
+        psw=request.form['psw'].strip()
+        psw_repeat=request.form['psw-repeat'].strip()
 
         # Validating form fields
         if psw!=psw_repeat:

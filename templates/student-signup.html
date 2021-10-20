@@ -46,13 +46,13 @@
               </label>
             </div>
             {% if errors %}
-            <div style="margin-bottom: 8px;">
-              <ul style="color:red;">
-                {% for error in errors %}
-                  <li>{{ error }}</li>
-                {% endfor %}
-              </ul>
-            </div>
+              <div style="margin-bottom: 8px;">
+                <ul style="color:red;">
+                  {% for error in errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
             {% endif %}
             <div class="w3-padding-16">
               <input type="submit" class="w3-button w3-block w3-round-large w3-padding w3-large w3-black w3-hover-black w3-section" onclick="alert('Changes may not save. Do you want to submit?') " href="{{ url_for('submit') }}" value="Sign Up For Free">
