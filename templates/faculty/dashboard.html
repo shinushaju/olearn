@@ -1,0 +1,140 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Dashboard{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+{% endblock %}
+
+{%block content%}
+
+<div class="w3-container w3-padding-16">
+
+    <div class="">
+
+        <div class="w3-row-padding">
+            <div class="w3-col l8 m8 w3-margin-bottom">
+                <div class="dashboard-banner">
+                    <div class="banner-content">
+                        <div class="w3-row">
+                            <div class="w3-twothird">
+                                <div class="w3-left w3-padding-16">
+                                    <h3 class="main-header" style="color: #ffffff;font-weight: 700;">Hey, Shinu
+                                        &#128075;
+                                    </h3>
+                                    <h5 style="color: #ffffff;">It's Good To See You Again!</h5>
+                                    <a href="#" class="w3-btn w3-white w3-hover-white w3-round-large">Create New Course</a>
+                                </div>
+                            </div>
+                            <div class="w3-third" style="display: flex;justify-content: center;">
+                                <img style="height: 136px; width: auto;object-fit: cover;"
+                                    src="{{ url_for('static', filename='images/student/student.png') }}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col l4 m4 w3-margin-bottom">
+                <div class="w3-row">
+                    <div class="w3-half dashboard-card">
+                        <div class="content">
+                            <div class="card-header">18</div>
+                            <div class="card-body">Courses Created</div>
+                        </div>
+                    </div>
+                    <div class="w3-half dashboard-card">
+                        <div class="content">
+                            <div class="card-header">3568</div>
+                            <div class="card-body">Students Learning</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- courses in progress starts here -->
+        <div class="w3-row-padding">
+            <div>
+                <h5 class="w3-left">Active Courses</h5>
+            </div>
+            <div class="w3-section">
+                <!-- Slider main container -->
+                <div class="swiper w3-padding-24 w3-padding-small w3-stretch">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div class="card-courses">
+                                <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                                <h6 class="w3-large" style="font-weight: 500;">Cloud DevOps Engineer</h6>
+                                <div class="w3-section w3-light-grey w3-tiny"
+                                    style="border-radius: 100px; height: 8px;">
+                                    <div class="w3-container"
+                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:20%">
+                                    </div>
+                                </div>
+                                <a href="#" style="margin-top:4px"
+                                    class="w3-btn w3-round-large w3-black w3-tiny">View Course</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card-courses">
+                                <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                                <h6 class="w3-large" style="font-weight: 500;">Intro Python Programming</h6>
+                                <div class="w3-section w3-light-grey w3-tiny"
+                                    style="border-radius: 100px; height: 8px;">
+                                    <div class="w3-container"
+                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:45%">
+                                    </div>
+                                </div>
+                                <a href="#" style="margin-top:4px"
+                                    class="w3-btn w3-round-large w3-black w3-tiny">View Course</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card-courses">
+                                <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                                <h6 class="w3-large" style="font-weight: 500;">Data Science & Statistics</h6>
+                                <div class="w3-section w3-light-grey w3-tiny"
+                                    style="border-radius: 100px; height: 8px;">
+                                    <div class="w3-container"
+                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:75%">
+                                    </div>
+                                </div>
+                                <a href="#" style="margin-top:4px"
+                                    class="w3-btn w3-round-large w3-black w3-tiny">View Course</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card-courses">
+                                <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                                <h6 class="w3-large" style="font-weight: 500;">Intro to Machine Learning</h6>
+                                <div class="w3-section w3-light-grey w3-tiny"
+                                    style="border-radius: 100px; height: 8px;">
+                                    <div class="w3-container"
+                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:60%">
+                                    </div>
+                                </div>
+                                <a href="#" style="margin-top:4px"
+                                    class="w3-btn w3-round-large w3-black w3-tiny">View Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="w3-section swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+        <!-- courses in progress ends here -->
+    </div>
+
+
+    {% block customjs %}
+    <!-- swiper js -->
+    <!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> -->
+
+    <!-- cutom js -->
+    <script type="module" src="{{ url_for('static', filename='js/dashboard/faculty/swiper.js') }}"></script>
+    {% endblock %}
+
+    {% endblock %}
