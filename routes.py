@@ -71,7 +71,7 @@ def login():
                 return redirect(url_for('home'))
 
         # If query did not return any result or password did not match
-        errors.append('Username or password is incorrect!')
+        errors.append('Email or password is incorrect!')
 
     return render_template('login.html', errors=errors)
 
