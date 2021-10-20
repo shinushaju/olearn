@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+.side-nav-item  {
+  margin-bottom: 24px;
+  color: #666666;
+  background-color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.side-nav-sub-menu {
+  text-decoration: none;
+  padding: 8px;
+  color: #666666;
+}
+
+.active {
+  color: #6e44ff;
+  background-color: #ffffff;
+  font-weight: 700;
+  box-shadow: rgba(149, 157, 165, 0.15) 0px 8px 24px;
+  transition: 0.3s;
+}
+
+.submenu-active {
+  color: #000;
+  font-weight: 700;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+#topnav .search-container {
+  float: left;
+  border-radius: 100px;
+}
+
+#topnav input[type=text] {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  background-color: #ffffff;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  outline: none;
+}
+
+#topnav .search-container button {
+  float: right;
+  padding: 8px 16px;
+  margin-right: 14px;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  background: #ffffff;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+#topnav .search-container button:hover {
+  background: #ccc;
+}
+
+.container-main {
+  margin-left:240px;
+  padding: auto 16px;
+  background-color: #fafafa;
+  min-height: 100vh;
+}
+
+
+.nav-container {
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
+}
+
+.nav-bar {
+  padding: 8px 40px;
+}
+@media only screen and (max-width: 740px) {
+  .nav-bar {
+    padding: 8px 8px;
+  }
+}
+
+.menu-item:hover {
+  color: #6e44ff;
+  font-weight: 700;
+}
+
+
+.main-header {
+  font-size: 1.8rem;
+  line-height: 50%;
+}
+
+
+.dashboard-banner {
+  background-color: #6e44ff;
+  border-radius: 20px;
+  padding: 18px 24px;
+}
+
+.dashboard-banner .banner-content {
+  color: #ffffff;
+}
+
+.dashboard-card {
+  padding: 4px;
+}
+
+.dashboard-card .content {
+  padding: 30px 16px; 
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  background-color: #ffff;
+  border-radius: 18px;
+}
+
+.card-header {
+  font-family: "Poppins", sans-serif;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.card-body {
+  font-size: medium;
+  color: #333333;
+}
+
+.card-link {
+  color: #6e44ff;
+  text-decoration: none;
+  padding-top: 8px;
+}
+
+.swiper {
+  width: 100%;
+  height: auto;
+}
+
+.card-courses {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px 0px, rgba(0, 0, 0, 0.03) 0px 1px 2px 0px;
+}
+.w3-dropdown-click:hover {
+  background-color: transparent;
+}
+.dropdown-btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-btn:hover {
+  background-color: transparent;
+}
+.w3-dropdown-content {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  margin-top: 8px;
+  right: 12px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
