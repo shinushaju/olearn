@@ -1,9 +1,9 @@
 {%extends "base.html" %}
 
-{% block title %} Blockchain Courses{% endblock %}
+{% block title %} Data Science Courses{% endblock %}
 
 {% block customcss %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home/courses.css') }}">
 {% endblock%}
 
 {%block content%}
@@ -13,14 +13,18 @@
     <div class="container">
 
         <h1 class="w3-padding-large w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">
-            Blockchain Courses
+            Data Science Courses
         </h1>
         <h1 class="w3-padding-large w3-xlarge w3-center w3-hide-large w3-hide-medium"
             style="letter-spacing: -1px; font-weight: 500;">
-            Blockchain Courses
+            Data Science Courses
         </h1>
         <div class="w3-center w-padding">
-            Blockchain helps in the verification and traceability of multistep transactions needing verification and traceability. It can provide secure transactions, reduce compliance costs, and speed up data transfer processing. Blockchain technology can help contract management and audit the origin of a product.
+            Build expertise in data manipulation, visualization, predictive analytics, machine learning, and data
+            science. With the skills you learn in a Nanodegree program, you can launch or advance a successful data
+            career. Start acquiring valuable skills right away, create a project portfolio to demonstrate your
+            abilities, and get support from mentors, peers, and experts in the field. We offer five unique programs to
+            support your career goals in the data science field.
         </div>
 
         <div class="w3-padding-64">
@@ -28,10 +32,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Blockchain Associate</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Practical Statistics</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Introduction to Blockchain, Principles, Consensus Algorithms
+                            Data Wrangling, Matplotlib, Pandas, Numpy, Statistics
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -41,10 +45,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Ethereum Development</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Data Visualization</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Ethereum, DApps, Solidity, Web3.js, Token Standards
+                            Data Wrangling, Matplotlib, Data Visualization, Pandas, Numpy, Statistics
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -54,10 +58,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Hyperledger Fabric</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Data Analysis</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Hyperledger Basics, Chaincode, Client, UI Integration
+                            Data Analysis, Matplotlib, Pandas, Numpy, Jupyter
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -67,10 +71,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Supply Chain Finance and Blockchain Technology Specialization</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Data Engineering</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Foreign Currency Risk Management,APIs for Trade Finance,Blockchain Technology Implementation
+                            Python, Machine Learning, Software Engineering
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -80,10 +84,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Block Chain</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Executive Data Science</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Smart Contract,Blockchains,Solidity,Cryptography
+                            Data Science, Data Management,Data Analysis
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -93,10 +97,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Supply Chain Finance </h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Statistics with Python </h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Financial Innovation,APIs for Trade Finance
+                            Statistical Model,Data Analysis,Statistics
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -106,10 +110,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Bitcoin and Cryptocurrency Technologies</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Data Science Fundamentals</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Bitcoin,Bitcoin Network,Cryptocurrency
+                            Data Documentation,Data Mining,Geophysical Data
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -119,10 +123,11 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Blockchain Basics</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Practical Data Science</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Ethereum,Cryptography,Blockchains
+                            Data ingestion,Automated Machine Learning (AutoML),ML Pipelines and MLOps
+
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"

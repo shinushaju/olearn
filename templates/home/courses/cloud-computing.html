@@ -1,9 +1,9 @@
 {%extends "base.html" %}
 
-{% block title %} Programming and Development Courses{% endblock %}
+{% block title %} Cloud Computing Courses{% endblock %}
 
 {% block customcss %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home/courses.css') }}">
 {% endblock%}
 
 {%block content%}
@@ -13,14 +13,14 @@
     <div class="container">
 
         <h1 class="w3-padding-large w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">
-            Programming and Development Courses
+            Cloud Computing Courses
         </h1>
         <h1 class="w3-padding-large w3-xlarge w3-center w3-hide-large w3-hide-medium"
             style="letter-spacing: -1px; font-weight: 500;">
-            Programming and Development Courses
+            Cloud Computing Courses
         </h1>
         <div class="w3-center w-padding">
-            Programming is a critical skill in today’s economy, and there is a shortage of qualified developers. Whether you’re new to coding, adding more skills, or advancing your career, 10 hours a week will prepare you for your ideal developer job.
+            Today, all companies, big or small, are adopting cloud computing to enable their digital transformation. The growth of this technology has created incredible demand for cloud computing jobs, from Cloud Developers and Cloud DevOps roles to more specialized roles such as Solutions Architects and Cloud Security Engineers. You can join this growing field – get started today.
         </div>
 
         <div class="w3-padding-64">
@@ -28,10 +28,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Full-Stack Development</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Cloud DevOps Engineer</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Python, JavaScript, PostgreSQL, Docker, Flask, Kubernetes
+                            Introduction to DevOps, AWS, CI/CD, CloudFormation
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -41,10 +41,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Data Structures</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Cloud Developer</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Python, C++, Java, Data Structures, Problem Solving
+                            Introduction to Cloud, AWS, Microservices, Kubernetes
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -54,10 +54,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Python Programming</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">AWS Cloud Architect</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Python, Object-Oriented Programming, Python Packages
+                            Cloud Infrastructure, Cloud Security, AWS, CloudFormation
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -67,10 +67,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Algorithms</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Hybrid Cloud Engineer</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Python, C++, Java, Algorithms, Problem Solving
+                            Hybrid Cloud, Public Cloud, Private Cloud, HCI Clusters, Workload
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -80,10 +80,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Data Analysis</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Building Cloud Computing Solutions at Scale Specialization</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Data Analysis, Matplotlib, Pandas, Numpy, Jupyter
+                            Cloud API,Cloud Platforms,Devops
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -93,10 +93,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">IBM Full Stack Cloud Developer</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Big Data Specialization</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Devops,Node.Js,Openshift,Iaas PaaS Saas
+                            Big Data,Big Data,Cloud Storage
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -106,10 +106,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Introduction to Web Development</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Cloud Computing Foundations</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            HTML,CSS,JavaScript
+                            Devops,Github,Cloud Computing
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -119,10 +119,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Full Stack Web Development</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Software Design and Architecture Specialization</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            AngularJs,HTML,CSS,JavaScript
+                            Software Architecture,OOP,UML
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
