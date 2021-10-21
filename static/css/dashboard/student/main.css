@@ -102,11 +102,6 @@ h6 {
   }
 }
 
-.menu-item:hover {
-  color: #6e44ff;
-  font-weight: 700;
-}
-
 .user-menu {
   background-color: red;
   padding: 12px 8px;
