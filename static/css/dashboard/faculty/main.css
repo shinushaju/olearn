@@ -102,11 +102,24 @@ h6 {
   }
 }
 
-.menu-item:hover {
-  color: #6e44ff;
-  font-weight: 700;
+.user-menu {
+  background-color: red;
+  padding: 12px 8px;
+  border-radius: 16px;
+  border: 1px solid #fafafa
 }
 
+.user-menu-item {
+  background-color: #ffffff;
+  border-radius: 8px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.user-menu-item:hover {
+  background-color: #6e44ff;
+  color: #ffffff;
+}
 
 .main-header {
   font-size: 1.8rem;
