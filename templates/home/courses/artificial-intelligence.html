@@ -1,9 +1,9 @@
 {%extends "base.html" %}
 
-{% block title %} Quantum Computing Courses{% endblock %}
+{% block title %} Artificial Intelligence Courses{% endblock %}
 
 {% block customcss %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home/courses.css') }}">
 {% endblock%}
 
 {%block content%}
@@ -13,36 +13,25 @@
     <div class="container">
 
         <h1 class="w3-padding-large w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">
-            Quantum Computing Courses
+            Artificial Intelligence Courses
         </h1>
         <h1 class="w3-padding-large w3-xlarge w3-center w3-hide-large w3-hide-medium"
             style="letter-spacing: -1px; font-weight: 500;">
-            Quantum Computing Courses
+            Artificial Intelligence Courses
         </h1>
         <div class="w3-center w-padding">
-            Quantum computers have the potential to revolutionize computation by making certain types of classically intractable problems solvable. While no quantum computer is yet sophisticated enough to carry out calculations that a classical computer can't, great progress is under way.        </div>
+            AI is one of the fastest-growing and most transformational technologies of our time, having added over 2.3 million new jobs in the past few years. Spend 10 hours per week to advance your career.
+        </div>
 
         <div class="w3-padding-64">
             <div class="w3-row w3-stretch">
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Quantum Computer</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Supervised Learning</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Transmon qubits, Silicon spin qubits, diamond NV center qubits, and topological qubits
-                        <div class="w3-section"><b>180 hours</b></div>
-                        <a href="{{ url_for('course_details') }}"
-                            class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
-                    </div>
-                </div>
-                <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
-                    <div class="card-courses">
-                        <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Quantum Information</h5>
-                        <p class="w3-small">
-                            <span class="w3-text-gray">Topics: </span>
-                            Quantum circuits, Quantum compiling, universal gate sets, superdense coding
+                            Python, Introduction to Machine Learning, Supervised Learning
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -52,10 +41,22 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Quantum Internet</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Unsupervised Learning</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Micro-architectures, compilers, and programming languages for a quantum processor
+                            Python, Introduction to Machine Learning, Unsupervised Learning
+                        <div class="w3-section"><b>180 hours</b></div>
+                        <a href="{{ url_for('course_details') }}"
+                            class="w3-button w3-block w3-black w3-round-xxlarge w3-hover-black">Learn More</a>
+                    </div>
+                </div>
+                <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
+                    <div class="card-courses">
+                        <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                        <h5 class="w3-large" style="font-weight: bold;">Artificial Intelligence</h5>
+                        <p class="w3-small">
+                            <span class="w3-text-gray">Topics: </span>
+                            AI Algorithms, Search Algorithms, Optimization, Pattern Recognition
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -65,10 +66,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Quantum Technology</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Computer Vision</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Quantum communication and sensing technologies, Individual quantum operations
+                            Convolutional Neural Networks, Neural Networks, Classification, Deep Learning
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -78,10 +79,11 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Quantum Computing: from Basics to the Cutting Edge </h5>
+                        <h5 class="w3-large" style="font-weight: bold;">Deep Learning</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Computation with qubits,Quantum Error Correction
+                            Artificial Neural Network, Tensorflow, 
+                            Python Programming, Transformers
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -91,10 +93,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">Getting Started with Quantum Machine Learning</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">IBM Applied AI</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Matrix Multiplication,Matrices,Machine Learning
+                            Pandas,Numpy,Data Analysis, API,Applied Data Science
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -104,10 +106,10 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">The Introduction to Quantum Computing</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">AI Product Management</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Construction of quantum logic algorithms,Computation with continuous variables
+                            Privacy, Ethics,Modeling,Predective Analysis,Data Science
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"
@@ -117,10 +119,11 @@
                 <div class="w3-quarter w3-padding-small" style="margin-bottom: 8px;">
                     <div class="card-courses">
                         <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                        <h5 class="w3-large" style="font-weight: bold;">The complete Quantum Computing COurse</h5>
+                        <h5 class="w3-large" style="font-weight: bold;">AI For EVeryone</h5>
                         <p class="w3-small">
                             <span class="w3-text-gray">Topics: </span>
-                            Python,Quantum Computing,Quantum Programming
+                           Workflow of Machine Learning Projects,
+                           AI Terminology, AI Strategy
                         </p>
                         <div class="w3-section"><b>180 hours</b></div>
                         <a href="{{ url_for('course_details') }}"

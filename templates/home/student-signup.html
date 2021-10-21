@@ -4,7 +4,7 @@
 {% block customcss %}
     <!-- Replace this block with custom css exclusive to your page. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home/signup.css') }}">
 {% endblock %}
 
 {%block content%}
@@ -21,9 +21,9 @@
       <p class="w3-center">Grow you skills and advance your career path. Build skills with courses, degrees online from world class universities and companies.</p>
     </div>
 
-    <div class="w3-display-container" style="height:96vh;">
-      <div class="w3-display-middle w3-mobile">
-        <form class="w3-white"  action="{{url_for('submit')}}">
+    <div class="w3-container" style="display: flex;justify-content: center;">
+      <div class="w3-mobile">
+        <form class="w3-white">
             <div style="margin-bottom: 8px;">
               <label for="full-name">Full Name</label>
               <input type="text" placeholder="Your full name" name="full name" id="first name" required>              
@@ -36,17 +36,17 @@
               <label for="psw">Password</label>
               <input type="password" placeholder="Enter password" name="psw" id="psw" required>
             </div>
-            <div style="margin-bottom: 8px;">
+            <!-- <div style="margin-bottom: 8px;">
               <label for="psw-repeat">Repeat Password</label>
               <input type="password" placeholder="Repeat password" name="psw-repeat" id="psw-repeat" required>
-            </div>
+            </div> -->
             <div style="margin-bottom: 8px;">
               <input class="checkbox" type="checkbox">
               <label> &ensp;I acknowledge and agree with all terms and services.
               </label>
             </div>
             <div class="w3-padding-16">
-              <input type="submit" class="w3-button w3-block w3-round-large w3-padding w3-large w3-black w3-hover-black w3-section" onclick="alert('Changes may not save. Do you want to submit?') " href="{{ url_for('submit') }}" value="Sign Up For Free">
+              <input type="submit" class="w3-button w3-block w3-round-large w3-padding w3-large w3-black w3-hover-black w3-section" value="Sign Up For Free">
             </div>
         </form>
         <div class="w3-center">

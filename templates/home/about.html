@@ -3,7 +3,7 @@
 {% block title %} About Us{% endblock %}
 
 {% block customcss %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home/about.css') }}">
 {% endblock%}
 
 {%block content%}
@@ -80,64 +80,10 @@
         </div>
     </div>
 
-
-
-<!-- <div class="slideshow-container">
-
-<div class="mySlides fade">
-  <div class="numbertext">1 / 6</div>
-  <img src="{{ url_for('static', filename='images/mit.jpg') }}" style="width:100%">
-  <div class="text">Caption one</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">2 / 6</div>
-  <img src="{{ url_for('static', filename='images/kharagpur.jpg') }}" style="width:100%">
-  <div class="text">Caption Two</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">3 / 6</div>
-  <img src="{{ url_for('static', filename='images/delhi.jpg') }}" style="width:100%">
-  <div class="text">Caption three</div>
-</div>
-
-<div class="mySlides fade">
-    <div class="numbertext">4 / 6</div>
-    <img src="{{ url_for('static', filename='images/chennai.jpg') }}" style="width:100%">
-    <div class="text">Caption four</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">5 / 6</div>
-    <img src="{{ url_for('static', filename='images/bombay.jpg') }}" style="width:100%">
-    <div class="text">Caption five</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">6 / 6</div>
-    <img src="{{ url_for('static', filename='images/stanf.jpg') }}" style="width:100%">
-    <div class="text">Caption Six</div>
-  </div>
-
-</div> -->
-
-
-<!-- <div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span> 
-</div> -->
-
-
-
 {% endblock %}
 
 {% block customjs %}
 <!-- Replace this block with custom JS exclusive to your page. -->
-<script rel="text/javascript" href="{{ url_for('static', filename='js/about.js') }}">
+<script rel="text/javascript" href="{{ url_for('static', filename='js/home/about.js') }}">
 </script>
 {% endblock %}

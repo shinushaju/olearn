@@ -8,15 +8,6 @@
     }
 }
 
-.section-height {
-    height: 48vh;
-}
-@media only screen and (max-width: 740px) {
-    .section-height {
-        height: 88vh;
-    }
-}
-
 
 .signup-card {
     color: #000000;
