@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
 {% endblock %}
+
+
 {%block content%}
 
 <div class="w3-container">
-  <div class="w3-row" style="min-height: 50vh;">
     <div class="container w3-padding-32">
       <h1 class="w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">
         Join O-Learn For Free Today!
@@ -21,8 +22,8 @@
         your home.</p>
     </div>
 
-    <div class="w3-display-container w3-mobile section-height">
-        <div class="w3-row-padding w3-display-middle">
+    <div class="w3-margin-bottom w3-padding-24" style="display: flex;justify-content: center;">
+        <div class="w3-row-padding">
           <div class="w3-half w3-padding w3-section" style="display: flex;justify-content: center;">
             <a href="{{ url_for('student_signup') }}">
               <div class="signup-card w3-display-container" style="background-color: #6E44FF; color: #ffffff;">
@@ -50,10 +51,4 @@
         </div>
     </div>
   </div>
-  <!-- <div class="center" style="float:center;">
-  <h1 >Register</h1>
-  <a class="active" href="{{ url_for('faculty_signup') }}"><button class="button">Faculty</button></a> 
-  <a class="active" href="{{ url_for('student_signup') }}"><button class="button">Student</button></a> 
-</div> -->
-
   {% endblock %}
