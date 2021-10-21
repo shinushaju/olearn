@@ -75,10 +75,6 @@ def students():
 def testimonials():
     return render_template('home/testimonials.html')
 
-@app.route('/submit')
-def submit():
-    return render_template('home/submit.html')
-
 @app.route('/students/join')
 def student_signup():
     return render_template('home/student-signup.html')
