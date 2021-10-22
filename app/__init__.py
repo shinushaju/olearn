@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
-# login manager
+# student login manager
 student_login_manager = LoginManager()
 student_login_manager.login_view = 'student_login'
 student_login_manager.init_app(app)
