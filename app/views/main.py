@@ -1,7 +1,5 @@
-from flask import Flask, render_template
-
-app = Flask(__name__)
-
+from flask import render_template
+from app import app
 
 @app.route('/')
 def home():
@@ -55,17 +53,9 @@ def course_details():
 def faculty():
     return render_template('home/faculty.html')
 
-@app.route('/login')
-def login():
-    return render_template('home/login.html')
-
 @app.route('/programs')
 def programs():
     return render_template('home/programs.html')
-
-@app.route('/sign-up')
-def sign_up():
-    return render_template('home/sign-up.html')
 
 @app.route('/students')
 def students():
@@ -75,18 +65,13 @@ def students():
 def testimonials():
     return render_template('home/testimonials.html')
 
-@app.route('/students/join')
-def student_signup():
-    return render_template('home/student-signup.html')
+# sign-up main screen
+@app.route('/sign-up')
+def sign_up():
+    return render_template('home/sign-up.html')
 
-@app.route('/faculty/join')
-def faculty_signup():
-    return render_template('home/faculty-signup.html')
+# login main screen
+@app.route('/login')
+def login():
+    return render_template('home/login.html')
 
-@app.route('/faculty/dashboard')
-def faculty_dashboard():
-    return render_template('faculty/dashboard.html')
-    
-if __name__ == '__main__':
-    app.run(debug=True)
-    
