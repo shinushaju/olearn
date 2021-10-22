@@ -15,6 +15,6 @@ db.init_app(app)
 # import main views here
 from app.views import main
 # import student views here
-from app.views.student import auth
+from app.views.student import auth, main
 # import faculty faculty views here
-from app.views.faculty import auth
+from app.views.faculty import auth, main
