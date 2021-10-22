@@ -1,6 +1,7 @@
 from flask import Flask
+from flask.scaffold import F
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_login import LoginManager
 app = Flask(__name__)
 
 #initializing SQLAlchemy
@@ -10,6 +11,17 @@ app.config['SECRET_KEY'] = '28e1ff6a5cf7255041c3f6917e2b9b98ffc41e107037e6a29b09
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
+
+faculty_login_manager = LoginManager()
+faculty_login_manager.login_view = 'faculty_login'
+faculty_login_manager.init_app(app)
+
+from app.models.faculty import Faculty
+
+@faculty_login_manager.user_loader
+def load_user(user_id):
+    # since the user_id is just the primary key of our user table, use it in the query for the user
+    return Faculty.query.get(int(user_id))
 
 # VIEWS
 # ------
