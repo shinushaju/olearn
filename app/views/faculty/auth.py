@@ -15,6 +15,7 @@ def faculty_signup():
             user = Faculty.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
             
             if user: # if a user is found, we want to redirect back to signup page so user can try again
+                flash("User already exits!", 'error')
                 return redirect(url_for('faculty_signup'))
             else:
                 faculty = Faculty(email=email, name=name, password=generate_password_hash(password, method='sha256'))
@@ -33,7 +34,7 @@ def faculty_login():
         remember = True if request.form.get('remember') else False
         faculty = Faculty.query.filter_by(email=email).first()
         if not faculty or not check_password_hash(faculty.password, password):
-            flash('Please check your login details and try again.')
+            flash('Invalid credentials!!')
             return redirect(url_for('faculty_login')) # if the user doesn't exist or password is wrong, reload the page
         else:
             # if the above check passes, then we know the user has the right credentials
