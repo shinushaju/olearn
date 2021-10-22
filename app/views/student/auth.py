@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, db
 # import db model
 from app.models.student import Student
-from flask_login import login_user
+from flask_login import login_user, logout_user, login_required
 
 # sign up as a student
 @app.route('/students/join',methods=['GET','POST'])
@@ -42,8 +42,11 @@ def student_login():
     
     return render_template('home/student-login.html', role="Student")
 
-# login as a student
-@app.route('/show')
-def show():
-    print(Student.query.all())
+# log out a student
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
 
