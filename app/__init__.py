@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 #initializing SQLAlchemy
 db = SQLAlchemy()
+
 app.config['SECRET_KEY'] = '28e1ff6a5cf7255041c3f6917e2b9b98ffc41e107037e6a29b097f72a3f3856f'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -18,3 +19,7 @@ from app.views import main
 from app.views.student import auth, main
 # import faculty faculty views here
 from app.views.faculty import auth, main
+
+with app.app_context():
+    db.create_all()
+  
