@@ -42,15 +42,18 @@ def faculty_login():
         email = request.form.get('email')
         password = request.form.get('password')
         remember = True if request.form.get('remember') else False
-        faculty = Faculty.query.filter_by(email=email).first()
-        if not faculty or not check_password_hash(faculty.password, password):
-            flash('Invalid credentials!!')
-            return redirect(url_for('faculty_login')) # if the user doesn't exist or password is wrong, reload the page
+        if email and password :      
+            faculty = Faculty.query.filter_by(email=email).first()
+            if not faculty or not check_password_hash(faculty.password, password):
+                flash('Invalid credentials!!')
+                return redirect(url_for('faculty_login')) # if the user doesn't exist or password is wrong, reload the page
+            else:
+                # if the above check passes, then we know the user has the right credentials
+                login_user(faculty, remember=remember)
+                return redirect(url_for('faculty_dashboard'))
         else:
-            # if the above check passes, then we know the user has the right credentials
-            login_user(faculty, remember=remember)
-            return redirect(url_for('faculty_dashboard'))
-    
+                if not email or not password:
+                    flash("Fill the Mandatory Fields", "error")
     return render_template('home/faculty-login.html', role="Faculty")
 
 # log out a faculty
