@@ -1,7 +1,7 @@
 import re
 
 def validate_email(email):
-    print(email)
+    #print(email)
     regex ='^[A-Za-z0-9]+[A-Za-z0-9.$*]+[A-Za-z0-9]+@[A-Za-z]+.com$'
     if(re.fullmatch(regex, email)):
         return True      
@@ -10,7 +10,7 @@ def validate_email(email):
         
 
 def validate_name(name):
-    print(name)
+    #print(name)
     regex_name=re.compile('^([A-Za-z]{3,10})+[ A-Za-z]{3,10}$')
     res = regex_name.search(name)
     if res:

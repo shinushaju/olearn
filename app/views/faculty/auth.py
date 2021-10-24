@@ -13,7 +13,7 @@ def faculty_signup():
             email = request.form.get('email')
             name = request.form.get('name')
             password = request.form.get('password')
-            print(name,email,password)
+            #print(name,email,password)
             if name and email and password and validate_name(name) and validate_email(email) and validate_password(password):
                 user = Faculty.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
                 if user: # if a user is found, we want to redirect back to signup page so user can try again
