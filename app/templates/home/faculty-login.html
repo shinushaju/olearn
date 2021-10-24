@@ -23,11 +23,13 @@
                     
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
-                            <div class="w3-padding-16 w3-text-red w3-center">
-                                {{ messages[0] }}
+                            <div class="w3-text-red w3-center">
+                                {% for message in messages %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
                             </div>
                         {% endif %}
-                    {% endwith %}    
+                    {% endwith %}
                     <label class="form-label" for="inputEmail">Email</label>
                     <input type="email" class="form-control w3-round-xxlarge" id="inputEmail" name="email" placeholder="Email" required> 
                     <label class="form-label" for="inputPassword">Password</label>
