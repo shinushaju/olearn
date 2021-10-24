@@ -4,6 +4,7 @@ from app import app, db
 # import db model
 from app.models.faculty import Faculty
 from flask_login import login_user, logout_user, login_required
+from app.utils.auth import validate_email, validate_name, validate_password
 
 # sign up as a faculty
 @app.route('/faculty/join',methods=['GET','POST'])
@@ -12,17 +13,27 @@ def faculty_signup():
             email = request.form.get('email')
             name = request.form.get('name')
             password = request.form.get('password')
-            user = Faculty.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
-            
-            if user: # if a user is found, we want to redirect back to signup page so user can try again
-                flash("User already exits!", 'error')
-                return redirect(url_for('faculty_signup'))
+            print(name,email,password)
+            if name and email and password and validate_name(name) and validate_email(email) and validate_password(password):
+                user = Faculty.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
+                if user: # if a user is found, we want to redirect back to signup page so user can try again
+                    flash("User already exits!", 'error')
+                   # return redirect(url_for('faculty_signup'))
+                else:
+                    faculty = Faculty(email=email, name=name, password=generate_password_hash(password, method='sha256'))
+                    # add the new faculty to the database
+                    db.session.add(faculty)
+                    db.session.commit()
+                    return redirect(url_for('faculty_login'))
             else:
-                faculty = Faculty(email=email, name=name, password=generate_password_hash(password, method='sha256'))
-                # add the new faculty to the database
-                db.session.add(faculty)
-                db.session.commit()
-                return redirect(url_for('faculty_login'))
+                if not name or not email or not password:
+                    flash("Fill the Mandatory Fields")
+                if not validate_name(name):
+                    flash("Enter a Valid Name")
+                if not validate_email(email):
+                    flash("Enter a Valid Email")
+                if not validate_password(password):
+                    flash("Enter a Valid Password")
     return render_template('home/faculty-signup.html')
 
 # login as a faculty
