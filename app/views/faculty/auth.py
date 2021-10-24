@@ -18,7 +18,6 @@ def faculty_signup():
                 user = Faculty.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
                 if user: # if a user is found, we want to redirect back to signup page so user can try again
                     flash("User already exits!", 'error')
-                   # return redirect(url_for('faculty_signup'))
                 else:
                     faculty = Faculty(email=email, name=name, password=generate_password_hash(password, method='sha256'))
                     # add the new faculty to the database
@@ -27,13 +26,13 @@ def faculty_signup():
                     return redirect(url_for('faculty_login'))
             else:
                 if not name or not email or not password:
-                    flash("Fill the Mandatory Fields")
+                    flash("Fill the Mandatory Fields", "error")
                 if not validate_name(name):
-                    flash("Enter a Valid Name")
+                    flash("Enter a Valid Name","error")
                 if not validate_email(email):
-                    flash("Enter a Valid Email")
+                    flash("Enter a Valid Email","error")
                 if not validate_password(password):
-                    flash("Enter a Valid Password")
+                    flash("Enter a Valid Password","error")
     return render_template('home/faculty-signup.html')
 
 # login as a faculty
