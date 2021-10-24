@@ -30,8 +30,10 @@ def load_user(user_id):
 from app.views import main
 # import student views here
 from app.views.student import auth, main
-# import faculty faculty views here
+# import faculty views here
 from app.views.faculty import auth, main
+# import course views here
+from app.views.course import routes
 
 with app.app_context():
     db.create_all()
