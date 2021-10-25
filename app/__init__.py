@@ -31,8 +31,9 @@ from app.views import main
 # import student views here
 from app.views.student import auth, main
 # import faculty faculty views here
-from app.views.faculty import auth, main
+from app.views.faculty import auth, main, quiz
 
 with app.app_context():
     db.create_all()
+    #db.drop_all()
   

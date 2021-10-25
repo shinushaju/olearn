@@ -1,4 +1,5 @@
 from app import db
+#from app.models.courses import Course
 
 # quiz model
 class Quiz(db.Model):
@@ -7,7 +8,8 @@ class Quiz(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     quiz_title = db.Column(db.String(120), nullable=False)
-    course_id = db.Column(db.Integer, db.ForeignKey('course.id'),nullable=False)
+    course_name = db.Column(db.String(120), nullable=False)
+    #course_id = db.Column(db.Integer, db.ForeignKey('course.id'),nullable=False)
 
     def __repr__(self):
         return '<Quiz %r>' % self.quiz_title

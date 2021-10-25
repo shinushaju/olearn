@@ -1,0 +1,29 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Create Quiz{% endblock %}
+
+{% block customcss %}{% endblock %}
+
+{%block content%}
+
+<div class="w3-container w3-padding-16">
+    <h2>Create New Quiz</h2>
+
+    <form method="POST">
+        <label for="fname">Quiz Title</label><br>
+        <input type="text"  name="quiz_title" ><br>
+        <label for="lname">Course Name</label><br>
+        <input type="text"  name="course_name" ><br><br>
+        <input type="submit" value="Submit">
+      </form> 
+    <div>
+        {% for quiz in quizzes %}
+            {{quiz.quiz_title}} - {{quiz.course_name}}<br>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}
