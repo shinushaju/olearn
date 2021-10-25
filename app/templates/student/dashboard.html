@@ -53,11 +53,12 @@
             </div>
         </div>
 
-        <!-- courses in progress starts here -->
+        <!-- Enrolled courses -->
         <div class="w3-row-padding">
             <div>
-                <h5 class="w3-left">Ongoing Courses</h5>
+                <h5 class="w3-left">Enrolled courses</h5>
             </div>
+            {% for enrolledcourse in enrolledcoursesList%}
             <div class="w3-section">
                 <!-- Slider main container -->
                 <div class="swiper w3-padding-24 w3-padding-small w3-stretch">
@@ -67,7 +68,7 @@
                         <div class="swiper-slide">
                             <div class="card-courses">
                                 <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                                <h6 class="w3-large" style="font-weight: 500;">Cloud DevOps Engineer</h6>
+                                <h6 class="w3-large" style="font-weight: 500;">{{enrolledcourse.course_name}}</h6>
                                 <div class="w3-section w3-light-grey w3-tiny"
                                     style="border-radius: 100px; height: 8px;">
                                     <div class="w3-container"
@@ -78,52 +79,48 @@
                                     class="w3-btn w3-round-large w3-black w3-tiny">Continue</a>
                             </div>
                         </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="w3-section swiper-pagination"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Enrolled course template ends here -->
+        <!-- courses in progress starts here -->
+        <div class="w3-row-padding">
+            <div>
+                <h5 class="w3-left">Available courses</h5>
+            </div>
+            {% for course in available %}
+            <div class="w3-section">
+                <!-- Slider main container -->
+                <div class="swiper w3-padding-24 w3-padding-small w3-stretch">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
                         <div class="swiper-slide">
                             <div class="card-courses">
                                 <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                                <h6 class="w3-large" style="font-weight: 500;">Intro Python Programming</h6>
+                                <h6 class="w3-large" style="font-weight: 500;">{{course.course_name}}</h6>
+                                {{course.course_description}} <br>
+                                Course Duration : {{course.course_duration}} Hours<br>
+                                Course Price : ₹{{course.course_price}}/-<br>
                                 <div class="w3-section w3-light-grey w3-tiny"
                                     style="border-radius: 100px; height: 8px;">
                                     <div class="w3-container"
-                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:45%">
+                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:20%">
                                     </div>
                                 </div>
-                                <a href="#" style="margin-top:4px"
-                                    class="w3-btn w3-round-large w3-black w3-tiny">Continue</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-courses">
-                                <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                                <h6 class="w3-large" style="font-weight: 500;">Data Science & Statistics</h6>
-                                <div class="w3-section w3-light-grey w3-tiny"
-                                    style="border-radius: 100px; height: 8px;">
-                                    <div class="w3-container"
-                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:75%">
-                                    </div>
-                                </div>
-                                <a href="#" style="margin-top:4px"
-                                    class="w3-btn w3-round-large w3-black w3-tiny">Continue</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-courses">
-                                <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
-                                <h6 class="w3-large" style="font-weight: 500;">Intro to Machine Learning</h6>
-                                <div class="w3-section w3-light-grey w3-tiny"
-                                    style="border-radius: 100px; height: 8px;">
-                                    <div class="w3-container"
-                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:60%">
-                                    </div>
-                                </div>
-                                <a href="#" style="margin-top:4px"
-                                    class="w3-btn w3-round-large w3-black w3-tiny">Continue</a>
+                                <a href="enroll/{{user.id}}/{{course.id}}" style="margin-top:4px"
+                                    class="w3-btn w3-round-large w3-black w3-tiny">Enroll</a>
                             </div>
                         </div>
                     </div>
                     <!-- If we need pagination -->
                     <div class="w3-section swiper-pagination"></div>
                 </div>
+                {% endfor %}
             </div>
         </div>
         <!-- courses in progress ends here -->
