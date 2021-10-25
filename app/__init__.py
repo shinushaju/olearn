@@ -37,4 +37,5 @@ from app.views.course import routes
 
 with app.app_context():
     db.create_all()
+    #db.drop_all()
   

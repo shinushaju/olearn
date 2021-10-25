@@ -1,0 +1,61 @@
+{%extends "course-base.html" %}
+
+{% block title %} Course Details{% endblock %}
+
+<!-- add custom css in here -->
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home/course-details.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{%block content%}
+<div class="w3-auto">
+<div class="w3-section">
+    <div class="w3-row">
+        <div class="w3-auto w3-padding course-detail-card">            
+            <div class="w3-col w3-container l7 m5">
+                <div class="w3-section">
+                    <h6><b>Discussions</b></h6>
+                    <div class="w3-section ">
+                        <a href="#" class="w3-btn w3-light-gray w3-round-large w3-block"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i>Abc qury</a>
+                    </div>     
+
+                    <div class="w3-section">
+                        <a href="#" class="w3-btn w3-light-gray w3-round-small w3-block"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i>Abc qury</a>
+                    </div>
+                </div>
+            </div>
+         </div>
+            <div class="w3-auto w3-margin w3-padding" id="syllabus">   
+
+                <div class="w3-auto w3-light-grey course-side-nav w3-white w3-hide-small" id="sidenav">
+                    <button class="w3-button w3-block" onclick="toggleSideButton('Discussions', 'button3')" id="button3"><i class="fas fa-plus"></i>Start New Discussions</button>
+                </div>
+
+
+                <div class="w3-auto w3-margin w3-padding w3-hide-medium w3-hide-large" id="Discussions">
+                    <form class="box" method="POST">
+                    <h2 class="w3-padding">New Discussions</h2>
+                    <textarea id="w3review" name="query_text" rows="4" cols="100">
+                    Enter your questions here...
+                    </textarea>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Ask away...</button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block customjs %}
+<!-- Custom JS -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/home/course-details.js') }}"></script>
+{% endblock %}
