@@ -16,13 +16,16 @@
             <div class="w3-col w3-container l7 m5">
                 <div class="w3-section">
                     <h6><b>Discussions</b></h6>
-                    <div class="w3-section ">
-                        <a href="#" class="w3-btn w3-light-gray w3-round-large w3-block"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i>Abc qury</a>
-                    </div>     
+                    {% if queries %}
+                        {% for query in queries%}
+                        <div class="w3-section ">
+                            <a href="#" class="w3-btn w3-light-gray w3-round-large w3-block"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i>{{query.query_text}} - {{query.student_name}}</a>
+                        </div>     
+                        {% endfor %}
+                    {% else %}
+                        <div>No Queries found yet!!!!!</div>
+                    {% endif %}
 
-                    <div class="w3-section">
-                        <a href="#" class="w3-btn w3-light-gray w3-round-small w3-block"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-down"></i>Abc qury</a>
-                    </div>
                 </div>
             </div>
          </div>
@@ -36,9 +39,7 @@
                 <div class="w3-auto w3-margin w3-padding w3-hide-medium w3-hide-large" id="Discussions">
                     <form class="box" method="POST">
                     <h2 class="w3-padding">New Discussions</h2>
-                    <textarea id="w3review" name="query_text" rows="4" cols="100">
-                    Enter your questions here...
-                    </textarea>
+                    <textarea placeholder="Enter your questions here..." id="w3review" name="query_text" rows="4" cols="100"></textarea>
                     <br><br>
                     <button type="submit" class="btn btn-primary">Ask away...</button>
                     </form>
