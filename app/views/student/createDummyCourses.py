@@ -13,6 +13,6 @@ def createDummyCourses():
     db.session.add(Course(course_name='Intro to Machine Learning', course_description='Dummy description - change this in views/student/createDummyCourses.py if you wish', course_duration=72, course_price=3000))
     db.session.commit()
 
-    return "<html><body><h1>4 Dummy courses created</h2></body></html>"
+    return "<html><body><h2>4 Dummy courses created</h2></body></html>"
 
     
