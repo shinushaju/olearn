@@ -6,3 +6,4 @@ from app import app
 @login_required
 def student_dashboard():
     return render_template('student/dashboard.html', user=current_user)
+

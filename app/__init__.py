@@ -27,7 +27,7 @@ def load_user(id):
 # import main views here
 from app.views import routes
 # import student views here
-from app.views.student import auth, routes, createDummyCourses
+from app.views.student import auth, routes, createDummyCourses, student_explore
 # import faculty faculty views here
 from app.views.faculty import auth, main
 
