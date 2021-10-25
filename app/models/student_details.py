@@ -5,7 +5,7 @@ class Student_details(db.Model):
     student_id = db.Column(db.Integer, db.ForeignKey("student.id"), nullable=False)
     student=db.relationship('Student', backref='student_details')
     roll_no=db.Column(db.String, nullable=False)
-    mobile_num = db.Column(db.Integer, nullable=False)
+    mobile_num = db.Column(db.String, nullable=False)
     date_of_birth = db.Column(db.Date, nullable=False)
     student_bio = db.Column(db.String(70))
 
