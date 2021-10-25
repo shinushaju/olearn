@@ -1,36 +1,48 @@
-{%extends "base.html" %}
+{%extends "student-base.html" %}
 
 {% block title %} Student Details{% endblock %}
 
+{% block customcss %}
+    <!-- Replace this block with custom css exclusive to your page. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home/contact.css') }}">
+    {% endblock %}
+
+
 {%block content%}
-<form method='POST' action="">
-    <table>
-        <tr>
-            <td><label for='roll_no'>Roll Number</label></td>
+
+<div class="w3-container">
+    <h1 class="w3-center w3-padding-32" >Manage Profile</h1>
+    <div class="w3-container w3-padding-16" style="display: flex;justify-content: center;">
+        <div class="w3-mobile w3-padding-16">
+
+<form class="w3-white" method='POST' action="">
+
+            <label for='roll_no'>Roll Number</label>
+            <input type="text" id="roll_no" name="roll_no" placeholder="Your roll no.." required>
             <br>
-            <td><input type="text" id="roll_no" name="roll_no"></td>
-        </tr>
-        <br>
-        <tr>
-            <td><label for = 'mobile_num'>Mobile Number</label></td>
+
+            <label for = 'mobile_num'>Mobile Number</label>
+            <input type="text" id="mob_num" name="mobile_num" placeholder="Your mobile number.." required>
             <br>
-            <td><input type="text" id="mob_num" name="mobile_num"></td>
-        </tr>
-        <br>
-        <tr>
-            <td><label for = 'dob'>Date of birth</label></td>
             <br>
-            <td><input type="date" id ="dob" name="date_of_birth"></td>
-        </tr>
-        <br>
-        <tr>
-            <td><label for="stud_bio">Student Bio</label></td>
+            
+
+            <label for = 'dob'>Date of birth</label>
+            <input type="date" id ="dob"  name="date_of_birth" required>
             <br>
-            <td><textarea id="stud_bio" rows='3' cols='50'></textarea></td>
-        </tr>
-    </table>
-    <button type="submit" value='Submit'>Submit</button>
+            <br>
+
+            <label for="stud_bio">Student Bio</label>
+            <textarea id="stud_bio" style="height:200px" rows='3' cols='50' placeholder="Your bio.."></textarea>
+            <br>
+            <br>
+            <button class="w3-button w3-block w3-small w3-round-xxlarge w3-black w3-hover-black " type="submit" value='Submit'>Submit</button>
 </form>
+
+</div>
+</div>
+</div>
 
 
 
