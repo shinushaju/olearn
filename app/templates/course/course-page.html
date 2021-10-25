@@ -2,14 +2,71 @@
 
 {% block title %} Course Details{% endblock %}
 
- <!-- add custom css in here -->
+<!-- add custom css in here -->
 {% block customcss %}{% endblock %}
 
 {%block content%}
-<div class="w3-container">
-    <h3>COurse details</h3>
+<div class="w3-section">
+    <div class="w3-row">
+        <div class="w3-col w3-container l9 m12">
+            <div class="w3-section"><span class="w3-text-gray">Courses / Programming and Development /
+                </span>Fundamentals of Web Design</div>
+            <h2 style="line-height: 50%;">Fundamentals of Web Design</h2>
+            <div>Shinu Shaju</div>
+            <div class="w3-section">
+                <iframe style="border: none;border-radius: 16px;" width="100%" height="360"
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                <div class="w3-row w3-section">
+                        <div class="w3-bar w3-white">
+                            <button class="w3-bar-item w3-button w3-hover-indigo tablink w3-indigo"
+                                onclick="handleTabs(event,'about')">About</button>
+                            <button class="w3-bar-item w3-button w3-hover-indigo tablink" onclick="handleTabs(event,'reviews')">Reviews (450)</button>
+                            <button class="w3-bar-item w3-button w3-hover-indigo tablink" onclick="handleTabs(event,'discussion')">Discussion (600)</button>
+                            <button class="w3-bar-item w3-button w3-hover-indigo tablink" onclick="handleTabs(event,'quiz')">Quiz (6)</button>
+                        </div>
+        
+                        <div id="about" class="tab-content">
+                            <h3>About</h3>
+                        </div>
+                        <div id="reviews" class="tab-content" style="display:none">
+                            <h3>Reviews(450)</h3>
+                        </div>
+                        <div id="discussion" class="tab-content" style="display:none">
+                            <h3>Discussion(600)</h3>
+                        </div>
+                        <div id="quiz" class="tab-content" style="display:none">
+                            <h3>Quiz(6)</h3>
+                        </div>
+                </div>
+        </div>
+    </div>
+    <div class="w3-col w3-container l3 m12">
+        <div class="w3-section">
+            <h6><b>Contents</b></h6>
+            <div class="w3-section">
+                <a href="#" class="w3-btn w3-light-gray w3-round-large w3-block">Intoduction</a>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
+
+<script>
+    function handleTabs(evt, tabName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("tab-content");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-indigo", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " w3-indigo";
+    }
+</script>
 {% block customjs %}{% endblock %}
 
 {% endblock %}
