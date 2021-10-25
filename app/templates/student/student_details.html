@@ -19,22 +19,22 @@
 <form class="w3-white" method='POST' action="">
 
             <label for='roll_no'>Roll Number</label>
-            <input type="text" id="roll_no" name="roll_no" placeholder="Your roll no.." required>
+            <input type="text" value = "{{ form1['roll_no'] }}" id="roll_no" name="roll_no" placeholder="Your roll no.." required>
             <br>
 
             <label for = 'mobile_num'>Mobile Number</label>
-            <input type="text" id="mob_num" name="mobile_num" placeholder="Your mobile number.." required>
+            <input type="text" value = "{{ form1['mob'] }}" id="mob_num" name="mobile_num" placeholder="Your mobile number.." required>
             <br>
             <br>
             
 
             <label for = 'dob'>Date of birth</label>
-            <input type="date" id ="dob"  name="date_of_birth" required>
+            <input type="date" value = "{{ form1['dob'] }}" id ="dob"  name="date_of_birth" required>
             <br>
             <br>
 
             <label for="stud_bio">Student Bio</label>
-            <textarea id="stud_bio" style="height:200px" rows='3' cols='50' placeholder="Your bio.."></textarea>
+            <textarea id="stud_bio" style="height:200px" rows='3' cols='50' placeholder="Your bio.."> {{ form1['bio'] }} </textarea>
             <br>
             <br>
             <button class="w3-button w3-block w3-small w3-round-xxlarge w3-black w3-hover-black " type="submit" value='Submit'>Submit</button>
