@@ -29,12 +29,12 @@
             
 
             <label for = 'dob'>Date of birth</label>
-            <input type="date" value = "{{ form1['dob'] }}" id ="dob"  name="date_of_birth" required>
+            <input type="date" value = "{{ form1['dob'] }}"id ="dob"  name="date_of_birth" required>
             <br>
             <br>
 
             <label for="stud_bio">Student Bio</label>
-            <textarea id="stud_bio" style="height:200px" rows='3' cols='50' placeholder="Your bio.."> {{ form1['bio'] }} </textarea>
+            <textarea id="stud_bio" name="student_bio" style="height:200px" rows='3' cols='50' placeholder="Your bio..">{{ form1['bio'] }}</textarea>
             <br>
             <br>
             <button class="w3-button w3-block w3-small w3-round-xxlarge w3-black w3-hover-black " type="submit" value='Submit'>Submit</button>
