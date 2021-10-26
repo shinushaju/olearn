@@ -1,0 +1,15 @@
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/student/student_review.css') }}">
+</head>
+<table class="w3-table w3-striped">
+    <tr><th>Student</th><th>Comment</th><th>Rating</th></tr>
+    {% for r in review %}
+    <tr>
+        <td></td>
+        <td>{{ r.subject }}</td>
+        <td>{{ r.comment }}</td>
+    </tr>
+    
+</table>
+</html>

@@ -6,3 +6,8 @@ from app import app
 @login_required
 def student_explore():
     return render_template('/student/student_explore.html',user=current_user)
+
+@app.route('/student/student_review')
+@login_required
+def student_review():
+    return render_template('/student/student_review.html',user=current_user)

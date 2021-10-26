@@ -27,9 +27,11 @@ def load_user(id):
 # import main views here
 from app.views import routes
 # import student views here
-from app.views.student import auth, routes, createDummyCourses, student_explore
+from app.views.student import auth, routes, createDummyCourses, student_explore, student_review
 # import faculty faculty views here
 from app.views.faculty import auth, main
+
+
 
 with app.app_context():
     db.create_all()
