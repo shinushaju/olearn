@@ -5,8 +5,8 @@
 {% block customcss %}
     <!-- Replace this block with custom css exclusive to your page. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/home/contact.css') }}">
-    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home/contact.css') }}">
+{% endblock %}
 
 
 {%block content%}
@@ -24,10 +24,13 @@
 
             <label for = 'mobile_num'>Mobile Number</label>
             <input type="text" value = "{{ form1['mob'] }}" id="mob_num" name="mobile_num" placeholder="Your mobile number.." required>
+            {%- for category, message in get_flashed_messages(with_categories = true) %}
+                <div class= "alert alert-danger w3-text-red">
+                    {{ message }}
+                </div>
+            {%- endfor %}
             <br>
             <br>
-            
-
             <label for = 'dob'>Date of birth</label>
             <input type="date" value = "{{ form1['dob'] }}" id ="dob"  name="date_of_birth" required>
             <br>
