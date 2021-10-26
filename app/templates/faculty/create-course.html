@@ -40,10 +40,15 @@
 
         <input type="submit" class="w3-button w3-black" value="Submit">
       </form> 
-    <div>
+    <div class="w3-section w3-padding-32">
         {% for course in courses %}
             {{course.course_name}} - {{course.faculty.name}}<br>
-
+            {{course.course_overview}}<br>
+            {{course.course_skills}}<br>
+            {{course.course_duration}}<br>
+            {{course.course_price}}<br>
+            {{course.difficulty_level}}<br>
+            {{course.program}}<br>
         {% endfor %}
     </div>
     
