@@ -3,6 +3,9 @@ from app import db
 
 # student model here
 class Faculty(UserMixin, db.Model):
+
+    __tablename__ = 'faculty'
+
     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
     email = db.Column(db.String(24), unique=True, nullable=False)
     password = db.Column(db.String(24), nullable=False)
