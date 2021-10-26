@@ -1,15 +1,35 @@
 <html>
 <head>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/student/student_review.css') }}">
+<title>Student Review</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    body {
+        background-color: white;
+        
+    }
+    .container{
+        padding: 12px,88px;
+    }
+</style>
 </head>
-<table class="w3-table w3-striped">
-    <tr><th>Student</th><th>Comment</th><th>Rating</th></tr>
-    {% for r in review %}
-    <tr>
-        <td></td>
-        <td>{{ r.subject }}</td>
-        <td>{{ r.comment }}</td>
-    </tr>
-    
-</table>
+<body>
+    <div class="container">
+    <h1 class="w3-padding-16 w3-center"> student Review</h1>
+    <table class="w3-table w3-striped w3-white w3-padding" style="box-shadow: rgba(99,99,99,0.2) 0px 2px 8px 0px;">
+        <tr style="background-color:blue:white">
+            <th>Student_Id</th>
+            <th class="w3-center">Course_Id</th>
+            <th class="w3-center">Comment</th>
+            <th class="w3-center">Rating</th>
+        </tr>
+        {% for each in reviews %}
+            <tr>
+                <td>{{ each.student_id }} </td>
+                <td>{{ each.course_id }} </td>
+                <td>{{ each.subject }} </td>
+                <td>{{ each.rating }} </td>
+            </tr>
+        {% endfor %}
+
+
 </html>
