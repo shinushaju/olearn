@@ -12,12 +12,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
+#  MODELS
+#  ------
+from app.models.faculty import Faculty
+from app.models.courses import Course
+
+
 # faculty login manager
 faculty_login_manager = LoginManager()
 faculty_login_manager.login_view = 'faculty_login'
 faculty_login_manager.init_app(app)
-
-from app.models.faculty import Faculty
 
 @faculty_login_manager.user_loader
 def load_user(user_id):
@@ -37,4 +41,6 @@ from app.views.course import routes
 
 with app.app_context():
     db.create_all()
+    #db.drop_all()
+    print("All Tables", db.engine.table_names())
   
