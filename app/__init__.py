@@ -21,6 +21,8 @@ from app.models.courses import Course
 # faculty login manager
 faculty_login_manager = LoginManager()
 faculty_login_manager.login_view = 'faculty_login'
+faculty_login_manager.login_message = "Please login to continue!"
+faculty_login_manager.login_message_category = "warning"
 faculty_login_manager.init_app(app)
 
 @faculty_login_manager.user_loader
@@ -35,7 +37,7 @@ from app.views import main
 # import student views here
 from app.views.student import auth, main
 # import faculty views here
-from app.views.faculty import auth, main
+from app.views.faculty import auth, main, course
 # import course views here
 from app.views.course import routes
 

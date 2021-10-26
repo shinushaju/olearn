@@ -25,7 +25,7 @@
         <label >Course Overview</label><br>
         <textarea type="text"  name="course_overview" rows="5"></textarea><br>
         <label >Course Skills</label><br>
-        <textarea type="text"  name="course_skills" rows="4" placeholder="Enter course skills seperated by commas.."><br>
+        <textarea type="text"  name="course_skills" rows="4" placeholder="Enter course skills seperated by commas.."></textarea><br>
         <label >Course Duration</label><br>
         <input type="number" min="0" name="course_duration" ><br>
         <label >Course Price</label><br>
@@ -34,8 +34,8 @@
         <input type="submit" class="w3-button w3-black" value="Submit">
       </form> 
     <div>
-        {% for quiz in quizzes %}
-            {{quiz.quiz_title}} - {{quiz.course_name}}<br>
+        {% for course in courses %}
+            {{course.course_name}} - {{course.faculty_id}}<br>
         {% endfor %}
     </div>
     
