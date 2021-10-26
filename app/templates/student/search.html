@@ -1,0 +1,65 @@
+{% extends "student-base.html" %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+{% endblock %}
+
+{% block topsearchbar %}
+<!-- The small top search bar is hidden in search page -->
+{% endblock %}
+
+{% block content %}
+
+<div class="w3-container w3-padding-16">
+    <div class="w3-row-padding">
+        <div>
+            <form method="GET" action="">
+                <span class="search-container w3-hide-large w3-hide-medium w3-margin-top w3-block">
+                    <input type="text" placeholder="Search Courses.." name="q" value="{{ form.q }}">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </span>
+                <span class="search-container w3-hide-small">
+                    <input type="text" placeholder="Search Courses.." name="q"  value="{{ form.q }}">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </span>
+                <h5>Filter by </h5>
+                <h6>Duration</h6>
+                <input type="radio" name="duration" id="10hrs" value="10">&ensp;
+                <label for="10hrs">Up to 10 hours</label>&ensp;
+                <input type="radio" name="duration" id="50hrs" value="50">
+                <label for="10hrs">Up to 50 hours</label>&ensp;
+                <input type="radio" name="duration" id="100hrs" value="100">
+                <label for="10hrs">Up to 100 hours</label>&ensp;
+                <input type="radio" name="duration" id="200hrs" value="200">
+                <label for="10hrs">Up to 200 hours</label>&ensp;
+                <input type="radio" name="duration" id="300hrs" value="300">
+                <label for="10hrs">Up to 300 hours</label>
+                <br><br>
+                <!-- <button type="submit" class="w3-btn w3-round-large w3-black">Apply</button> -->
+            </form>
+            <h5 class="w3-left">Search Results for {{ form.q }}</h5>
+            <br>
+        </div>
+        {% for course in courses %}
+        <div class="w3-section">
+            <div class="w3-padding-24 w3-padding-small w3-stretch">
+                <div class="card-courses">
+                    <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                    <h6 class="w3-large" style="font-weight: 500;">{{ course.course_name }}</h6>
+                    <div class="w3-section w3-light-grey w3-tiny"
+                        style="border-radius: 100px; height: 8px;">
+                        <div class="w3-container"
+                            style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:20%">
+                        </div>
+                    </div>
+                    <a href="#" style="margin-top:4px"
+                        class="w3-btn w3-round-large w3-black w3-tiny">Enroll</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
