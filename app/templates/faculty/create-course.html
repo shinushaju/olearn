@@ -1,0 +1,47 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Create Course{% endblock %}
+
+{% block customcss %}{% endblock %}
+
+{%block content%}
+
+<div class="w3-container w3-padding-16">
+    <h2>Create New Course</h2>
+
+    <form method="POST">
+        <label>Choose Program</label>
+        <select name="program">
+            <option value="">--Please choose program--</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Full-Stack Programming">Full-Stack Programming</option>
+            <option value="Artificial Intelligence">Artificial Intelligence</option>
+            <option value="Cloud Computing">Cloud Computing</option>
+            <option value="Blockchain">Blockchain</option>
+            <option value="Quantum Computing">Quantum Computing</option>
+        </select><br>
+        <label >Course Name</label><br>
+        <input type="text"  name="course_name" ><br>
+        <label >Course Overview</label><br>
+        <textarea type="text"  name="course_overview" rows="5"></textarea><br>
+        <label >Course Skills</label><br>
+        <textarea type="text"  name="course_skills" rows="4" placeholder="Enter course skills seperated by commas.."><br>
+        <label >Course Duration</label><br>
+        <input type="number" min="0" name="course_duration" ><br>
+        <label >Course Price</label><br>
+        <input type="number" min="0" name="course_price" ><br><br>
+
+        <input type="submit" class="w3-button w3-black" value="Submit">
+      </form> 
+    <div>
+        {% for quiz in quizzes %}
+            {{quiz.quiz_title}} - {{quiz.course_name}}<br>
+        {% endfor %}
+    </div>
+    
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}
