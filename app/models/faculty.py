@@ -1,7 +1,7 @@
 from flask_login import UserMixin
 from app import db
 
-# student model here
+# faculty model here
 class Faculty(UserMixin, db.Model):
 
     __tablename__ = 'faculty'
