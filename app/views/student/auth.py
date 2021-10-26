@@ -27,9 +27,12 @@ def student_signup():
                         db.session.commit()
                         return redirect(url_for('student_login'))
                     else:
-                        flash('Enter a valid Password')
+                        flash('Please enter a valid Password')
                 else:
-                    flash('Enter a valid Email ID')
+                    if validate_password(password) == False:
+                        flash('Please check the Email ID and Password')
+                    else:
+                        flash('Please enter a valid Email ID')
 
     return render_template('home/student-signup.html')
 
