@@ -19,10 +19,11 @@ def student_dashboard():
         #print(item)
         enrolledcoursesList.append(course)
     
+    #for removing enrolled courses from available pane
     unenrolledCourseList = []
-    for item in available:
-        if item not in enrolledcoursesList:
-            unenrolledCourseList.append(item)
+    for course in available:
+        if course not in enrolledcoursesList:
+            unenrolledCourseList.append(course)
     return render_template('student/dashboard.html', user=current_user, available = unenrolledCourseList, enrolledcoursesList = enrolledcoursesList)
 
 @app.route('/student/enroll/<sid>/<cid>')
