@@ -8,16 +8,22 @@ from time import sleep
 @app.route('/student/dashboard')
 @login_required
 def student_dashboard():
-    available = Course.query.all()
-    enrolled = Enrolled_courses.query.filter_by(student_id = current_user.id).all()
-    enrolledcoursesList = []
+    available = Course.query.all() #Storing all course record in Course table to a list varaible
+    enrolled = Enrolled_courses.query.filter_by(student_id = current_user.id).all()#Storing all the enrolled courses for the logged in user
+    enrolledcoursesList = [] #list to store course records from course table
+    
+    #for finding course details with course id
     for c in enrolled:
         cid = c.course_id
-        item = Course.query.filter_by(id = cid).first()
-        print(item)
-        enrolledcoursesList.append(item)
-    #print(enrolledcoursesList[0])
-    return render_template('student/dashboard.html', user=current_user, available = available, enrolledcoursesList = enrolledcoursesList)
+        course = Course.query.filter_by(id = cid).first()
+        #print(item)
+        enrolledcoursesList.append(course)
+    
+    unenrolledCourseList = []
+    for item in available:
+        if item not in enrolledcoursesList:
+            unenrolledCourseList.append(item)
+    return render_template('student/dashboard.html', user=current_user, available = unenrolledCourseList, enrolledcoursesList = enrolledcoursesList)
 
 @app.route('/student/enroll/<sid>/<cid>')
 @login_required
