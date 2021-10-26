@@ -15,11 +15,12 @@ def create_course():
         course_skills = request.form.get('course_skills')
         course_duration = request.form.get('course_duration')
         course_price = request.form.get('course_price')
+        difficulty_level = request.form.get('difficulty_level')
         program = request.form.get('program')
         faculty_id = current_user.id
 
-        if course_name and course_overview and course_skills and course_duration and course_price and program and faculty_id:
-            course = Course(course_name=course_name, course_overview=course_overview, course_skills=course_skills, course_duration=course_duration, course_price=course_price, program=program, faculty_id=faculty_id)
+        if course_name and course_overview and course_skills and course_duration and course_price  and difficulty_level and program and faculty_id:
+            course = Course(course_name=course_name, course_overview=course_overview, course_skills=course_skills, course_duration=course_duration, course_price=course_price, difficulty_level=difficulty_level, program=program, faculty_id=faculty_id)
             # add the new course to the database
             db.session.add(course)
             db.session.commit()

@@ -12,6 +12,7 @@ class Course(db.Model):
     course_duration = db.Column(db.Integer(), nullable=False)
     course_price = db.Column(db.Integer(), nullable=False)
     created_on = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    difficulty_level = db.Column(db.String(150), nullable=False)
     program = db.Column(db.String(150), nullable=False)
 
     faculty_id = db.Column(db.Integer, db.ForeignKey('faculty.id'),nullable=False)

@@ -20,6 +20,12 @@
             <option value="Blockchain">Blockchain</option>
             <option value="Quantum Computing">Quantum Computing</option>
         </select><br>
+        <select name="difficulty_level">
+            <option value="">--Please choose course level--</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select><br>
         <label >Course Name</label><br>
         <input type="text"  name="course_name" ><br>
         <label >Course Overview</label><br>
@@ -35,7 +41,8 @@
       </form> 
     <div>
         {% for course in courses %}
-            {{course.course_name}} - {{course.faculty_id}}<br>
+            {{course.course_name}} - {{course.faculty.name}}<br>
+
         {% endfor %}
     </div>
     
