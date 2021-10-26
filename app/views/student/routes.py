@@ -3,12 +3,12 @@ from flask_login import login_required, current_user
 from app import app,db
 from app.models.courses import Course
 from app.models.enrolledCourses import Enrolled_courses
-from time import sleep
 
 @app.route('/student/dashboard')
 @login_required
 def student_dashboard():
-    available = Course.query.all()
+    # available = Course.query.all()
+    available=Course.query.filter()
     enrolled = Enrolled_courses.query.filter_by(student_id = current_user.id).all()
     enrolledcoursesList = []
     for c in enrolled:

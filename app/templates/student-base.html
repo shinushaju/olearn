@@ -62,25 +62,27 @@
                   </div>
             </span>
             <div class="w3-container" id="topnav">
+                {% block topsearchbar %}
                 <span class="search-container w3-hide-large w3-hide-medium w3-margin-top w3-block">
-                    <form class="w3-section">
-                        <input type="text" placeholder="Search Courses.." name="search">
+                    <form class="w3-section" method="GET" action="{{ url_for('search') }}">
+                        <input type="text" placeholder="Search Courses.." name="q">
                         <button type="submit"><i class="bi bi-search"></i></button>
                     </form>
                 </span>
                 <span class="search-container w3-hide-small">
-                    <form>
-                        <input type="text" placeholder="Search Courses.." name="search">
+                    <form method="GET" action="{{ url_for('search') }}">
+                        <input type="text" placeholder="Search Courses.." name="q">
                         <button type="submit"><i class="bi bi-search"></i></button>
                     </form>
                 </span>
+                {% endblock %}
                 <span class="w3-right w3-dropdown-click w3-hide-small">
                     <button onclick="handleDropDownMenu()" class="dropdown-btn">
                         <span style="color: #666666;">{{user.name}}&ensp;</span>
                         <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                     </button>
                     <div id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">
-                        <a href="#" class="w3-bar-item user-menu-item">My Profile</a>
+                        <a href="{{ url_for('student_details', id=user.id) }}" class="w3-bar-item user-menu-item">My Profile</a>
                         <a href="#" class="w3-bar-item user-menu-item">Settings</a>
                         <a href="{{ url_for('logout') }}" class="w3-bar-item user-menu-item">Logout</a>
                       </div>
