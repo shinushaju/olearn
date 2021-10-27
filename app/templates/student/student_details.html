@@ -5,8 +5,8 @@
 {% block customcss %}
     <!-- Replace this block with custom css exclusive to your page. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/home/contact.css') }}">
-    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home/contact.css') }}">
+{% endblock %}
 
 
 {%block content%}
@@ -17,17 +17,21 @@
         <div class="w3-mobile w3-padding-16">
 
 <form class="w3-white" method='POST' action="">
+            {%- for category, message in get_flashed_messages(with_categories = true) %}
+                <div class= "alert alert-danger w3-center {% if category=="error" %}w3-text-red{% else %}w3-text-green{% endif %}">
+                    {{ message }}
+                </div>
+            {%- endfor %}
 
             <label for='roll_no'>Roll Number</label>
             <input type="text" value = "{{ form1['roll_no'] }}" id="roll_no" name="roll_no" placeholder="Your roll no.." required>
             <br>
 
             <label for = 'mobile_num'>Mobile Number</label>
-            <input type="text" value = "{{ form1['mob'] }}" id="mob_num" name="mobile_num" placeholder="Your mobile number.." required>
-            <br>
-            <br>
+            <input type="text" value = "{{ form1['mob'] }}" id="mob_num" name="mobile_num" placeholder="Your mobile number with country code.." required>
             
-
+            <br>
+            <br>
             <label for = 'dob'>Date of birth</label>
             <input type="date" value = "{{ form1['dob'] }}" id ="dob"  name="date_of_birth" required>
             <br>

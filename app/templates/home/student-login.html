@@ -18,7 +18,11 @@
             
                             
                     <form class="box" method="post">
-
+                    {%- for category, message in get_flashed_messages(with_categories = true) %}
+                    <div class= "alert alert-danger w3-center w3-text-red">
+                        {{ message }}
+                    </div>
+                    {%- endfor %}
                     <h3>Login as {{role}}</h3>           
                     <label class="form-label" for="inputEmail">Email</label>
                     <input type="email" class="form-control w3-round-xxlarge" id="inputEmail" name="email" placeholder="Email" required> 

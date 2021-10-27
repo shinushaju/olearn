@@ -4,6 +4,8 @@ from app import app, db
 # import db model
 from app.models.student import Student
 from flask_login import login_user, logout_user, login_required
+from app.utils.student.validate_email import validate_email
+from app.utils.student.validate_password import validate_password
 
 # sign up as a student
 @app.route('/students/join',methods=['GET','POST'])
@@ -17,11 +19,21 @@ def student_signup():
             if user: # if a user is found, we want to redirect back to signup page so user can try again
                 return redirect(url_for('student_signup'))
             else:
-                student = Student(email=email, name=name, password=generate_password_hash(password, method='sha256'))
-                # add the new user to the database
-                db.session.add(student)
-                db.session.commit()
-                return redirect(url_for('student_login'))
+                if validate_email(email) == True :
+                    if validate_password(password) == True:
+                        student = Student(email=email, name=name, password=generate_password_hash(password, method='sha256'))
+                        # add the new user to the database
+                        db.session.add(student)
+                        db.session.commit()
+                        return redirect(url_for('student_login'))
+                    else:
+                        flash('Please enter a valid Password')
+                else:
+                    if validate_password(password) == False:
+                        flash('Please check the Email ID and Password')
+                    else:
+                        flash('Please enter a valid Email ID')
+
     return render_template('home/student-signup.html')
 
 # login as a student

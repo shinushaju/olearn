@@ -30,7 +30,7 @@
                         class="bi bi-x"></i></button>
             </div>
             <div class="w3-padding-24" id="nav">
-                <a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large active"><i class="bi bi-grid-1x2-fill"></i>&emsp;Dashboard</a>
+                <a href="{{ url_for('student_dashboard') }}" class="side-nav-item w3-bar-item w3-round-large w3-padding-large active"><i class="bi bi-grid-1x2-fill"></i>&emsp;Dashboard</a>
                 <a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-file-earmark-fill"></i>&emsp;My Courses</a>
                 <!-- <button onclick="handleDropDown('links')" class="side-nav-item w3-bar-item w3-round-large">My
                     Learning</button>
@@ -82,7 +82,7 @@
                         <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                     </button>
                     <div id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">
-                        <a href="{{ url_for('student_details', id=user.id) }}" class="w3-bar-item user-menu-item">My Profile</a>
+                        <a href="{{ url_for('student_details') }}" class="w3-bar-item user-menu-item">My Profile</a>
                         <a href="#" class="w3-bar-item user-menu-item">Settings</a>
                         <a href="{{ url_for('logout') }}" class="w3-bar-item user-menu-item">Logout</a>
                       </div>
