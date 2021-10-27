@@ -14,6 +14,10 @@ def faculty_signup():
             name = request.form.get('name')
             password = request.form.get('password')
             #print(name,email,password)
+            #remove leading and trailing white spaces by using strip
+            email = email.strip()
+            name = name.strip()
+            password = password.strip()
             if name and email and password and validate_name(name) and validate_email(email) and validate_password(password):
                 user = Faculty.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
                 if user: # if a user is found, we want to redirect back to signup page so user can try again
@@ -41,6 +45,9 @@ def faculty_login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
+        #remove leading and trailing white spaces by using strip
+        email = email.strip()
+        password = password.strip()
         remember = True if request.form.get('remember') else False
         if email and password :      
             faculty = Faculty.query.filter_by(email=email).first()
