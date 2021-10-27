@@ -15,15 +15,18 @@ def test_validate_email():
     
 def test_validate_phone():
     assert validate_phone("+91-9605475907") == True
-    assert validate_phone("+91-960547") == False
-    assert validate_phone("+91-9605475907887") == False
-    assert validate_phone("+91-(960)5475907") == True
-    assert validate_phone("+91-960547A907") == False
-    assert validate_phone("+91-96@5475907") == False
-    assert validate_phone("+91-960 547 5907") == True
-    assert validate_phone("+91-(960) 547 5907") == True
     assert validate_phone("+1-9605475907") == True
-    assert validate_phone("+911-960 547 5907") == True
+    assert validate_phone("+542-9605475907") == True
+    assert validate_phone("+9189-9605475907") == False
+    assert validate_phone("+91 9605475907") == True
+    assert validate_phone("91 9605475907") == True
+    assert validate_phone("+91-96054759077") == False
+    assert validate_phone("+91-960547590") == False
+    assert validate_phone("+91 960 547 5907") == True
+    assert validate_phone("+91 9605 47 5907") == False
+    assert validate_phone("+91 960-547-5907") == True
+    assert validate_phone("9605475907") == False
+    assert validate_phone("+91-(960) 547 5907") == True
 
 
 def test_validate_password():
