@@ -1,5 +1,7 @@
-
-#section-form, #lecture-form input[type="text"], input[type="url"], input[type="number"],
+#section-form,
+#lecture-form input[type="text"],
+input[type="url"],
+input[type="number"],
 textarea[type="text"] {
   display: block;
   padding: 8px 16px;
@@ -11,14 +13,17 @@ textarea[type="text"] {
   background: #ffffff;
 }
 
-#section-form #lecture-form input[type="text"]:focus, input[type="url"], input[type="number"]:focus,
+#section-form #lecture-form input[type="text"]:focus,
+input[type="url"],
+input[type="number"]:focus,
 textarea[type="text"]:focus {
-  border: 1px solid rgb(110,68,255,0.5);
+  border: 1px solid rgb(110, 68, 255, 0.5);
   transition: 0.3s;
   outline: none;
 }
 
-.add-section-btn, .add-lecture-btn {
+.add-section-btn,
+.add-lecture-btn {
   background-color: #ffffff;
   padding: 8px 16px;
   border: none;
@@ -26,17 +31,17 @@ textarea[type="text"]:focus {
   font-weight: 500;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-
 .submit-btn {
-    background-color: #6e44ff;
-    padding: 8px 16px;
-    border: none;
-    color: #ffffff;
-    border-radius: 8px;
-    cursor: pointer;
+  background-color: #6e44ff;
+  padding: 8px 16px;
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .main-box {
@@ -47,7 +52,6 @@ textarea[type="text"]:focus {
     width: 100%;
   }
 }
-
 
 .section-box {
   margin-top: 16px;
@@ -62,6 +66,10 @@ textarea[type="text"]:focus {
   padding: 8px 16px;
 }
 
+.lecture-main-box {
+  width: 100%;
+}
+
 .lecture-container {
   background-color: #ffffff;
   border: none;
@@ -69,12 +77,12 @@ textarea[type="text"]:focus {
   padding: 0px 8px;
 }
 
-.accordion{
+.accordion {
   height: 50px;
   margin-top: 16px;
   background-color: #f6f2ff;
   color: #6e44ff;
-  border-radius:10px;
+  border-radius: 10px;
   border: none;
   outline: none;
   width: 100%;
@@ -86,23 +94,13 @@ textarea[type="text"]:focus {
   cursor: pointer;
 }
 
-.title{
+.title {
   font-size: large;
   font-weight: 500;
 }
-.show{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: large;
-  cursor: pointer;
-  background-color: #fff;
-  color: #000;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-}
-.info{
+
+.info {
+  width: 100%;
   height: 0;
   background-color: transparent;
   color: #000;
@@ -112,15 +110,16 @@ textarea[type="text"]:focus {
   position: relative;
   overflow: hidden;
   border: 0;
-  transition: height .4s;
+  transition: height 0.4s;
 }
-.info.reveal{
+.info.reveal {
+  width: 100%;
   height: auto !important;
   border: 1px solid #f6f2ff;
   border-radius: 0 0 10px 10px;
-  transition: height .4s;
+  transition: height 0.4s;
   overflow-y: visible;
 }
-.accordion.radius{
-border-radius:10px 10px  0 0 ;
+.accordion.radius {
+  border-radius: 10px 10px 0 0;
 }

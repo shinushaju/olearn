@@ -10,8 +10,6 @@ $(document).ready(function () {
             count++; //text box increment
             $(wrapper).append(`<div class="w3-animate-opacity section-container"><hr/><span class="w3-margin-bottom w3-left" style="font-weight: 500;">Section ${count}</span><a href="#" style="text-decoration:none" class="w3-right w3-text-gray remove_section"><i class="bi bi-trash"></i></a><input type="text" name="section_title[]" placeholder="Enter section title..."/>
             <textarea class="w3-margin-top" type="text" name="section_outcome[]" placeholder="Enter section outcome..." rows="2"></textarea></div>`);
-
-            // add input boxes.
         }
     });
 
@@ -27,9 +25,9 @@ $(document).ready(function () {
 
     var max_fields = 25; //maximum input boxes allowed
     var lecture_main = $(".section-box").find(".lecture-main-box"); //Fields wrapper
-   
-    $.each(lecture_main, function(index, value){
-        
+
+    $.each(lecture_main, function (index, value) {
+
         var add_button = $(value).find('.add-lecture-btn');
         var lecture_wrapper = $(value).find(".lecture-container-box");
 
@@ -42,9 +40,9 @@ $(document).ready(function () {
                 $(lecture_wrapper).append(`
                 <div class="lecture-container">
                 <hr/>
-                <span class="w3-section" style="font-weight: 500;">Lecture ${count}</span>
-                <a href="#" style="text-decoration:none" class="w3-right w3-section w3-text-gray remove_lecture"><i class="bi bi-trash"></i></a>
-                <div class="w3-container">
+                <span style="font-weight: 500;">Lecture ${count}</span>
+                <a href="#" style="text-decoration:none" class="w3-right w3-text-gray remove_lecture"><i class="bi bi-trash"></i></a>
+                <div class="w3-container w3-margin-top">
                     <input type="text" class="w3-margin-bottom" name="lecture_title[]"
                         placeholder="Give lecture name..." />
                 </div>
@@ -63,16 +61,12 @@ $(document).ready(function () {
                 `);
             }
         });
-    
-    
+
         $(lecture_wrapper).on("click", ".remove_lecture", function (e) { //user click on remove text
-            e.preventDefault(); $(this).parent('div').remove(); count--;
+            e.preventDefault(); $(this).parent('div').remove(); --count;
         })
-        
+
     });
-
-    //var add_button = $(".add-lecture-btn"); //Add lecture button ID
-
 
 });
 
