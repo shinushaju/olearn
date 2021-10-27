@@ -1,0 +1,72 @@
+{%extends "student-base.html" %}
+
+{% block title %} Dashboard{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home/contact.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/student/student_review.css') }}">
+{% endblock %}
+
+{%block content%}
+
+    <!-- Replace this block with custom css exclusive to your page. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home/contact.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/student/student_review.css') }}">
+
+
+<div class="w3-container">
+    
+    <h1 class="w3-center w3-padding-32" style="float:center;">Review</h1>
+
+<div class="w3-container" style="display: flex;justify-content: center;">
+  <div class="w3-mobile">
+  
+    <form class="w3-white" action="" method="POST">
+      <textarea id="subject" name="subject" placeholder="Write something..." style="height:200px"></textarea>
+      
+<br><br>
+<label for="rating" class="w3-left"><h3>Rating</h3></label>
+<fieldset class="rating">
+<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+
+<input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+
+<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+
+<input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+								
+<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+
+<input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+
+<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+
+<input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+
+<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+
+<input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+</fieldset>
+<br>
+<br>
+<br>
+    <input class="w3-button w3-block w3-round-xxlarge w3-black w3-hover-black" type="submit" value="Post ">
+    </form>
+    <br><br><br>
+  </div>
+</div>
+</div>
+{% block customjs %}
+    <!-- swiper js -->
+    <!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> -->
+
+    <!-- cutom js -->
+    <script type="module" src="{{ url_for('static', filename='js/dashboard/student/swiper.js') }}"></script>
+    {% endblock %}
+
+    {% endblock %}
+

@@ -3,7 +3,8 @@ from flask_login import login_required, current_user
 from app import app,db
 from app.models.courses import Course
 from app.models.enrolledCourses import Enrolled_courses
-from time import sleep
+from app.models.student_review import Student_review
+import math
 
 @app.route('/student/dashboard')
 @login_required
@@ -46,4 +47,14 @@ def course(cid):
     enrolled=True
     if result is None:
         enrolled=False
-    return render_template('student/course.html', user=current_user, course = course, enrolled=enrolled)
+
+    # Review section:
+    reviews = Student_review.query.filter_by(course_id=cid).all()
+    review_list=list()
+    for review in reviews:
+        if math.floor(review.rating)==review.rating:
+            review_list.append((review, math.floor(review.rating), False))
+        else:
+            review_list.append((review, math.floor(review.rating), True))
+    
+    return render_template('student/course.html', user=current_user, course = course, enrolled=enrolled, review_list=review_list)

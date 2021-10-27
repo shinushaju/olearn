@@ -138,6 +138,62 @@
             </div>
         <!-- </div> -->
     </div>
+
+
+
+    <!-- Review section starts -->
+    <div class="w3-container w3-auto w3-padding">
+    <div class="w3-row-padding w3-padding">
+        <br><br>
+        <div>
+            {% if review_list %}
+            <h3 class="w3-left">Reviews</h3>
+            {% else %}
+            <h3 class="w3-left">No reviews yet</h3>
+            {% endif %}
+            <a href="{{ url_for('student_review', cid=course.id) }}"><button class="w3-right w3-btn w3-round-large w3-black">Write a review</button></a>
+        </div>
+        
+        
+        <div class="w3-section">
+            <!-- Slider main container -->
+            {% for each in review_list %}
+            
+            <div class="w3-panel w3-padding-24 w3-padding-large">
+                <!-- Additional required wrapper 
+                <div class="swiper-wrapper">
+                    Slides -->
+                    
+                    <div class="swiper-slide">
+                        <div class="card-courses">
+                            <i class="fa fa-comments-o w3-xlarge" style="color: #6E44FF; float:right;"></i>
+                            <br>
+                            <h6 class="w3-large" style="font-weight: 500; color:blue;">{{ each[0].student.name }}</h6>
+                            <h6 class="w3-large" style="font-weight: 500;">Rating &nbsp;: {% for i in range(each[1]) %}<i class="fa fa-star" style="color:gold;"></i>{% endfor %}{% if each[2]==True %}<i class="fas fa-star-half" style="color:gold;"></i>{% endif %}</h6>
+                            <h6 class="w3-large" style="font-weight: 500;">{{ each[0].subject }} </h6>
+                            
+                        </div>
+                    </div>
+                                                             
+
+                            
+               
+                <!-- If we need pagination -->
+                <div class="w3-section swiper-pagination"></div>
+                
+            </div>
+            {% endfor %} 
+            
+        </div>
+         
+        
+    </div>
+    <br><br><br>
+    </div>
+    <!-- Review section ends -->
+
+
+
 </div>
 
 
