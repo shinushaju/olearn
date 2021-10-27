@@ -106,7 +106,7 @@
                                 <h6 class="w3-large" style="font-weight: 500;">{{course.course_name}}</h6>
                                 <!-- {{course.course_description}} <br><br> -->
                                 <i class="far fa-clock"></i> {{course.course_duration}} hours<br>
-                                Price : ₹{{course.course_price}}/-<br>
+                                Price : ₹{{course.course_price}}/-<br><br>
                                 <a href="{{ url_for('course_enroll', cid = course.id) }}" style="margin-top:4px"
                                     class="w3-btn w3-round-large w3-black">Enroll</a>
                             </div>
