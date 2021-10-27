@@ -8,7 +8,7 @@ class Student_review(db.Model):
     course_id=db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
     course=db.relationship('Course', backref='enrolled_courses')
     subject=db.Column(db.String(100), nullable=False)
-    rating=db.Column(db.String(50), nullable=False)
+    rating=db.Column(db.Float, nullable=False)
     
 
     def __repr__(self):

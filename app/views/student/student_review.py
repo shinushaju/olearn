@@ -4,6 +4,7 @@ from flask_login import login_required, current_user
 from app import app, db
 from app.models.courses import Course
 from app.models.student_review import Student_review
+import math
 
 @login_required
 @app.route('/student/student_review/<cid>',methods=['GET','POST'])
@@ -24,4 +25,9 @@ def student_review(cid):
 def show_review():
     reviews = Student_review.query.all()
     return render_template('student/show_review.html',reviews=reviews,user=current_user)   
+
+@app.route('/student/delete_review')
+def delete_review():
+    Student_review.query.delete()
+    return "<html><body><h1>All reviews are deleted Successfully</h1></body></html>"
     
