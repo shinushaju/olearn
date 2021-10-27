@@ -1,0 +1,143 @@
+{%extends "student-base.html" %}
+
+{% block title %} Dashboard{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+{% endblock %}
+
+{%block content%}
+<div class="w3-auto">
+    <!-- Banner -->
+    <div class="w3-mobile w3-display-container w3-card-4 w3-round course-banner">
+        <img src="{{url_for('static', filename='images/course-details.jpg')}}" alt="Course banner image" class="course-banner-image w3-image w3-round">
+        <p class="w3-display-topleft w3-center w3-padding"><span class="w3-tag w3-round-xxlarge w3-small">Data Wrangling</span><span class="w3-tag w3-round-xxlarge w3-small">Matplotlib</span><span class="w3-tag w3-round-xxlarge w3-small">Pandas</span><span class="w3-tag w3-round-xxlarge w3-small">NumPy</span><span class="w3-tag w3-round-xxlarge w3-small">Statistics</span></p>
+        <div class="w3-margin w3-padding w3-display-left w3-hide-small">
+            <h1 class="w3-text-white course-banner-text">{{course.course_name}}</h1>
+        </div>
+        
+        <div class="w3-display-bottomleft w3-margin w3-hide-small">
+            <button class="w3-margin w3-padding w3-btn w3-round-xxlarge w3-white w3-hover-black w3-show-inline-block course-banner-button">ENROLL NOW</button>
+            <h4 class="w3-margin w3-padding w3-text-white w3-show-inline-block course-banner-time"><i class="far fa-clock"></i> 20 hours</h4>
+        </div>
+
+        <!-- Divs for mobile starts here -->
+        <div class="w3-margin w3-padding w3-display-left w3-hide-medium w3-hide-large">
+            <h1 class="w3-text-white course-banner-text">{{course.course_name}}</h1>
+            <h4 class="w3-text-white w3-show-inline-block course-banner-time"><i class="far fa-clock"></i> 20 hours</h4>
+        </div>
+        <div class="w3-display-bottomleft w3-margin w3-padding w3-hide-medium w3-hide-large">
+            <button class="w3-padding w3-btn w3-round-xxlarge w3-white w3-hover-black w3-show-inline-block course-banner-button">ENROLL NOW</button>
+        </div>
+        <!-- Divs for mobile ends here -->
+    </div>
+        
+    <div class="w3-container w3-section">
+        <!-- <div class="w3-row-padding"> -->
+
+            <!-- <div class="w3-col m3 l3"> -->
+                <!-- Side navigation bar -->
+                <div class="w3-auto course-side-nav w3-white w3-hide-small" id="sidenav">
+                    <button class="w3-button w3-block w3-black" onclick="toggleSideButton('syllabus', 'button1')" id="button1">Syllabus</button>
+                    <button class="w3-button w3-block" onclick="toggleSideButton('prerequisites', 'button2')" id="button2">Prerequisites</button>
+                    <button class="w3-button w3-block" onclick="toggleSideButton('tutors', 'button3')" id="button3">Tutors</button>
+                </div>
+            <!-- </div> -->
+        
+            <!-- <div class="w3-col m9 l9" id="course-detail-card"> -->
+            <div class="w3-auto w3-padding course-detail-card">
+                <!-- Syllabus card -->
+                <div class="w3-auto w3-margin w3-padding" id="syllabus">
+                    <h2 class="w3-padding">What you'll learn</h2>
+        
+                    <button class="w3-button w3-block w3-left-align lessonButton w3-light-grey" onclick="toggleVisibility('chapter1')">Intro to Course and Python</button>
+                    <div id="chapter1" class="w3-padding">
+                        <p class="w3-padding">Get a basic overview of what you will learn in this course. Installation Setup and Overview. IDEs and Course Resources. iPython/Jupyter Notebook Overview.</p>
+                    </div>
+        
+                    <button class="w3-button w3-block w3-left-align lessonButton w3-light-grey" onclick="toggleVisibility('chapter2')">Learning NumPy</button>
+                    <div id="chapter2" class="w3-hide w3-padding">
+                        <p class="w3-padding">Intro to numpy. Creating arrays. Learn to create arrays with numpy and Python. Using arrays and scalars. Indexing Arrays. Array Transposition. Universal Array Function. Array Processing. Array Input and Output</p>
+                    </div>
+        
+                    <button class="w3-button w3-block w3-left-align lessonButton w3-light-grey" onclick="toggleVisibility('chapter3')">Statistics Essentials for Data Science</button>
+                    <div id="chapter3" class="w3-hide w3-padding">
+                        <p class="w3-padding">This lesson will enable you to define statistics—a foundational part of data science—and essential terms related to it, explain measures of central tendency and dispersion, and comprehend skewness, correlation, regression, and distribution. You will be able to make data-driven predictions through statistical inference.</p>
+                    </div>
+        
+                    <button class="w3-button w3-block w3-left-align lessonButton w3-light-grey" onclick="toggleVisibility('chapter4')">Visualizing distributions</button>
+                    <div id="chapter4" class="w3-hide w3-padding">
+                        <p class="w3-padding">In this chapter you’ll learn the value of visualizations, using real-world data on British monarchs, Australian salaries, Panamanian animals, and US cigarette consumption, to graphically represent the spread of a variable using histograms and box plots.</p>
+                    </div>
+        
+                    <button class="w3-button w3-block w3-left-align lessonButton w3-light-grey" onclick="toggleVisibility('chapter5')">Visualizing two variables</button>
+                    <div id="chapter5" class="w3-hide w3-padding">
+                        <p class="w3-padding">You’ll learn how to interpret data plots and understand core data visualization concepts such as correlation, linear relationships, and log scales. Through interactive exercises, you’ll also learn how to explore the relationship between two continuous variables using scatter plots and line plots. You'll explore data on life expectancies, technology adoption, COVID-19 coronavirus cases, and Swiss juvenile offenders. Next you’ll be introduced to two other popular visualizations—bar plots and dot plots—often used to examine the relationship between categorical variables and continuous variables. Here, you'll explore famous athletes, health survey data, and the price of a Big Mac around the world.</p>
+                    </div>
+        
+                    <button class="w3-button w3-block w3-left-align lessonButton w3-light-grey" onclick="toggleVisibility('chapter6')">The color and the shape</button>
+                    <div id="chapter6" class="w3-hide w3-padding">
+                        <p class="w3-padding">It’s time to make your insights even more impactful. Discover how you can add color and shape to make your data visualizations clearer and easier to understand, especially when you find yourself working with more than two variables at the same time. You'll explore Los Angeles home prices, technology stock prices, math anxiety, the greatest hiphop songs, scotch whisky preferences, and fatty acids in olive oil.</p>
+                    </div>
+        
+                    <button class="w3-button w3-block w3-left-align lessonButton w3-light-grey" onclick="toggleVisibility('chapter7')">99 problems but a plot ain't one of them</button>
+                    <div id="chapter7" class="w3-hide w3-padding">
+                        <p class="w3-padding">In this final chapter, you’ll learn how to identify and avoid the most common plot problems. For example, how can you avoid creating misleading or hard to interpret plots, and will your audience understand what it is you’re trying to tell them? All will be revealed! You'll explore wind directions, asthma incidence, and seats in the German Federal Council.</p>
+                    </div>
+                </div>
+
+                <!-- Prerequisites card -->
+                <div class="w3-auto w3-margin w3-padding w3-hide-medium w3-hide-large" id="prerequisites">
+                    <h2 class="w3-padding">Prerequisite Knowledge</h2>
+                    <p class="w3-padding">This program is appropriate for both students with a data analytics background and students with business backgrounds. You should have at least basic skills in data analysis including spreadsheets and descriptive statistics including:
+                       <ul>
+                           <li>Measures of center (Mean, median, and mode)</li>
+                           <li>Measures of spread (Variance and standard deviation)</li>
+                           <li>Distributions (normal distribution, skewness)</li>
+                           <li>Analyzing data in spreadsheets like Excel or Google Sheets</li>
+                        </ul>
+                    </p>
+                </div>
+
+                <!-- Tutors card -->
+                <div class="w3-auto w3-margin w3-padding w3-hide-medium w3-hide-large" id="tutors">
+                    <h2 class="w3-padding">Meet your mentors</h2>
+                    <!-- <h4 class="w3-padding">John Doe</h4>
+                    <p class="w3-padding">Great trainer. Has 10 years of experience.</p>
+                    <h4 class="w3-padding">Joanne Doe</h4>
+                    <p class="w3-padding">Great trainer. Has 10 years of experience.</p> -->
+                    <div class="row w3-center">
+                        <div class="w3-half w3-padding">
+                            <div class="card">
+                                <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty3.jpg')}}">
+                                <h3 class="name">Joanne Lin</h3>
+                                <p class="title">Head of Data Science | Data Inc</p>
+                                <p class="description">A professional instructor and trainer for Data Science and programming. She has publications and patents in various fields such as microfluidics, materials science, and data science technologies.</p>
+                            </div>
+                        </div>
+                        <div class="w3-half w3-padding">
+                            <div class="card">
+                                <img class="w3-center w3-circle cardimage" src="{{ url_for('static', filename='images/fclty/fclty2.jpg')}}">
+                                <h3 class="name">Sebastien Sebu</h3>
+                                <p class="title">CEO Devsl | iOS | Android | Freelancing</p>
+                                <p class="description">I am a veteran mobile developer having built over 57 mobile apps for iOS and Android, and I've also build multiple Unity 3D games, including Call of Duty Ghosts mobile.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+    </div>
+</div>
+
+
+
+    {% block customjs %}
+    <!-- swiper js -->
+    <!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> -->
+
+    <!-- cutom js -->
+    <script type="module" src="{{ url_for('static', filename='js/dashboard/student/swiper.js') }}"></script>
+    {% endblock %}
+
+{% endblock %}
