@@ -105,7 +105,7 @@
                                 <h6 class="w3-large" style="font-weight: 500;">{{course.course_name}}</h6>
                                 {{course.course_description}} <br>
                                 Course Duration : {{course.course_duration}} Hours<br>
-                                Course Price : ₹{{course.course_price}}/-<br>
+                                Course Price : ₹{{course.course_price}}/-<br><br>
                                 <div class="w3-section w3-light-grey w3-tiny"
                                     style="border-radius: 100px; height: 8px;">
                                     <div class="w3-container"
@@ -129,7 +129,7 @@
 
     {% block customjs %}
     <!-- swiper js -->
-    <!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
     <!-- cutom js -->
     <script type="module" src="{{ url_for('static', filename='js/dashboard/student/swiper.js') }}"></script>
