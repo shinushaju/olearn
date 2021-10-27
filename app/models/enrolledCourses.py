@@ -7,7 +7,7 @@ class Enrolled_courses(db.Model):
     student=db.relationship('Student', backref='enrolled_courses')
     course_id=db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
     course=db.relationship('Course', backref='enrolled_courses')
-    progress=db.Column(db.Float, nullable=False)
+    progress=db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return f'{self.student.name}: {self.course.course_name}'
