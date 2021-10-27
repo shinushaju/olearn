@@ -15,7 +15,7 @@ db.init_app(app)
 #  MODELS
 #  ------
 from app.models.faculty import Faculty
-from app.models.courses import Course
+from app.models.courses import Course, Section, Lecture
 
 
 # faculty login manager
@@ -42,6 +42,13 @@ from app.views.faculty import auth, main, course
 from app.views.course import routes
 
 with app.app_context():
+
+    ### commands to drop tables
+    #Faculty.__table__.drop(db.engine)
+    #Course.__table__.drop(db.engine)
+    #Section.__table__.drop(db.engine)
+    #Lecture.__table__.drop(db.engine)
+    
     db.create_all()
     #db.drop_all()
     print("All Tables", db.engine.table_names())

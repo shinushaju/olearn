@@ -1,14 +1,13 @@
-from flask import render_template, redirect, url_for, request, flash
+from flask import render_template, redirect, url_for, request, flash, session
 from app import app, db
 from flask_login import login_required, current_user
 from app.models.faculty import Faculty
-from app.models.courses import Course
+from app.models.courses import Course, Section
 
 # create a course
 @app.route('/course/create',methods=['GET','POST'])
 @login_required
 def create_course():
-    courses = Course.query.all()
     if request.method == 'POST':
         course_name = request.form.get('course_name')
         course_overview = request.form.get('course_overview')
@@ -24,6 +23,58 @@ def create_course():
             # add the new course to the database
             db.session.add(course)
             db.session.commit()
-            return redirect(url_for('create_course'))
+            # add course_id to session
+            session['course_id'] = course.id
 
-    return render_template('faculty/create-course.html', user=current_user, courses=courses)
+            return redirect(url_for('add_section'))
+        else:
+            flash('Please enter all the mandatory fields!', 'error')
+    return render_template('faculty/create-course.html', user=current_user)
+
+
+# add section to a new course
+@app.route('/course/section/add',methods=['GET','POST'])
+@login_required
+def add_section():
+
+    if 'course_id' in session:
+      course_id = session['course_id']
+      
+    course = Course.query.get(course_id)
+    sections = Section.query.all()
+    if request.method == 'POST':
+        section_title = request.form.getlist('section_title[]')
+        section_outcome = request.form.getlist('section_outcome[]')
+        course_id = course.id
+        for i in range(len(section_title)):
+            if section_title[i] and section_outcome[i] and course_id:
+                section = Section(section_no=i, section_title=section_title[i], section_outcome=section_outcome[i], course_id=course_id)
+                db.session.add(section)
+                db.session.commit()
+        return redirect(url_for('add_lecture'))
+    return render_template('faculty/add-section.html', user=current_user, course=course, sections=sections)
+
+# add lecture to a new course
+@app.route('/course/section/lecture/add',methods=['GET','POST'])
+@login_required
+def add_lecture():
+    
+    if 'course_id' in session:
+      course_id = session['course_id']
+
+    course = Course.query.get(course_id)
+    sections = Section.query.filter_by(course_id=course_id).all()
+    
+    '''
+    if request.method == 'POST':
+        section_title = request.form.getlist('section_title[]')
+        section_outcome = request.form.getlist('section_outcome[]')
+        course_id = course.id
+        for i in range(len(section_title)):
+            if section_title[i] and section_outcome[i] and course_id:
+                section = Section(section_title=section_title[i], section_outcome=section_outcome[i], course_id=course_id)
+                db.session.add(section)
+                db.session.commit()
+        return redirect(url_for('add_section', course_id=course_id))
+    '''
+    return render_template('faculty/add-lecture.html', user=current_user, course=course, sections=sections)
