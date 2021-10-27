@@ -13,7 +13,7 @@ def student_review(cid):
     if request.method == "POST":  
         subject = request.form["subject"]  
         rating = request.form["rating"]  
-        r1 = Student_review(student_id=current_user.id,course_id=cid, subject=subject,rating=rating)
+        r1 = Student_review(student_id=current_user.id,course_id=cid, subject=subject,rating=float(rating))
     
         db.session.add(r1)
         db.session.commit()
@@ -24,7 +24,13 @@ def student_review(cid):
 @app.route('/student/show_review')
 def show_review():
     reviews = Student_review.query.all()
-    return render_template('student/show_review.html',reviews=reviews,user=current_user)   
+    review_list=list()
+    for review in reviews:
+        if math.floor(review.rating)==review.rating:
+            review_list.append((review, math.floor(review.rating), False))
+        else:
+            review_list.append((review, math.floor(review.rating), True))
+    return render_template('student/show_review.html',review_list=review_list,user=current_user)   
 
 @app.route('/student/delete_review')
 def delete_review():

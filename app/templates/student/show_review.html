@@ -4,7 +4,7 @@
 
 {% block customcss %}
 <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% endblock %}
 
 {%block content%}
@@ -23,7 +23,7 @@
             
             <div class="w3-section">
                 <!-- Slider main container -->
-                {% for each in reviews %}
+                {% for each in review_list %}
                 
                 <div class="w3-panel w3-padding-24 w3-padding-large">
                     <!-- Additional required wrapper 
@@ -35,8 +35,8 @@
                                 <i class="fa fa-comments-o w3-xlarge" style="color: #6E44FF; float:right;"></i>
                                 <br>
                                 <h6 class="w3-large" style="font-weight: 500; color:blue;">Review</h6>
-                                <h6 class="w3-large" style="font-weight: 500;">Rating &nbsp;: <h1 style="color:gold;">{{ each.rating }} </h1></h6>
-                                <h6 class="w3-large" style="font-weight: 500;">Comment  &nbsp;  : {{ each.subject }} </h6>
+                                <h6 class="w3-large" style="font-weight: 500;">Rating &nbsp;: {% for i in range(each[1]) %}<i class="fa fa-star" style="color:gold;"></i>{% endfor %}{% if each[2]==True %}<i class="fas fa-star-half" style="color:gold;"></i>{% endif %}</h6>
+                                <h6 class="w3-large" style="font-weight: 500;">Comment  &nbsp;  : {{ each[0].subject }} </h6>
                                 
                             </div>
                         </div>
