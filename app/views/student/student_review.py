@@ -7,7 +7,7 @@ from app.models.student_review import Student_review
 
 @login_required
 @app.route('/student/student_review/<cid>',methods=['GET','POST'])
-def dummy_review(cid):
+def student_review(cid):
     "This function takes reviews and publish it"
     if request.method == "POST":  
         subject = request.form["subject"]  
@@ -18,10 +18,10 @@ def dummy_review(cid):
         db.session.commit()
 
         return redirect(url_for('show_review'))
-    return render_template('student/student_review.html')
+    return render_template('student/student_review.html',user=current_user)
 
 @app.route('/student/show_review')
 def show_review():
     reviews = Student_review.query.all()
-    return render_template('student/show_review.html',reviews=reviews)   
+    return render_template('student/show_review.html',reviews=reviews,user=current_user)   
     

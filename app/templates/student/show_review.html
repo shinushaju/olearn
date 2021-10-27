@@ -1,35 +1,71 @@
-<html>
-<head>
-<title>Student Review</title>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-    body {
-        background-color: white;
+{%extends "student-base.html" %}
+
+{% block title %} Dashboard{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{%block content%}
+
+<div class="w3-container w3-padding-16">
+
+    <div class="">
+
         
-    }
-    .container{
-        padding: 12px,88px;
-    }
-</style>
-</head>
-<body>
-    <div class="container">
-    <h1 class="w3-padding-16 w3-center"> student Review</h1>
-    <table class="w3-table w3-striped w3-white w3-padding" style="box-shadow: rgba(99,99,99,0.2) 0px 2px 8px 0px;">
-        <tr style="background-color:blue:white">
-            <th>Student_Id</th>
-            <th class="w3-center">Course_Id</th>
-            <th class="w3-center">Comment</th>
-            <th class="w3-center">Rating</th>
-        </tr>
-        {% for each in reviews %}
-            <tr>
-                <td>{{ each.student_id }} </td>
-                <td>{{ each.course_id }} </td>
-                <td>{{ each.subject }} </td>
-                <td>{{ each.rating }} </td>
-            </tr>
-        {% endfor %}
+        <!-- courses in progress starts here -->
+        <div class="w3-row-padding">
+            <div>
+                <h5 class="w3-left">Reviews for Courses</h5>
+            </div>
+            
+            
+            <div class="w3-section">
+                <!-- Slider main container -->
+                {% for each in reviews %}
+                
+                <div class="w3-panel w3-padding-24 w3-padding-large">
+                    <!-- Additional required wrapper 
+                    <div class="swiper-wrapper">
+                        Slides -->
+                        
+                        <div class="swiper-slide">
+                            <div class="card-courses">
+                                <i class="fa fa-comments-o w3-xlarge" style="color: #6E44FF; float:right;"></i>
+                                <br>
+                                <h6 class="w3-large" style="font-weight: 500;">Review</h6>
+                                <h6 class="w3-large" style="font-weight: 500;">Student Id : {{ each.student_id }} </h6>
+                                <h6 class="w3-large" style="font-weight: 500;">Course Id  : {{ each.course_id }} </h6>
+                                <h6 class="w3-large" style="font-weight: 500;">Comment    : {{ each.subject }} </h6>
+                                <h6 class="w3-large" style="font-weight: 500;">Rating     : {{ each.rating }} </h6>
+                            </div>
+                        </div>
+                                                                 
+
+                                
+                   
+                    <!-- If we need pagination -->
+                    <div class="w3-section swiper-pagination"></div>
+                    
+                </div>
+                {% endfor %} 
+                
+            </div>
+             
+            
+        </div>
+        <!-- courses in progress ends here -->
+       
+    </div>
 
 
-</html>
+    {% block customjs %}
+    <!-- swiper js -->
+    <!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> -->
+
+    <!-- cutom js -->
+    <script type="module" src="{{ url_for('static', filename='js/dashboard/student/swiper.js') }}"></script>
+    {% endblock %}
+
+    {% endblock %}

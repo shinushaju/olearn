@@ -1,4 +1,14 @@
-<html>
+{%extends "student-base.html" %}
+
+{% block title %} Dashboard{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{%block content%}
+
     <!-- Replace this block with custom css exclusive to your page. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home/contact.css') }}">
@@ -12,7 +22,7 @@
 <div class="w3-container" style="display: flex;justify-content: center;">
   <div class="w3-mobile">
   
-    <form class="w3-white" action='/student/student_review' method="POST">
+    <form class="w3-white" action="" method="POST">
       <label for="subject">Comment</label>
       <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
       
@@ -49,4 +59,13 @@
   </div>
 </div>
 </div>
+{% block customjs %}
+    <!-- swiper js -->
+    <!-- <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> -->
+
+    <!-- cutom js -->
+    <script type="module" src="{{ url_for('static', filename='js/dashboard/student/swiper.js') }}"></script>
+    {% endblock %}
+
+    {% endblock %}
 
