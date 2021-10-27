@@ -75,7 +75,7 @@
                                         style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:20%">
                                     </div>
                                 </div>
-                                <a href="course/{{enrolledcourse.course_id}}" style="margin-top:4px"
+                                <a href="{{ url_for('course', cid = enrolledcourse.id) }}" style="margin-top:4px"
                                     class="w3-btn w3-round-large w3-black w3-tiny">Continue</a>
                             </div>
                         </div>   
@@ -112,7 +112,7 @@
                                         style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:20%">
                                     </div>
                                 </div>
-                                <a href="enroll/{{user.id}}/{{course.id}}" style="margin-top:4px"
+                                <a href="{{ url_for('course_enroll', cid = course.id) }}" style="margin-top:4px"
                                     class="w3-btn w3-round-large w3-black w3-tiny">Enroll</a>
                             </div>
                         </div>

@@ -27,14 +27,14 @@ def student_dashboard():
     
     return render_template('student/dashboard.html', user=current_user, available = unenrolledCourseList, enrolledcoursesList = enrolledcoursesList)
 
-@app.route('/student/enroll/<sid>/<cid>')
+@app.route('/student/enroll/<cid>')
 @login_required
-def course_enroll(sid, cid):
+def course_enroll(cid):
     enrolled = Enrolled_courses.query.filter_by(student_id = current_user.id, course_id = cid).all()
     #Checking whether the course is previously enrolled
     #if not, enroll the course in the enrolled_courses table
     if len(enrolled) == 0:
-        db.session.add(Enrolled_courses(student_id = sid, course_id = cid, progress = 0))
+        db.session.add(Enrolled_courses( student_id = current_user.id, course_id = cid, progress = 0))
         db.session.commit()
     return redirect(url_for('student_dashboard'))
 
