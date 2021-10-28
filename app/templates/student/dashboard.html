@@ -76,7 +76,7 @@
                                         style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:{{ enrolledcourse.progress }}%">
                                     </div>
                                 </div>
-                                <a href="{{ url_for('course', cid = enrolledcourse.id) }}" style="margin-top:4px" class="w3-btn w3-round-large w3-black">Continue</a>
+                                <a href="{{ url_for('course', cid = enrolledcourse.course.id) }}" style="margin-top:4px" class="w3-btn w3-round-large w3-black">Continue</a>
                             </div>
                         </div>   
                     </div>
