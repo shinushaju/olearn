@@ -31,6 +31,8 @@ from app.views.student import auth, routes, createDummyCourses, manage_profile, 
 # import faculty faculty views here
 from app.views.faculty import auth, main
 
+from app.models.faculty import Faculty
+
 with app.app_context():
     db.create_all()
   

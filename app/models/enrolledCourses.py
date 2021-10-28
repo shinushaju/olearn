@@ -4,9 +4,9 @@ from app import db
 class Enrolled_courses(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     student_id=db.Column(db.Integer, db.ForeignKey('student.id'), nullable=False)
-    student=db.relationship('Student', backref='enrolled_courses', cascade='all,delete-orphan')
+    student=db.relationship('Student', backref='enrolled_courses', cascade='delete')
     course_id=db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
-    course=db.relationship('Course', backref='enrolled_courses', cascade='all,delete-orphan')
+    course=db.relationship('Course', backref='enrolled_courses', cascade='delete')
     progress=db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
