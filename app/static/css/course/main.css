@@ -1,0 +1,28 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.nav-container {
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+}
+
+.nav-bar {
+  padding: 8px 88px;
+}
+@media only screen and (max-width: 740px) {
+  .nav-bar {
+    padding: 8px 24px;
+  }
+}
+
+.menu-item:hover {
+  color: #6e44ff;
+  font-weight: 700;
+}
