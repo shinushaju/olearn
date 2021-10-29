@@ -4,12 +4,11 @@ from flask_login import login_required, current_user
 from app import app, db
 from app.models.courses import Course
 from app.models.student_review import Student_review
-import math
 
 @login_required
 @app.route('/student/student_review/<cid>',methods=['GET','POST'])
 def student_review(cid):
-    "This function takes reviews and publish it"
+    "This function takes a review and publishes it"
     if request.method == "POST":  
         review_text = request.form["review_text"]  
         rating = request.form["rating"]  
