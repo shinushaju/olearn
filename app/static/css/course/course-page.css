@@ -192,3 +192,27 @@ textarea[type="text"]:focus {
     display: flex;
     justify-content: start;
 }
+
+.action-button{
+    margin: auto;
+    width: 75%;
+    padding: 24px;
+}
+
+.action-button button{
+    background-color: #6e44ff;
+    color: white;
+}
+
+.action-button button:hover{
+    background-color: #3f51b5;
+}
+
+.write-review-button{
+    background-color: #6e44ff;
+    color: white;
+}
+
+.write-review-button:hover{
+    background-color: #3f51b5;
+}

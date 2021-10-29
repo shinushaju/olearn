@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from app import db
 
 # Table to store review by students
@@ -7,7 +9,8 @@ class Student_review(db.Model):
     student=db.relationship('Student', backref='student_review')
     course_id=db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
     course=db.relationship('Course', backref='student_review')
-    subject=db.Column(db.String(100), nullable=False)
+    created_on = db.Column(db.DateTime, default=datetime.utcnow)
+    review_text=db.Column(db.String(100), nullable=False)
     rating=db.Column(db.Float, nullable=False)
     
 

@@ -1,18 +1,25 @@
 <div class="w3-section">
+    <div class="action-button">
+        {% if enrolled==true %}
+            <button class="w3-btn w3-round-large w3-block">DROP</button>
+            {% else %}
+            <button class="w3-btn w3-round-large w3-block">ENROLL NOW</button>
+            {% endif %}
+    </div>
     <h4>Contents</h4>
     <div class="w3-section main-box">
-        {% for content in range(1,6)%}
+        {% for section in course.sections %}
             <div class="content-box">
-                <button onclick="handleCourseContent('Demo{{content}}')" class="content-box-btn w3-block w3-left-align">{{content}}. Section Title</button>
-                <div id="Demo{{content}}" class="w3-hide content-box-content w3-animate-opacity">
-                    {% for item in range(1,5) %}
-                        <a href="#" class="content-box-content-item">
+                <button onclick="handleCourseContent('Demo{{section.section_no}}')" class="content-box-btn w3-block w3-left-align">{{ section.section_no }}. {{ section.section_title}}</button>
+                <div id="Demo{{section.section_no}}" class="w3-hide content-box-content w3-animate-opacity">
+                    {% for lecture in section.lectures %}
+                        <a href="{{ url_for('course', course_id=section.course.id, lecture_id=lecture.id) }}" class="content-box-content-item">
                             <div>
                                 <i class="bi bi-caret-right"></i>
                             </div>
                             <div class="w3-margin-left">
-                                <div>Content title goes here...</div>
-                                <div class="w3-text-gray w3-small">49m</div>
+                                <div>{{ lecture.lecture_title }}</div>
+                                <div class="w3-text-gray w3-small">{{ lecture.lecture_duration }}m</div>
                             </div>
                         </a>
                     {% endfor %}

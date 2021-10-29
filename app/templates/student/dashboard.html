@@ -76,7 +76,7 @@
                                         style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:{{ enrolledcourse.progress }}%">
                                     </div>
                                 </div>
-                                <a href="{{ url_for('course', cid = enrolledcourse.course.id) }}" style="margin-top:4px" class="w3-btn w3-round-large w3-black">Continue</a>
+                                <a href="{{ url_for('course', course_id = enrolledcourse.course.id, lecture_id=enrolledcourse.course.sections[0].lectures[0].id) }}" style="margin-top:4px" class="w3-btn w3-round-large w3-black">Continue</a>
                             </div>
                         </div>   
                     </div>
@@ -100,7 +100,7 @@
                     <div class="swiper-wrapper">
                         <!-- Slides -->
                         <div class="swiper-slide">
-                            <a href="{{ url_for('course', cid = course.id) }}">
+                            <a href="{{ url_for('course', course_id = course.id, lecture_id=course.sections[0].lectures[0].id) }}">
                             <div class="card-courses">
                                 <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
                                 <h6 class="w3-large" style="font-weight: 500;">{{course.course_name}}</h6>

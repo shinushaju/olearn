@@ -35,26 +35,26 @@ def course_enroll(cid):
     #Checking whether the course is previously enrolled
     #if not, enroll the course in the enrolled_courses table
     if len(enrolled) == 0:
-        db.session.add(Enrolled_courses( student_id = current_user.id, course_id = cid, progress = 1))
+        db.session.add(Enrolled_courses( student_id = current_user.id, course_id = cid, progress = 0))
         db.session.commit()
     return redirect(url_for('student_dashboard'))
 
-@app.route('/student/course/<cid>')
-@login_required
-def course(cid):
-    course = Course.query.get(cid)
-    result=Enrolled_courses.query.filter((Enrolled_courses.course_id==cid) & (Enrolled_courses.student_id==current_user.id)).one_or_none()
-    enrolled=True
-    if result is None:
-        enrolled=False
+# @app.route('/student/course/<cid>')
+# @login_required
+# def course(cid):
+#     course = Course.query.get(cid)
+#     result=Enrolled_courses.query.filter((Enrolled_courses.course_id==cid) & (Enrolled_courses.student_id==current_user.id)).one_or_none()
+#     enrolled=True
+#     if result is None:
+#         enrolled=False
 
-    # Review section:
-    reviews = Student_review.query.filter_by(course_id=cid).all()
-    review_list=list()
-    for review in reviews:
-        if math.floor(review.rating)==review.rating:
-            review_list.append((review, math.floor(review.rating), False))
-        else:
-            review_list.append((review, math.floor(review.rating), True))
+#     # Review section:
+#     reviews = Student_review.query.filter_by(course_id=cid).all()
+#     review_list=list()
+#     for review in reviews:
+#         if math.floor(review.rating)==review.rating:
+#             review_list.append((review, math.floor(review.rating), False))
+#         else:
+#             review_list.append((review, math.floor(review.rating), True))
     
-    return render_template('student/course.html', user=current_user, course = course, enrolled=enrolled, review_list=review_list)
+#     return render_template('student/course.html', user=current_user, course = course, enrolled=enrolled, review_list=review_list)

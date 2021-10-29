@@ -11,14 +11,16 @@ import math
 def student_review(cid):
     "This function takes reviews and publish it"
     if request.method == "POST":  
-        subject = request.form["subject"]  
+        review_text = request.form["review_text"]  
         rating = request.form["rating"]  
-        r1 = Student_review(student_id=current_user.id,course_id=cid, subject=subject,rating=float(rating))
+        r1 = Student_review(student_id=current_user.id,course_id=cid, review_text=review_text,rating=float(rating))
     
         db.session.add(r1)
         db.session.commit()
 
-        return redirect(url_for('course', cid=cid))
+        course=Course.query.get(cid)
+
+        return redirect(url_for('course', course_id=cid, lecture_id=course.sections[0].lectures[0].id))
 
     return render_template('student/student_review.html',user=current_user)
 

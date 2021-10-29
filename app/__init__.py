@@ -27,11 +27,16 @@ def load_user(id):
 # import main views here
 from app.views import routes
 # import student views here
-from app.views.student import auth, routes, createDummyCourses, manage_profile, search, student_review
+from app.views.student import auth, routes, createDummyCourses, manage_profile, search, student_review, course
 # import faculty faculty views here
 from app.views.faculty import auth, main
 
 from app.models.faculty import Faculty
+
+from app.utils.format_datetime import format_datetime
+
+from jinja2 import filters
+filters.FILTERS['format_datetime']=format_datetime
 
 with app.app_context():
     db.create_all()

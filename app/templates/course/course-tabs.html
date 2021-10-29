@@ -8,20 +8,20 @@
 
     <div id="overview" class="tab-content w3-padding-16">
         <h3 class="tab-content-header">Course Overview</h3>
-        <p class="w3-text-gray">This is a sample course description...</p>
+        <p class="w3-text-gray">{{ course.course_overview }}</p>
     </div>
     <div id="reviews" class="tab-content w3-padding-16" style="display:none">
-        <h3><span class="tab-content-header">267 Reviews</span> <span class="w3-text-gray"
-                style="letter-spacing: -1px;">for Fundamentals of Web Design</span></h3>
+        <h3><span class="tab-content-header">{% if review_list %}267 Reviews{% else %}No reviews yet{% endif %}</span> <span class="w3-text-gray"
+                style="letter-spacing: -1px;">for {{ course.course_name }}</span></h3>
+                {% if can_write_review==true %}<a href="{{ url_for('student_review', cid=course.id) }}"><button class="write-review-button w3-right w3-btn w3-round-large">Write a review</button></a>{% endif %}
         <div>
-            {% for i in range (1,5)%}
+            {% for review in review_list %}
             <div class="w3-text-gray w3-padding-16 review-box">
-                <div>Review By <b>Shinu Shaju</b> <span class="w3-text-black"> • </span>October 23, 2020
+                <div>Review By <b>{{ review[0].student.name }}</b> <span class="w3-text-black"> • </span>{{ review[0].created_on|format_datetime }}
                 </div>
+                <div>{% for i in range(review[1]) %}<i class="fa fa-star" style="color:gold;"></i>{% endfor %}{% if review[2]==True %}<i class="fas fa-star-half" style="color:gold;"></i>{% endif %}</div>
                 <div style="margin-top: 8px;">
-                    This course is just not about the theory it actually helps you to understand things
-                    on practical basis.The test and assignments helps you to apply the disciplines and
-                    makes you basic clear.
+                    <p>{{ review[0].review_text }}</p>
                 </div>
             </div>
             {% endfor %}
