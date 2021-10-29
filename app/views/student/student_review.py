@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 
 from app import app, db
@@ -7,20 +7,26 @@ from app.models.student_review import Student_review
 import math
 
 @login_required
-@app.route('/student/student_review/<cid>',methods=['GET','POST'])
-def student_review(cid):
+@app.route('/student/student_review/<cid>/<lid>',methods=['GET','POST'])
+def student_review(cid,lid):
     "This function takes reviews and publish it"
     if request.method == "POST":  
-        review_text = request.form["review_text"]  
-        rating = request.form["rating"]  
-        r1 = Student_review(student_id=current_user.id,course_id=cid, review_text=review_text,rating=float(rating))
-    
-        db.session.add(r1)
-        db.session.commit()
-
-        course=Course.query.get(cid)
-
-        return redirect(url_for('course', course_id=cid, lecture_id=course.sections[0].lectures[0].id))
+        review_text = request.form.get("review_text")
+        rating = request.form.get("rating") 
+        res = Student_review.query.filter_by(student_id=current_user.id).one_or_none()
+        if res==None:
+            r1 = Student_review(student_id=current_user.id,course_id=cid,lecture_id=lid, review_text=review_text,rating=float(rating))
+            db.session.add(r1)
+            db.session.commit()
+            flash("Details added successfully", 'success')
+            return redirect(url_for('course', course_id=cid,lecture_id=lid))
+        else:
+            res.review_text=review_text
+            res.rating=rating
+            db.session.commit()
+            flash("Details updated successfully", 'success')
+            return redirect(url_for('course', course_id=cid,lecture_id=lid))
+        
 
     return render_template('student/student_review.html',user=current_user)
 
