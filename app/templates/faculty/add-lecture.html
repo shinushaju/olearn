@@ -1,6 +1,6 @@
 {%extends "faculty-base.html" %}
 
-{% block title %} Create Course - Sections | Add Lecture{% endblock %}
+{% block title %} {{course.course_name}} - Add Lecture{% endblock %}
 
 {% block customcss %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/faculty/course.css') }}">
@@ -14,56 +14,56 @@
     <div style="display: flex;justify-content: center;">
         <div class="main-box">
             <form method="POST">
-                <div class="section-box w3-round-xlarge w3-padding-large"
-                    style="box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;">
-                    <h4 style="font-weight: 500;">Add Lectures</h4>
-                    <div class="w3-text-gray">Click on the section to add lectures.</div>
+                <div class="lecture-box w3-round-xlarge w3-padding-large">
+                    <h6 style="font-weight: 400;">Click on the section to add lectures.</h6>
 
                     {% if sections %}
                     {% for section in sections %}
-
-                    <!-- <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-black w3-left-align">Open Section 1</button>
-                    <div id="Demo1" class="w3-hide w3-container">
-                        <p>Some text..</p>
-                    </div> -->
-
+                    
                     <button type="button" class="accordion">
-                        <p class="title">{{section.section_no + 1}}. {{section.section_title}}</p>
+                        <p class="title">{{section.section_title}}</p>
+                        <span class="show"><i class="bi bi-caret-down-fill"></i></span>
                     </button>
-                    <div class="info" id="lecture-form">
-                        <div class="w3-section lecture-main-box">
-                        <div class="lecture-container-box" id="lecture-container-box-{{section.section_no}}">
-                                <div class="lecture-container">
-                                    <span style="font-weight: 500;">Lecture 1</span>
-                                    <div class="w3-margin-top w3-container">
-                                        <input type="text" class="w3-margin-bottom" name="lecture_title[]"
-                                            placeholder="Give lecture name..." />
-                                    </div>
 
+                    <div class="info">
+                        <div class="w3-section lecture-main-box">
+                            <div class="lecture-container-box" id="{{section.id}}">
+                                <div class="lecture-container" id="lecture-form">
+                                    <span style="font-weight: 500;color:#666666;">Add a Lecture</span>
+                                    <input type="number" class="w3-hide" name="section_id[]" value="{{section.id}}"/>
+                                    <div class="input w3-margin-top w3-container">
+                                        <label class="required-field">Lecture Title</label>
+                                        <input type="text" class="w3-margin-bottom" name="lecture_title[]"
+                                            placeholder="Enter lecture name..." required />
+                                    </div>
                                     <div class="w3-row-padding">
                                         <div class="w3-half">
+                                            <label class="required-field">Link to Lecture</label>
                                             <input type="url" class="w3-margin-bottom" name="lecture_link[]"
-                                                placeholder="Give lecture link..." />
+                                                placeholder="Enter lecture link..." required />
                                         </div>
                                         <div class="w3-half">
-                                            <input type="number" min="0" class="w3-margin-bottom"
-                                                name="lecture_duration[]" placeholder="Lecture Duration..." />
+                                            <label class="required-field">Lecture Duration in Minutes</label>
+                                            <input type="number" min="0" class Z="w3-margin-bottom"
+                                                name="lecture_duration[]" placeholder="Enter Duration..." required />
                                         </div>
                                     </div>
                                 </div>
-                        </div><br>
-                        <div class="w3-container">
-                            <button type="button" id="lecture-btn-{{section.section_no}}" class="w3-left add-lecture-btn"><i class="bi bi-file-earmark-plus"></i>&ensp;New Lecture</button>
-                        </div>
+                            </div><br>
+                            <div class="w3-container">
+                                <button type="button" id="lecture-btn-{{section.section_no}}"
+                                    class="w3-left add-lecture-btn"><i class="bi bi-file-earmark-plus"></i>&ensp;New Lecture</button>
+                            </div>
                         </div>
                     </div>
+            
                     {% endfor %}
                     {% endif %}
                     <br>
                 </div>
                 <div class="w3-row w3-center w3-section">
-                <input type="submit" class="w3-right submit-btn w3-section"
-                value="Save and Continue" />
+                    <input type="submit" name="action" class="w3-right submit-btn w3-section" value="Create and Publish" />
+                    <input type="submit" name="action" class="w3-right w3-margin-right w3-text-black add-lecture-btn w3-section" value="Save as Draft" />
                 </div>
             </form>
         </div>
@@ -72,6 +72,7 @@
 
 
 <script>
+    var shows = document.querySelectorAll(".show");
     var infos = document.querySelectorAll(".info");
     var accordions = document.querySelectorAll(".accordion");
 
@@ -87,7 +88,6 @@
             infos[i].classList.toggle("reveal");
         };
     }
-
 </script>
 
 {% block customjs %}

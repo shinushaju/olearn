@@ -1,0 +1,75 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} My Courses{% endblock %}
+
+{% block customcss %}{% endblock %}
+
+{%block content%}
+
+<div class="w3-container w3-padding-16">
+    <h4 style="font-weight: 500;">My Courses</h4>
+    <div class="tab_container">
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1">Active Courses</label>
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2">Drafts</label>
+
+        <section id="content1" class="tab-content">
+            <h4><span style="font-weight:600">{{ active_courses | length }}</span>
+                <span class="w3-text-gray" style="letter-spacing: -1px;font-weight: 300;">course(s) found</span>
+            </h4>
+            <div class="w3-row-padding w3-section">
+                {% for course in active_courses %}
+                <div class="w3-third" style="flex: 1;">
+                    <div class="course">
+                        <div class="course-info">
+                            <div class="label w3-tiny">
+                                <i class="bi bi-server" style="color: #6E44FF;"></i>
+                                {{course.program}}
+                            </div>
+                            <div class="header w3-xlarge">{{course.course_name}}</div>
+                            <div class="w3-section">
+                                <div><i class="bi bi-folder-fill"></i>&ensp;{{ course.sections | length }} sections
+                                </div>
+                            </div>
+                            <a class="manage-course-btn" href="#">Manage</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="content2" class="tab-content">
+            <h4 class="w3-margin-bottom"><span style="font-weight:600">{{ draft_courses | length }}</span>
+                <span class="w3-text-gray" style="letter-spacing: -1px;font-weight: 300;">course(s) found</span>
+            </h4>
+            <div class=" w3-row-padding w3-section">
+                {% for course in draft_courses %}
+                <div class="w3-third" style="flex: 1;">
+                    <div class="course">
+                        <div class="course-info">
+                            <div class="label w3-tiny">
+                                <i class="bi bi-server" style="color: #6E44FF;"></i>
+                                {{course.program}}
+                            </div>
+                            <div class="header w3-xlarge">{{course.course_name}}</div>
+                            <div class="w3-section">
+                                <div><i class="bi bi-folder-fill"></i>&ensp;{{ course.sections | length }} sections
+                                </div>
+                            </div>
+                            <a class="w3-center complete-course-btn" href="#">Complete</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+    </div>
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}

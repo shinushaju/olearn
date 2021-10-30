@@ -15,7 +15,7 @@
         <div class="main-box">
             <form method="POST">
                 <div class="section-box w3-round-xlarge" style="box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;">
-                    <h4 style="font-weight: 500;padding: 4px 16px;">Course Outline</h4>
+                    <h4 style="font-weight: 500;padding: 4px 16px;">Create Course Outline</h4>
                     <div>
                         {% with messages = get_flashed_messages() %}
                         {% if messages %}
@@ -30,10 +30,12 @@
                     <div id="section-form">
                         <div class="section-container-box">
                             <div class="section-container">
-                                <div class="w3-margin-bottom" style="font-weight: 500;">Section 1</div>
-                                <input type="text" name="section_title[]" placeholder="Enter section 1 title..." />
-                                <textarea class="w3-margin-top" type="text" name="section_outcome[]"
-                                    placeholder="Enter section 1 outcome..." rows="2"></textarea>
+                                <div class="w3-margin-bottom" style="font-weight: 500;color: #666666;">Add a Section </div>
+                                <label class="required-field">Section Title</label>
+                                <input type="text" class="w3-margin-bottom" name="section_title[]" placeholder="Enter section title..." required/>
+                                <label class="required-field">Section Outcome</label>
+                                <textarea type="text" name="section_outcome[]"
+                                    placeholder="Enter section outcome..." rows="2" required></textarea>
                             </div>
                         </div>
                     </div>
