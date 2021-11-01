@@ -92,3 +92,10 @@ def add_lecture():
         return redirect(url_for('faculty_courses'))
         
     return render_template('faculty/add-lecture.html', user=current_user, course=course, sections=sections)
+
+# add lecture to a new course
+@app.route('/course/<course_id>/manage',methods=['GET','POST'])
+@login_required
+def manage_course(course_id):
+    course = Course.query.get(course_id)
+    return render_template('faculty/manage-course.html', user=current_user, course=course)

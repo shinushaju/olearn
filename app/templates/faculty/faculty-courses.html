@@ -32,7 +32,7 @@
                                 <div><i class="bi bi-folder-fill"></i>&ensp;{{ course.sections | length }} sections
                                 </div>
                             </div>
-                            <a class="manage-course-btn" href="#">Manage</a>
+                            <a class="manage-course-btn" href="{{url_for('manage_course', course_id=course.id)}}">Manage</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                                 <div><i class="bi bi-folder-fill"></i>&ensp;{{ course.sections | length }} sections
                                 </div>
                             </div>
-                            <a class="w3-center complete-course-btn" href="#">Complete</a>
+                            <a class="w3-center complete-course-btn" href="{{url_for('manage_course', course_id=course.id)}}">Complete</a>
                         </div>
                     </div>
                 </div>
