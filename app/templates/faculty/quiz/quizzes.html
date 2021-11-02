@@ -1,0 +1,30 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Quizzes{% endblock %}
+
+{% block customcss %}{% endblock %}
+
+{%block content%}
+
+<div class="w3-container w3-padding-16">
+    <h2>My Quizzes</h2>
+
+    {% for quiz in quizzes %}
+    <div class="w3-row-padding">
+        <div class="w3-quarter">
+            <div class="w3-card">
+            <h4>{{ quiz.quiz_title}}</h4>
+            <h6>{{ quiz.pass_percentage }}</h6>
+            <div class="w3-text-grey">{{ quiz.created_on }}</div>
+            <a href="{{url_for('view_quiz',quiz_id=quiz.id)}}">View Quiz</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}

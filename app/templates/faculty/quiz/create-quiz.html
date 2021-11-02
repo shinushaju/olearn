@@ -12,9 +12,9 @@
     <form method="POST">
         <label >Quiz Title</label><br>
         <input type="text"  name="quiz_title" ><br>
-        <label >Course Name</label><br>
-        <input type="text"  name="course_name" ><br><br>
-        <input type="submit" value="Submit">
+        <label >Pass Percentage</label><br>
+        <input type="number"  min="0" name="pass_percentage" ><br><br>
+        <input type="submit" value="Create Course">
       </form> 
     <div>
         {% for quiz in quizzes %}

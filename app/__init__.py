@@ -18,6 +18,7 @@ faculty_login_manager.login_view = 'faculty_login'
 faculty_login_manager.init_app(app)
 
 from app.models.faculty import Faculty
+from app.models.quizzes import Quiz, Question
 
 @faculty_login_manager.user_loader
 def load_user(user_id):
@@ -34,6 +35,12 @@ from app.views.student import auth, main
 from app.views.faculty import auth, main, quiz
 
 with app.app_context():
+
+    ### commands to drop tables
+    #Quiz.__table__.drop(db.engine)
+    #Question.__table__.drop(db.engine)
+
     db.create_all()
     #db.drop_all()
+    print("All Tables", db.engine.table_names())
   
