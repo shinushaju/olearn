@@ -1,0 +1,34 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Edit Question{% endblock %}
+
+{% block customcss %}{% endblock %}
+
+{%block content%}
+
+<div class="w3-container w3-padding-16">
+    <h2> Edit Question- {{question.question_text}} </h2>
+
+    <form method="POST">
+        <label >Question Text</label><br>
+        <input type="text"  name="question_text" value="{{question.question_text}}" ><br>
+        <label >Option 1</label><br>
+        <input type="text"  name="option_one" value="{{question.option_one}}" ><br>
+        <label >Option 2</label><br>
+        <input type="text"  name="option_two" value="{{question.option_two}}"><br>
+        <label >Option 3</label><br>
+        <input type="text"  name="option_three" value="{{question.option_three}}" ><br>
+        <label >Option 4</label><br>
+        <input type="text"  name="option_four"value="{{question.option_four}}" ><br>
+        <label >Answer</label><br>
+        <input type="text"  name="answer" value="{{question.answer}}" ><br>
+
+        <input type="submit" value="Update">
+        
+      </form><br><br>
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}

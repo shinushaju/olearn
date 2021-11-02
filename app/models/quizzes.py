@@ -26,7 +26,6 @@ class Question(db.Model):
     __tablename__ = 'question'
 
     id = db.Column(db.Integer, primary_key=True)
-    question_no = db.Column(db.Integer, nullable=False)
     question_text = db.Column(db.String(500), nullable=False)
     option_one = db.Column(db.String(150), nullable=True)
     option_two = db.Column(db.String(150), nullable=True)

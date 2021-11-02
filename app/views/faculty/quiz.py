@@ -29,7 +29,6 @@ def add_question():
     questions = Question.query.all()
     quizzes = Quiz.query.all()
     if request.method == 'POST':
-        question_no = request.form.get('question_no')
         question_text = request.form.get('question_text')
         option_one = request.form.get('option_one')
         option_two = request.form.get('option_two')
@@ -37,8 +36,8 @@ def add_question():
         option_four = request.form.get('option_four')
         answer = request.form.get('answer')
         quiz_id = request.form.get('quiz_id')
-        if question_no and question_text and option_one and option_two and option_three and option_four and answer and quiz_id:
-            question = Question(question_no=question_no, question_text=question_text, option_one=option_one, option_two=option_two, option_three=option_three, option_four=option_four, answer=answer, quiz_id=quiz_id)
+        if question_text and option_one and option_two and option_three and option_four and answer and quiz_id:
+            question = Question(question_text=question_text, option_one=option_one, option_two=option_two, option_three=option_three, option_four=option_four, answer=answer, quiz_id=quiz_id)
             # add the new quiz to the database
             db.session.add(question)
             db.session.commit()
@@ -54,10 +53,76 @@ def faculty_quizzes():
     return render_template('faculty/quiz/quizzes.html', user=current_user, quizzes=quizzes)
 
 
-# view all quizzes
+# view a single quiz
 @app.route('/faculty/quizzes/<quiz_id>')
 @login_required
 def view_quiz(quiz_id):
     quiz = Quiz.query.get(quiz_id)
     return render_template('faculty/quiz/view-quiz.html', user=current_user, quiz=quiz)
 
+# Edit the details of a quiz
+@app.route('/faculty/quizzes/<quiz_id>/edit',methods=['GET','POST'])
+@login_required
+def edit_quiz(quiz_id):
+    quiz = Quiz.query.get(quiz_id)
+    if request.method == 'POST':
+        quiz_title= request.form.get('quiz_title')
+        pass_percentage = request.form.get('pass_percentage')
+        is_active = request.form.get('is_active')
+        if is_active == "True":
+            is_active = True
+        else:
+            is_active = False
+        if quiz_title and pass_percentage:
+            quiz.quiz_title = quiz_title
+            quiz.pass_percentage=pass_percentage
+            quiz.is_active=is_active       
+            db.session.commit()
+            return redirect(url_for('view_quiz',quiz_id=quiz.id))
+    return render_template('faculty/quiz/edit-quiz.html', user=current_user, quiz=quiz)
+
+# Edit the details of a question
+@app.route('/faculty/quizzes/<quiz_id>/<question_id>/edit',methods=['GET','POST'])
+@login_required
+def edit_question(quiz_id,question_id):
+    quiz=Quiz.query.get(quiz_id)
+    question = Question.query.get(question_id)
+    if request.method == 'POST':
+        question_text= request.form.get('question_text')
+        option_one= request.form.get('option_one')
+        option_two= request.form.get('option_two')
+        option_three= request.form.get('option_three')
+        option_four= request.form.get('option_four')
+        answer= request.form.get('answer')
+        if question_text and option_one and option_two and option_three and option_four and answer:
+            question.question_text = question_text
+            question.option_one = option_one
+            question.option_two = option_two
+            question.option_three = option_three
+            question.option_four = option_four
+            question.answer = answer      
+            db.session.commit()
+            return redirect(url_for('view_quiz',quiz_id=quiz.id))
+    return render_template('faculty/quiz/edit-question.html', user=current_user, question=question,quiz=quiz)
+
+# Delete a question
+@app.route('/faculty/quizzes/<quiz_id>/<question_id>/delete')
+@login_required
+def delete_question(quiz_id,question_id):
+    quiz=Quiz.query.get(quiz_id)
+    question = Question.query.get(question_id)
+    db.session.delete(question)
+    db.session.commit()
+    return redirect(url_for('view_quiz',quiz_id=quiz.id))
+
+# Delete a Quiz
+@app.route('/faculty/quizzes/<quiz_id>/delete')
+@login_required
+def delete_quiz(quiz_id):
+    quiz=Quiz.query.get(quiz_id)
+    db.session.delete(quiz)
+    db.session.commit()
+    return redirect(url_for('faculty_quizzes'))
+
+
+    

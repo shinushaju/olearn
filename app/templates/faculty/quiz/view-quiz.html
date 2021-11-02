@@ -9,7 +9,45 @@
 <div class="w3-container w3-padding-16">
     <h2>{{quiz.quiz_title}}</h2>
     <div class="w3-container">
-        <p></p>
+        <p>Course Name: {{quiz.course_name}}</p> 
+        <p>Pass Percentage: {{quiz.pass_percentage}}</p>
+        <p>Status: {% if quiz.is_active %} <span class="w3-text-green">Active </span>{% else %}<span class="w3-text-red">Inactive</span> {%endif%} </p>
+        <br>
+        <a  href="{{url_for('edit_quiz',quiz_id=quiz.id)}}">Edit Quiz Info</a>
+        &emsp;
+        <a class="w3-text-blue" href="{{url_for('add_question')}}"> Add New Question</a>
+        &emsp;
+        <a class= "w3-text-red" href="{{url_for('delete_quiz',quiz_id=quiz.id)}}"> Delete Quiz</a>
+    </div>
+    <div class="w3-padding-large">
+        <h4>Questions:</h4>
+        <div class= "w3-section">
+            {%for question in quiz.questions%}
+            <div class="w3-section">
+                <div class="w3-padding w3-card">
+                <p><b>{{loop.index0 + 1}}. {{question.question_text}}? </b></p>
+                <div>
+                    <label>Options</label><br>
+                    <div>
+                        a. {{question.option_one}}<br>
+                        b. {{question.option_two}}<br>
+                        c. {{question.option_three}}<br>
+                        d. {{question.option_four}}<br>
+                    </div><br>
+                    <label>Correct Answer</label>
+                    <div>
+                        {{question.answer}}<br>
+                    </div>
+                </div>
+                <div>
+                    <a href="{{url_for('edit_question',quiz_id=quiz.id,question_id=question.id)}}">Edit Question</a>
+                    &emsp;
+                    <a class ="w3-text-red" href="{{url_for('delete_question',quiz_id=quiz.id,question_id=question.id)}}">Delete Question</a>
+                </div>
+                </div>       
+            </div>
+            {%endfor%}
+        </div>
     </div>
 
 

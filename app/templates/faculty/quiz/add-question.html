@@ -17,8 +17,6 @@
             <option value="{{quiz.id}}">{{quiz.quiz_title}}</option>
         {%endfor%}
         </select><br>
-        <label>Question Number</label><br>
-        <input type="text"  name="question_no" ><br>
         <label >Question Text</label><br>
         <input type="text"  name="question_text" ><br>
         <label >Option 1</label><br>
@@ -38,7 +36,7 @@
     <div>
         {% for question in questions %}
             {{question.quiz.quiz_title}}<br>
-            {{question.question_no}} - {{question.question_text}}<br>
+           {{question.question_text}}<br>
            Options: {{question.option_one}},  {{question.option_two}},  {{question.option_three}},  {{question.option_four}}<br>
            Answer: {{question.answer}}<br>
         {% endfor %}
