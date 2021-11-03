@@ -13,7 +13,7 @@
     <div id="reviews" class="tab-content w3-padding-16" style="display:none">
         <h3><span class="tab-content-header">{% if review_list %}267 Reviews{% else %}No reviews yet{% endif %}</span> <span class="w3-text-gray"
                 style="letter-spacing: -1px;">for {{ course.course_name }}</span></h3>
-                {% if can_write_review==true %}<a href="{{ url_for('student_review', cid=course.id) }}"><button class="write-review-button w3-right w3-btn w3-round-large">Write a review</button></a>{% endif %}
+                {% if can_write_review==true %}<a href="{{ url_for('student_review', cid=course.id, lid=lecture.id) }}"><button class="write-review-button w3-right w3-btn w3-round-large">Write a review</button></a>{% endif %}
         <div>
             {% for review in review_list %}
             <div class="w3-text-gray w3-padding-16 review-box">
