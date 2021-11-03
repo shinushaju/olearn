@@ -10,10 +10,20 @@ import math
 @app.route('/student/student_review/<cid>/<lid>',methods=['GET','POST'])
 def student_review(cid,lid):
     "This function takes reviews and publish it"
+
+    form=dict()
+    form['review_text']=""
+    form['rating']=float(0)
+
+    res = Student_review.query.filter_by(student_id=current_user.id).one_or_none()
+    # Abhiram: pre-populate form fields if review already exists
+    if res is not None:
+        form['review_text']=res.review_text
+        form['rating']=res.rating
+
     if request.method == "POST":  
         review_text = request.form.get("review_text")
         rating = request.form.get("rating") 
-        res = Student_review.query.filter_by(student_id=current_user.id).one_or_none()
         if res==None:
             r1 = Student_review(student_id=current_user.id,course_id=cid, review_text=review_text,rating=float(rating))
             db.session.add(r1)
@@ -28,10 +38,9 @@ def student_review(cid,lid):
             return redirect(url_for('course', course_id=cid,lecture_id=lid))
         
 
-    return render_template('student/student_review.html',user=current_user)
+    return render_template('student/student_review.html',user=current_user, form=form)
 
 @app.route('/student/delete_review')
 def delete_review():
     Student_review.query.delete()
     return "<html><body><h1>All reviews are deleted Successfully</h1></body></html>"
-    
