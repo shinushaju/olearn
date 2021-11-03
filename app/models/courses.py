@@ -27,7 +27,6 @@ class Section(db.Model):
     __tablename__ = 'section'
 
     id = db.Column(db.Integer, primary_key=True)
-    section_no = db.Column(db.Integer(), nullable=False)
     section_title = db.Column(db.String(120), nullable=False)
     section_outcome = db.Column(db.String(720), nullable=False)
 
@@ -43,7 +42,6 @@ class Lecture(db.Model):
     __tablename__ = 'lecture'
 
     id = db.Column(db.Integer, primary_key=True)
-    lecture_no = db.Column(db.Integer(), nullable=False)
     lecture_title = db.Column(db.String(120), nullable=False)
     lecture_link = db.Column(db.String(1000), nullable=False)
     lecture_duration = db.Column(db.Integer(), nullable=False)

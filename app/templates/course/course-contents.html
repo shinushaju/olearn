@@ -10,8 +10,8 @@
     <div class="w3-section main-box">
         {% for section in course.sections %}
             <div class="content-box">
-                <button onclick="handleCourseContent('Demo{{section.section_no}}')" class="content-box-btn w3-block w3-left-align">{{ section.section_no }}. {{ section.section_title}}</button>
-                <div id="Demo{{section.section_no}}" class="w3-hide content-box-content w3-animate-opacity">
+                <button onclick="handleCourseContent('Demo{{loop.index}}')" class="content-box-btn w3-block w3-left-align">{{ loop.index }}. {{ section.section_title}}</button>
+                <div id="Demo{{loop.index}}" class="w3-hide content-box-content w3-animate-opacity">
                     {% for lecture in section.lectures %}
                         <a href="{{ url_for('course', course_id=section.course.id, lecture_id=lecture.id) }}" class="content-box-content-item">
                             <div>
