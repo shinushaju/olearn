@@ -15,7 +15,7 @@ def student_review(cid,lid):
     form['review_text']=""
     form['rating']=float(0)
 
-    res = Student_review.query.filter_by(student_id=current_user.id).one_or_none()
+    res = Student_review.query.filter_by(student_id=current_user.id, course_id=cid).one_or_none()
     # Abhiram: pre-populate form fields if review already exists
     if res is not None:
         form['review_text']=res.review_text

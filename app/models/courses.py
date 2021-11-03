@@ -17,7 +17,7 @@ class Course(db.Model):
 
     faculty_id = db.Column(db.Integer, db.ForeignKey('faculty.id'),nullable=False)
     faculty = db.relationship('Faculty',backref=db.backref('faculties', cascade='all,delete-orphan', lazy=True))
-    sections=db.relationship('Section', back_populates='course')
+    sections=db.relationship('Section', back_populates='course', lazy=True)
     
     def __repr__(self):
         return '<Course %r>' % self.course_name
@@ -32,7 +32,7 @@ class Section(db.Model):
 
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'),nullable=False)
     course = db.relationship('Course',backref=db.backref('courses', cascade='all,delete-orphan', lazy=True))
-    lectures=db.relationship('Lecture', back_populates='section')
+    lectures=db.relationship('Lecture', back_populates='section', lazy=True)
 
     def __repr__(self):
         return '<Section %r>' % self.section_title
