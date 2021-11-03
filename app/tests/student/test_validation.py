@@ -1,6 +1,8 @@
 from app.utils.student.validate_email import validate_email
+from app.utils.student.validate_name import validate_name
 from app.utils.student.validate_password import validate_password
 from app.utils.student.validate_phone import validate_phone
+from app.utils.student.validate_name import validate_name
 
 
 
@@ -27,6 +29,12 @@ def test_validate_phone():
     assert validate_phone("+91 960-547-5907") == True
     assert validate_phone("9605475907") == False
     assert validate_phone("+91-(960) 547 5907") == True
+
+def test_validate_name():
+    assert validate_name("Anirudh sasi") == True 
+    assert validate_name("Anirudh 6sasi") == False
+    assert validate_name("123") == False
+    assert validate_name("Anirudh sasi K") == True
 
 
 def test_validate_password():

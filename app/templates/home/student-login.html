@@ -19,8 +19,8 @@
                             
                     <form class="box" method="post">
                     {%- for category, message in get_flashed_messages(with_categories = true) %}
-                    <div class= "alert alert-danger w3-center w3-text-red">
-                        {{ message }}
+                    <div class= "alert alert-danger w3-center {% if category=="error" %}w3-text-red{% else %}w3-text-deep-purple{% endif %}">
+                            {{ message }}
                     </div>
                     {%- endfor %}
                     <h3>Login as {{role}}</h3>           
