@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="w3-sidebar w3-bar-block w3-collapse w3-animate-left" style="width:240px;box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;" id="mySidebar">
+    <div class="w3-sidebar w3-bar-block w3-collapse w3-animate-left" style="width:220px;box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;" id="mySidebar">
         <div class="w3-padding-large">
 
             <div style="display: flex; justify-content: space-between;">
@@ -29,11 +29,11 @@
                 <button class="w3-right w3-button w3-xlarge w3-hide-large w3-text-gray" onclick="w3_close()"><i
                         class="bi bi-x"></i></button>
             </div>
-            <div class="w3-padding-24" id="nav">
-                <a href="{{url_for('faculty_dashboard')}}" class="side-nav-item w3-bar-item w3-round-large w3-padding-large active"><i class="bi bi-grid-1x2-fill"></i>&emsp;Dashboard</a>
-                <a href="{{url_for('faculty_courses')}}" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-file-earmark-fill"></i>&emsp;My Courses</a>
-                <a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-people-fill"></i>&emsp;My Students</a>
-                <a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-headset"></i>&emsp;Help Center</a>
+            <div class="w3-padding-24 side-nav side-nav-list" id="nav">
+                <div id="dashboard" class="w3-round-large"><a href="{{url_for('faculty_dashboard')}}" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-grid-1x2-fill"></i>&emsp;Dashboard</a></div>
+                <div id="courses" class="w3-round-large"><a href="{{url_for('faculty_courses')}}" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-file-earmark-fill"></i>&emsp;My Courses</a></div>
+                <div class="w3-round-large"><a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-people-fill"></i>&emsp;My Students</a></div>
+                <div class="w3-round-large"><a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-headset"></i>&emsp;Help Center</a></div>
             </div>
         </div>
     </div>
@@ -84,6 +84,26 @@
     </div>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/dashboard/faculty/main.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+//    $('.side-nav div').click(function(e) {
+        //var menu = $('#contents');
+        //$('.side-nav div').addClass('active');
+        var path = window.location.pathname;
+        var items = path.split("/")
+        var current = items[items.length -1]
+        var current_menu = $(`#${current}`).get(0)
+        //console.log(current_menu)
+        current_menu.addClass(' active')
+        //current_menu.addClass('active')
+        //var $parent = $(this).parent();
+        //$parent.addClass('active');
+        //e.preventDefault();
+    //});
+});
+    </script>
+
     {% block customjs %}
     <!-- Replace this block with custom JS exclusive to your page. -->
     {% endblock %}

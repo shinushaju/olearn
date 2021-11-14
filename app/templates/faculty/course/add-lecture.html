@@ -1,0 +1,93 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Course | {{section.section_title}} - Add Lectures{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/faculty/course.css') }}">
+{% endblock %}
+
+{%block content%}
+
+
+<div class="w3-container">
+    <div>
+        <a href="{{url_for('add_section')}}" style="text-decoration: none;color: #6e44ff;"><i
+                class="bi bi-arrow-left-short"></i> Back</a>&emsp; <span style="font-weight: 400;">{{section.course.course_name}} / Lectures</span>
+    </div>
+    <div class="w3-row w3-margin-top">
+        <div class="w3-full" style="display: flex;align-items: center;">
+            <h5>Section - <span style="font-weight: 600;">{{section.section_title}}</span></h5>
+        </div>
+    </div>
+    <hr>
+    <div class="w3-row w3-padding-16">
+        <div class="w3-third">
+            <div>
+                <b>Section Lectures {% if section.lectures | length > 0 %} ({{section.lectures | length }}) {% endif %}</b>
+                {% if section.lectures | length > 0 %}
+                {% for lecture in section.lectures %}
+                <div class="w3-card w3-round-large w3-padding w3-section" style="border-left: 4px solid #6e44ff;">
+                    <label class="w3-tiny w3-text-gray">Lecture {{ loop.index }}</label>
+                    <div style="font-weight: 500;">{{lecture.lecture_title}}</div>
+                    <div class="w3-text-gray" style="margin-top: 8px;margin-bottom: 4px;">
+                        <span>
+                            <a href="{{url_for('edit_lecture_info', course_id=course.id, section_id=section.id, lecture_id=lecture.id)}}" class="manage-section-btn">Edit Lecture Info <i class="bi bi-pencil-square"></i></a>
+                        </span>&ensp;|&ensp;  
+                        <span>
+                            <button type="button" onclick="document.getElementById('{{lecture.id}}').style.display='block'" class="manage-section-btn">Delete <i class="bi bi-trash"></i></button>
+                        </span> 
+                         <!-- delete lecture confirmation modal -->
+                         <div id="{{lecture.id}}" class="w3-modal">
+                            <div class="w3-modal-content w3-round-large" style="width: 372px;margin-top: 20vh;">
+                            <div class="w3-container w3-padding-large w3-padding-24">
+                                <div class="w3-small">Lecture - {{lecture.lecture_title}}</div>
+                                <h6 class="w3-text-black" style="font-weight:500;">Are you sure you want to delete this lecture?</h6>
+                                <div class="w3-section">
+                                    <a href="{{url_for('delete_lecture', lecture_id=lecture.id)}}" style="text-decoration: none;" class="w3-right w3-button w3-red w3-small w3-round-large w3-hover-black">Delete</a>
+                                    <span onclick="document.getElementById('{{lecture.id}}').style.display='none'"  class="w3-right w3-button w3-white w3-small w3-text-black w3-round-large w3-hover-white">Cancel</span>                
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- delete lecture confirmation modal -->
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                    <div class="w3-center w3-padding-48 w3-section" style="background-color: #f1f1f1;border-radius: 16px;">
+                        <div class="w3-center w3-xxlarge w3-text-gray"><i class="bi bi-file-text"></i></div>
+                        <div class="w3-text-gray w3-center">No Lectures</div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="w3-twothird" style="padding-left: 36px;">
+            <b>Add a Lecture</b>
+            <form method="POST" id="form">
+                <div class="w3-margin-top">
+                    <label class="w3-text-gray">Lecture Title</label>
+                    <input type="text" placeholder="Enter lecture title..." name="lecture_title" required>
+                </div>
+                <div class="w3-row">
+                    <div class="w3-twothird w3-margin-top">
+                        <label class="w3-text-gray">Lecture Link</label>
+                        <input type="url" placeholder="Enter lecture link..." name="lecture_link" required>
+                    </div>
+                    <div class="w3-third w3-margin-top" style="padding-left: 16px;">
+                        <label class="w3-text-gray">Lecture Duration</label>
+                        <input type="number" min="0" placeholder="Duration in mins" name="lecture_duration" required>
+                    </div>
+                </div>
+                <div class="w3-center w3-section">
+                    <input type="submit" name="action" class="w3-section w3-right submit-btn" value="Save Lecture"/>
+                    <a href="{{url_for('add_section')}}" class="w3-right w3-section w3-padding-small w3-margin-right w3-text-black" style="text-decoration: none;">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}

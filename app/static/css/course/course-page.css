@@ -192,3 +192,15 @@ textarea[type="text"]:focus {
     display: flex;
     justify-content: start;
 }
+
+.lecture-link {
+    text-decoration: none;
+}
+
+.lecture-active {
+    color: #6e44ff;
+}
+
+.lecture-inactive {
+    color: #000000;
+}

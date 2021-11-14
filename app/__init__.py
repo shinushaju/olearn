@@ -1,7 +1,7 @@
 from flask import Flask
-from flask.scaffold import F
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+
 app = Flask(__name__)
 
 #initializing SQLAlchemy
@@ -16,7 +16,6 @@ db.init_app(app)
 #  ------
 from app.models.faculty import Faculty
 from app.models.courses import Course, Section, Lecture
-
 
 # faculty login manager
 faculty_login_manager = LoginManager()
@@ -48,7 +47,7 @@ with app.app_context():
     #Course.__table__.drop(db.engine)
     #Section.__table__.drop(db.engine)
     #Lecture.__table__.drop(db.engine)
-    
+
     db.create_all()
     #db.drop_all()
     print("All Tables", db.engine.table_names())

@@ -1,0 +1,47 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Create Course - Edit Section Info{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/faculty/course.css') }}">
+{% endblock %}
+
+{%block content%}
+
+
+<div class="w3-container">
+    <div class="w3-text-gray"><a href="{{url_for('manage_course', course_id = course.id)}}" style="text-decoration: none;color: #6e44ff;"><i
+        class="bi bi-arrow-left-short"></i> Back</a>&emsp;Edit Section Info</div>
+    <div class="w3-row">
+        <div class="w3-twothird">
+            <h6 class="w3-text-gray w3-small">Course: {{course.course_name}}</h6>
+            <h5>Section - <span style="font-weight: 600;">{{section.section_title}}</span></h5>
+        </div>
+    </div>
+    <div class="w3-section">
+        <div class="w3-row">
+            <div class="w3-twothird">
+                <form method="POST" id="form">
+                    <div class="w3-margin-top">
+                        <label class="w3-text-gray">Section Title</label>
+                        <input type="text" placeholder="Enter section title..." name="section_title" value="{{section.section_title}}" required>
+                    </div>
+                    <div class="w3-margin-top">
+                        <label class="w3-text-gray">Section Outcome</label>
+                        <textarea type="text" placeholder="Enter section outcome..."
+                            name="section_outcome" rows="4" required>{{section.section_outcome}}</textarea>
+                    </div>
+                    <div class="w3-center w3-section">
+                        <input type="submit" name="action" class="w3-section w3-right submit-btn" value="Update Section Info"/>
+                        <a href="{{url_for('manage_course', course_id=course.id)}}" class="w3-right w3-section w3-button w3-white w3-text-black w3-round-large w3-margin-right"><b>Cancel</b></a>    
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}

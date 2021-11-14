@@ -1,25 +1,28 @@
-from flask import render_template, redirect, url_for, request, flash
+from flask import render_template, redirect, session, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import app, db
-# import db model
-from app.models.faculty import Faculty
 from flask_login import login_user, logout_user, login_required
+from app import app, db
+from app.models.faculty import Faculty
 from app.utils.auth import validate_email, validate_name, validate_password
 
-# sign up as a faculty
+### Faculty SignUp View
 @app.route('/faculty/join',methods=['GET','POST'])
 def faculty_signup():
     if request.method == 'POST':
             email = request.form.get('email')
-            name = request.form.get('name')
+            first_name = request.form.get('first_name')
+            last_name = request.form.get('last_name')
             password = request.form.get('password')
-            #print(name,email,password)
+            # concatenate first name and last name
+            name = first_name + ' ' + last_name
+
             if name and email and password and validate_name(name) and validate_email(email) and validate_password(password):
                 user = Faculty.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
                 if user: # if a user is found, we want to redirect back to signup page so user can try again
                     flash("User already exits!", 'error')
                 else:
                     faculty = Faculty(email=email, name=name, password=generate_password_hash(password, method='sha256'))
+                    faculty.role = "faculty"
                     # add the new faculty to the database
                     db.session.add(faculty)
                     db.session.commit()
@@ -35,7 +38,7 @@ def faculty_signup():
                     flash("Enter a Valid Password","error")
     return render_template('home/faculty-signup.html')
 
-# login as a faculty
+### Faculty Login View
 @app.route('/faculty/login', methods=['GET','POST'])
 def faculty_login():
     if request.method == 'POST':
@@ -56,10 +59,11 @@ def faculty_login():
                     flash("Fill the Mandatory Fields", "error")
     return render_template('home/faculty-login.html', role="Faculty")
 
-# log out a faculty
+### Faculty Logout View
 @app.route('/logout')
 @login_required
 def logout():
+    session.clear()
     logout_user()
     return redirect(url_for('home'))
 

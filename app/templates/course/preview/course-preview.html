@@ -1,0 +1,93 @@
+{%extends "course-base.html" %}
+
+{% block title %} {{course.course_name}} {% endblock %}
+
+<!-- add custom css in here -->
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course/course-page.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course/course-preview.css') }}">
+{% endblock %}
+
+{%block content%}
+<div class="course-container">
+        
+        <div class="w3-row-padding" style="background-color: #fff; color: #000; border-radius: 32px;">
+            <div class="w3-twothird">
+                <br>
+                <div class="w3-margin-top">
+                    <div class="w3-section w3-text-gray">{{ course.program }}</div>
+                    <h1 class="course-title" style="line-height: 2vw;">{{ course.course_name }}</h1>
+                    <p>Created by <b>{{course.faculty.name}}</b></p>
+                </div>
+                    {% if user and user.is_faculty %}
+                    <div class="w3-margin-top w3-padding-24">
+                        <a href="{{url_for('course_page', course_id=course.id, section_id=section_id, lecture_id=lecture_id)}}" style="text-decoration: none;border: 1px solid #6e44ff;border-radius: 100px;padding: 8px 24px; color: #6e44ff;font-weight: 500;">Go To Course</a>
+                    </div>
+                    {% endif %}
+            </div>
+            <div class="w3-third">
+                <div class="video-wrapper">
+                    <iframe width="853" height="480" src="{{course.preview_link}}" title="{{ course.course_name }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-row-padding w3-section w3-padding-24">
+            <div class="w3-twothird">
+                <div>
+                    <div class="w3-margin-bottom">
+                        <h5 class="tab-content-header">Course Overview</h5>
+                        <p class="w3-text-gray">{{course.course_overview}}</p>
+                    </div>
+                    <div class="w3-margin-bottom">
+                        <h5 class="tab-content-header">Course Skills</h5>
+                        <p class="w3-text-gray">{{course.course_skills}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="w3-section">
+                    {% include 'course/preview/course-content-preview.html' %}
+                </div> 
+                <div id="reviews">
+                    <h5 class="tab-content-header">Student Reviews</h5>
+                    <h6><span class="tab-content-header">267 Reviews</span> <span class="w3-text-gray"
+                            style="letter-spacing: -1px;">for {{course.course_name}}</span></h6>
+                    <div>
+                        {% for i in range (1,5)%}
+                        <div class="w3-text-gray w3-padding-16 review-box">
+                            <div>Review By <b>Shinu Shaju</b> <span class="w3-text-black"> • </span>October 23, 2020
+                            </div>
+                            <div style="margin-top: 8px;">
+                                This course is just not about the theory it actually helps you to understand things
+                                on practical basis.The test and assignments helps you to apply the disciplines and
+                                makes you basic clear.
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="w3-third">
+                <div class="w3-padding-large w3-round-xlarge" style="border: 1px solid #f0f0f0;box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;">
+                    <label class="w3-text-gray">Course Price</label>
+                    <h2 style="font-weight: 600; line-height: 2vw;margin-top: 4px;margin-bottom: 12px;">₹{{course.course_price}}</h2>
+                    <button type="button" style="display: block;" class="w3-block w3-button w3-indigo w3-round-large w3-hover-indigo">Buy Now</button>
+                    <div class="w3-section">
+                        <b>This course includes:</b>
+                        <div class="w3-text-gray">
+                            <div><i class="bi bi-collection-play"></i>&ensp;{{course.course_duration}} hours on-demand video</div>
+                            <div><i class="bi bi-folder"></i>&ensp;{{ course.sections | length }} sections</div>
+                            <div><i class="bi bi-clock"></i>&ensp;Full lifetime access</div>
+                            <div><i class="bi bi-award"></i>&ensp;Certificate of completion</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% block customjs %}
+    <script src="{{ url_for('static', filename='js/course/main.js') }}"></script>
+{% endblock %}
+
+{% endblock %}
