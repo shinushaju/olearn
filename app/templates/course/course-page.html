@@ -14,7 +14,14 @@
         <div class="w3-col w3-container l8 m12">
             <div class="w3-section w3-small"><span class="w3-text-gray"> {{ course.program }} /
                 </span><b><a style="text-decoration: none;" href="{{url_for('course_preview', course_id=course.id)}}">{{ course.course_name }}</a></b></div>
-            <h3 class="course-title">{{ lecture.lecture_title }}</h3>
+            <div class="w3-row" style="display: flex;align-items: center;">
+                <div class="w3-col l9 m8">
+                    <h4 class="course-title"><span style="font-weight: 300;">Lecture:</span> {{ lecture.lecture_title }}</h4>
+                </div>
+                <div class="w3-col l3 m4">
+                    <a class="w3-small w3-hover-black" href="#" style="float:right;text-decoration: none;padding: 8px 16px;border:1px solid #000; color: #000;border-radius: 100px;">Mark as Complete <i class="bi bi-check2-all"></i></a>
+                </div>
+            </div>
             <div class="w3-section">
                 <div class="video-wrapper">
                     <iframe width="853" height="480" src="{{lecture.lecture_link}}" title="{{ lecture.lecture_title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
