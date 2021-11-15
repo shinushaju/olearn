@@ -26,3 +26,8 @@ h6 {
   color: #6e44ff;
   font-weight: 700;
 }
+
+.nav-link-active {
+  color: #6e44ff;
+  font-weight: 600;
+}

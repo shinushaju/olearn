@@ -24,14 +24,14 @@
 
             <div style="display: flex; justify-content: space-between;">
                 <a href="{{ url_for('home') }}" class="w3-bar-item"
-                    style="text-decoration: none;font-size: 2rem; font-weight: bold;">O-Learn<span
+                    style="text-decoration: none;font-size: 1.5rem; font-weight: bold;">O-Learn<span
                         style="font-size: 2.5rem; line-height: 0rem; color: #6E44FF;">.</span></a>
                 <button class="w3-right w3-button w3-xlarge w3-hide-large w3-text-gray" onclick="w3_close()"><i
                         class="bi bi-x"></i></button>
             </div>
             <div class="w3-padding-24 side-nav side-nav-list" id="nav">
-                <div id="dashboard" class="w3-round-large"><a href="{{url_for('faculty_dashboard')}}" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-grid-1x2-fill"></i>&emsp;Dashboard</a></div>
-                <div id="courses" class="w3-round-large"><a href="{{url_for('faculty_courses')}}" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-file-earmark-fill"></i>&emsp;My Courses</a></div>
+                <div id="dashboard" class="w3-round-large {% if request.path == '/faculty/dashboard' %} active {% endif %}"><a href="{{url_for('faculty_dashboard')}}" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-grid-1x2-fill"></i>&emsp;Dashboard</a></div>
+                <div id="courses" class="w3-round-large {% if 'courses' in request.path or 'course' in request.path %} active {% endif %}"><a href="{{url_for('faculty_courses')}}" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-file-earmark-fill"></i>&emsp;My Courses</a></div>
                 <div class="w3-round-large"><a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-people-fill"></i>&emsp;My Students</a></div>
                 <div class="w3-round-large"><a href="#" class="side-nav-item w3-bar-item w3-round-large w3-padding-large"><i class="bi bi-headset"></i>&emsp;Help Center</a></div>
             </div>

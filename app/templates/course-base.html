@@ -26,10 +26,10 @@
         <div class="w3-bar w3-mobile w3-white nav-bar">
             <a href="{{ url_for('home') }}" class="w3-bar-item" style="text-decoration: none;font-size: 1.5rem; font-weight: bold;">O-Learn<span style="font-size: 2.5rem; line-height: 0rem; color: #6E44FF;">.</span></a>
             <span class="w3-display-middle">
-                <a href="{{ url_for('programs') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Programs</a>
-                <a href="{{ url_for('courses') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Courses</a>
-                <a href="{{ url_for('students') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Students</a>
-                <a href="{{ url_for('faculty') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Faculty</a>
+                <a href="{{ url_for('programs') }}" class="{% if request.path == '/programs' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Programs</a>
+                <a href="{{ url_for('courses') }}" class="{% if request.path == '/courses' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Courses</a>
+                <a href="{{ url_for('students') }}" class="{% if request.path == '/students' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Students</a>
+                <a href="{{ url_for('faculty') }}" class="{% if request.path == '/faculty' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Faculty</a>
             </span>
             <div class=" w3-right" style="margin-top: 4px;">
                 {% if user and user.is_authenticated %}
