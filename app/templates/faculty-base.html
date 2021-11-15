@@ -85,25 +85,6 @@
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/dashboard/faculty/main.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function () {
-//    $('.side-nav div').click(function(e) {
-        //var menu = $('#contents');
-        //$('.side-nav div').addClass('active');
-        var path = window.location.pathname;
-        var items = path.split("/")
-        var current = items[items.length -1]
-        var current_menu = $(`#${current}`).get(0)
-        //console.log(current_menu)
-        current_menu.addClass(' active')
-        //current_menu.addClass('active')
-        //var $parent = $(this).parent();
-        //$parent.addClass('active');
-        //e.preventDefault();
-    //});
-});
-    </script>
-
     {% block customjs %}
     <!-- Replace this block with custom JS exclusive to your page. -->
     {% endblock %}

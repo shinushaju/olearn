@@ -15,7 +15,8 @@ h6 {
   font-family: "Poppins", sans-serif;
 }
 
-input[type="number"],input[type="url"],
+input[type="number"],
+input[type="url"],
 select,
 textarea[type="text"] {
   display: block;
@@ -28,7 +29,8 @@ textarea[type="text"] {
   background: #ffffff;
 }
 
-input[type="number"]:focus,input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="url"]:focus,
 select:focus,
 textarea[type="text"]:focus {
   border: 1px solid #bbbbbb;
@@ -36,7 +38,8 @@ textarea[type="text"]:focus {
   outline: none;
 }
 
-input[type="number"]::placeholder,input[type="url"]::placeholder,
+input[type="number"]::placeholder,
+input[type="url"]::placeholder,
 select::placeholder,
 textarea[type="text"]::placeholder {
   color: #999999;

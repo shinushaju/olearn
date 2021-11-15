@@ -1,6 +1,7 @@
 from app import db
 import datetime
 
+# Course Model
 class Course(db.Model):
 
     __tablename__ = 'course'
@@ -25,6 +26,7 @@ class Course(db.Model):
     def __repr__(self):
         return '<Course %r>' % self.course_name
 
+# Section Model
 class Section(db.Model):
 
     __tablename__ = 'section'
@@ -40,6 +42,7 @@ class Section(db.Model):
     def __repr__(self):
         return '<Section %r>' % self.section_title
 
+# Lecture Model
 class Lecture(db.Model):
 
     __tablename__ = 'lecture'
