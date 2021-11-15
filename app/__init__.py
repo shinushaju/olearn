@@ -15,6 +15,7 @@ db.init_app(app)
 # ------------
 from app.models.faculty import Faculty
 from app.models.courses import Course, Section, Lecture
+from app.models.quizzes import Quiz, Question
 
 # faculty login manager configuration
 # ------------------------------------
@@ -23,13 +24,6 @@ faculty_login_manager.login_view = 'faculty_login'
 faculty_login_manager.login_message = "Please login to continue!"
 faculty_login_manager.login_message_category = "warning"
 faculty_login_manager.init_app(app)
-<<<<<<< HEAD
-=======
-
-from app.models.faculty import Faculty
-from app.models.quizzes import Quiz, Question
-
->>>>>>> 4e32a8e2e3d2e11c0b14db02df7beb26de7cd7e2
 @faculty_login_manager.user_loader
 def load_user(user_id):
     return Faculty.query.get(int(user_id))
@@ -48,19 +42,14 @@ from app.views.course import routes
 # app context
 # -----------
 with app.app_context():
-<<<<<<< HEAD
     
     ### commands to drop tables
     #Faculty.__table__.drop(db.engine)
     #Course.__table__.drop(db.engine)
     #Section.__table__.drop(db.engine)
     #Lecture.__table__.drop(db.engine)
-=======
-
-    ### commands to drop tables
     #Quiz.__table__.drop(db.engine)
     #Question.__table__.drop(db.engine)
->>>>>>> 4e32a8e2e3d2e11c0b14db02df7beb26de7cd7e2
 
     db.create_all()
     #db.drop_all()
