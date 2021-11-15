@@ -1,0 +1,31 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Edit Quiz{% endblock %}
+
+{% block customcss %}{% endblock %}
+
+{%block content%}
+
+<div class="w3-container w3-padding-16">
+    <h2>Edit Quiz- {{quiz.quiz_title}}</h2>
+
+    <form method="POST">
+        <label >Quiz Title </label><br>
+        <input type="text"  name="quiz_title" value="{{quiz.quiz_title}}" ><br>
+        <label >Pass Percentage</label><br>
+        <input type="number"  min="0" name="pass_percentage" value="{{quiz.pass_percentage}}"><br>
+        <label>Status</label><br>
+        <select name="is_active">
+            <option value="True" {% if quiz.is_active %} selected="selected" {% endif %}>Active</option>
+            <option value="False" {% if not quiz.is_active %} selected="selected" {% endif %}>Inactive</option>
+        </select><br><br>
+        <input type="submit" value="Update quiz info">
+      </form> 
+    
+    
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}
