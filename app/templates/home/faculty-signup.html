@@ -34,8 +34,12 @@
               {% endif %}
             {% endwith %}
             <div style="margin-bottom: 8px;">
-              <label for="full-name">Full Name</label>
-              <input type="text" placeholder="Your full name" name="name" id="first name" required>              
+                <label for="first-name">First Name</label>
+                <input type="text" placeholder="First name" name="first_name" id="first_name" required>                              
+            </div>
+            <div style="margin-bottom: 8px;">
+              <label for="last-name">Last Name</label>
+              <input type="text" placeholder="Last name" name="last_name" id="last_name" required>  
             </div>
             <div style="margin-bottom: 8px;">
               <label for="email">Email Address</label>
@@ -45,10 +49,6 @@
               <label for="psw">Password</label>
               <input type="password" placeholder="Enter password" name="password" id="psw" required>
             </div>
-            <!-- <div style="margin-bottom: 8px;">
-              <label for="psw-repeat">Repeat Password</label>
-              <input type="password" placeholder="Repeat password" name="psw-repeat" id="psw-repeat" required>
-            </div> -->
             <div style="margin-bottom: 8px;">
               <input class="checkbox" type="checkbox">
               <label> &ensp;I acknowledge and agree with all terms and services.
@@ -59,7 +59,7 @@
             </div>
         </form>
         <div class="w3-center">
-          <p>Already have an account? <a class="form-link" href="{{ url_for('login') }}"><b>Sign in</b></a>.</p>
+          <p>Already have an account? <a class="form-link" href="{{ url_for('faculty_login') }}"><b>Sign in</b></a>.</p>
         </div>
       </div>
     </div>

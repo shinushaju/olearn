@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+<head>
+    {% block head %}
+    <title> O-Learn | Course - {% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/course/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/faculty/main.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    {% endblock %}
+
+    {% block customcss %}
+    <!-- Replace this block with custom css exclusive to your page. -->
+    {% endblock %}
+</head>
+
+<body>
+
+    <!-- navbar starts here -->
+    <header class="w3-top nav-container">
+        <div class="w3-bar w3-mobile w3-white nav-bar">
+            <a href="{{ url_for('home') }}" class="w3-bar-item" style="text-decoration: none;font-size: 1.5rem; font-weight: bold;">O-Learn<span style="font-size: 2.5rem; line-height: 0rem; color: #6E44FF;">.</span></a>
+            <span class="w3-display-middle">
+                <a href="{{ url_for('programs') }}" class="{% if request.path == '/programs' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Programs</a>
+                <a href="{{ url_for('courses') }}" class="{% if request.path == '/courses' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Courses</a>
+                <a href="{{ url_for('students') }}" class="{% if request.path == '/students' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Students</a>
+                <a href="{{ url_for('faculty') }}" class="{% if request.path == '/faculty' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Faculty</a>
+            </span>
+            <div class=" w3-right" style="margin-top: 4px;">
+                {% if user and user.is_authenticated %}
+                <span class="w3-right w3-dropdown-click w3-hide-small">
+                    <button onclick="handleDropDownMenu()" class="dropdown-btn">
+                        <span style="color: #666666;">{{user.name}}&ensp;</span>
+                        <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
+                    </button>
+                    <div style="margin-right: 32px;margin-top: 16px;" id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">
+                        <a href="#" class="w3-bar-item user-menu-item">My Profile</a>
+                        <a href="{{ url_for('faculty_dashboard') }}" class="w3-bar-item user-menu-item">My Dashboard</a>
+                        <a href="#" class="w3-bar-item user-menu-item">Settings</a>
+                        <a href="{{ url_for('logout') }}" class="w3-bar-item user-menu-item">Logout</a>
+                      </div>
+                </span>
+                {% else %}
+                <a href="{{ url_for('login') }}" class="w3-bar-item w3-button w3-hover-white w3-hide-small w3-margin-right" style="font-weight: 600;">Login</a>
+                <a href="{{ url_for('sign_up') }}" class="w3-bar-item w3-button w3-round-xxlarge w3-hover-indigo w3-hide-small" style="background-color: #6E44FF; color: #FFFFFF;font-weight: 600;">Join Free</a>
+                {% endif %}
+            </div>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hover-white w3-right w3-hide-large w3-hide-medium" style="margin-top: 8px;" onclick="navbarCollapse()">&#9776;</a>
+        </div>
+
+        <div id="demo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-center w3-padding-large" style="height: 100vh;">
+            <a href="{{ url_for('programs') }}" class="w3-bar-item w3-button w3-hover-white menu-item">Programs</a>
+            <a href="{{ url_for('courses') }}" class="w3-bar-item w3-button w3-hover-white menu-item">Courses</a>
+            <a href="{{ url_for('students') }}" class="w3-bar-item w3-button w3-hover-white menu-item">Students</a>
+            <a href="{{ url_for('faculty') }}" class="w3-bar-item w3-button w3-hover-white menu-item">Faculty</a>
+            {% if user and not user.is_authenticated %}
+            <div style="margin: 32px auto;">
+                <a href="{{ url_for('login') }}" class="w3-bar-item w3-button w3-border w3-border-gray w3-hover-black w3-round-xxlarge w3-center" style="font-weight: 600;">Login</a><br/>
+                <a href="{{ url_for('sign_up') }}" class="w3-bar-item w3-button w3-hover-indigo w3-btn w3-round-xxlarge w3-center" style="background-color: #6E44FF; color: #FFFFFF;font-weight: 600;">Join Free</a>
+            </div>
+            {%else%}
+            <span class="w3-right w3-dropdown-click w3-hide-medium w3-hide-large">
+                <button onclick="handleDropDownMenu()" class="dropdown-btn">
+                    {% if user %}<span style="color: #666666;">{{user.name}}&ensp;</span>{% endif %}
+                    <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
+                </button>
+                <div style="margin-right: 32px;margin-top: 16px;" id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">
+                    <a href="#" class="w3-bar-item user-menu-item">My Profile</a>
+                    <a href="#" class="w3-bar-item user-menu-item">Settings</a>
+                    <a href="{{ url_for('logout') }}" class="w3-bar-item user-menu-item">Logout</a>
+                  </div>
+            </span>
+            {% endif %}
+        </div>
+    </header>
+    <!-- navbar ends here -->
+
+    <div class="w3-padding-64">{% block content %}{% endblock %}</div>
+
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/main.js') }}" ></script>
+    {% if user and user.is_authenticated %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dashboard/faculty/main.js') }}"></script>
+    {% endif %}
+</body>
+</html>
