@@ -16,15 +16,13 @@ class Query(db.Model):
     def __repr__(self):
         return '<Query %r>' % self.query_text
 
-'''
+
 class Reply(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     reply_text = db.Column(db.String(100))
-    request_id = db.Column(db.Integer, db.ForeignKey('Query.id'))
-    faculty_id = db.Column(db.Integer, db.ForeignKey('Faculty.id'))
+    faculty_id = db.Column(db.Integer)
     
     # we need foregin keys- course, faculty and student, query, 
     # columns id, reply_text, date and time
     def __repr__(self):
-        return '<Course %r>' % self.course_name
-'''
+        return '<Reply %r>' % self.reply_text
