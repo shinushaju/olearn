@@ -1,4 +1,3 @@
-from operator import le
 from app import app, db
 from flask import render_template, redirect, url_for, request, flash, session
 from flask_login import login_required, current_user
