@@ -16,7 +16,7 @@ class Course(db.Model):
     created_on = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     difficulty_level = db.Column(db.String(150), nullable=False)
     is_active = db.Column(db.Boolean, default=False, nullable=False)
-    is_draft = db.Column(db.Boolean, default=False, nullable=False)
+    is_draft = db.Column(db.Boolean, default=True, nullable=False)
     program = db.Column(db.String(150), nullable=False)
 
     faculty_id = db.Column(db.Integer, db.ForeignKey('faculty.id'),nullable=False)
