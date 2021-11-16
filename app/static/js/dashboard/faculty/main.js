@@ -33,20 +33,3 @@ function handleDropDownMenuMobile() {
         mobileItem.className = mobileItem.className.replace(" w3-show", "");
     }
 }
-
-// code to change active class in navbar 
-
-// Get the container element
-var linksContainer = document.getElementById("nav");
-
-// Get all buttons with class="btn" inside the container
-var links = linksContainer.getElementsByClassName("side-nav-item");
-// Loop through the buttons and add the active class to the current/clicked button
-for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener("click", function () {
-        var current = document.getElementsByClassName("active");
-        //console.log(current)
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-    });
-}

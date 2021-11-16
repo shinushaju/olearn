@@ -1,13 +1,3 @@
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: Helvetica, Arial, sans-serif;
-}
-
 .nav-container {
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
@@ -38,17 +28,22 @@ h6 {
 }
 @media only screen and (max-width: 740px) {
   .footer-container {
-      padding: 0px 24px;
+    padding: 0px 24px;
   }
 }
 
 .wrap-text {
-  max-width:75%;
-  word-wrap:break-word;
+  max-width: 75%;
+  word-wrap: break-word;
 }
 @media only screen and (max-width: 740px) {
   .wrap-text {
-    max-width:100%;
-    word-wrap:break-word;
+    max-width: 100%;
+    word-wrap: break-word;
   }
+}
+
+.nav-link-active {
+  color: #6e44ff;
+  font-weight: 600;
 }

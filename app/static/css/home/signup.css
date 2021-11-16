@@ -52,7 +52,7 @@ input[type=password] {
     background: #ffffff;
 }
 
-input[type=text]:focus,input[type=email],
+input[type=text]:focus,input[type=email]:focus,
 input[type=password]:focus {
     background-color: #ffffff;
     border: 1px solid rgb(110,68,255,0.5);

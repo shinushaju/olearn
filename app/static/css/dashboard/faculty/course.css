@@ -1,0 +1,200 @@
+#form input[type="text"] {
+  display: block;
+  padding: 6px 12px;
+  width: 100%;
+  outline: none;
+  transition: 0.25s;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+#form input[type="text"]:focus {
+  border: 1px solid #bbbbbb;
+  transition: 0.3s;
+  outline: none;
+}
+
+#form input[type="text"]::placeholder {
+  color: #999999;
+}
+
+div.input input[type="text"] {
+  display: block;
+  padding: 6px 12px;
+  width: 100%;
+  outline: none;
+  transition: 0.25s;
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+#input-box input[type="text"] {
+  display: block;
+  padding: 6px 12px;
+  width: 100%;
+  outline: none;
+  transition: 0.25s;
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+div.input input[type="text"]:focus {
+  border: 1px solid rgb(110, 68, 255, 0.5);
+  transition: 0.3s;
+  outline: none;
+}
+
+#input-box input[type="text"]:focus {
+  border: 1px solid rgb(110, 68, 255, 0.5);
+  transition: 0.3s;
+  outline: none;
+}
+
+.add-section-btn,
+.save-draft-btn {
+  background-color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid #f7f5ff;
+  color: #6e44ff;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.create-course-btn {
+  background-color: #000000;
+  padding: 8px 16px;
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: #6e44ff;
+  padding: 8px 16px;
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.submit-btn:disabled {
+  opacity: 0.3;
+}
+
+.main-box {
+  width: 60%;
+}
+@media only screen and (max-width: 740px) {
+  .main-box {
+    width: 100%;
+  }
+}
+
+.section-box,
+.lecture-box {
+  margin-top: 16px;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  padding: 8px 8px;
+}
+
+.section-container {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 16px;
+}
+
+.lecture-main-box {
+  width: 100%;
+}
+
+.lecture-container {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 0px 8px;
+}
+
+.delete-course-btn {
+  background-color: transparent;
+  border: 1px solid red;
+  color: red;
+  font-weight: 600;
+  border-radius: 100px;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.archive-course-btn {
+  background-color: #1e1926;
+  border: 1px solid #1e1926;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 100px;
+  padding: 12px 20px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.save-course-btn {
+  background-color: #6e44ff;
+  border: 1px solid #6e44ff;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 100px;
+  padding: 12px 20px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.add-lecture-btn {
+  background-color: #ff7364;
+  color: #ffffff;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.add-lecture-btn:hover {
+  background-color: #ff7364;
+  color: #ffffff;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.edit-lecture-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.edit-lecture-btn:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.manage-section-btn {
+  color: #666666;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  font-size: small;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
+.manage-section-btn:hover {
+  color: #6e44ff;
+}
