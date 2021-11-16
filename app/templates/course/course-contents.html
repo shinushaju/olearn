@@ -4,14 +4,14 @@
             <button class="w3-btn w3-round-large w3-block">DROP</button>
             {% else %}
             <button class="w3-btn w3-round-large w3-block">ENROLL NOW</button>
-            {% endif %}
+        {% endif %}
     </div>
     <h4>Contents</h4>
     <div class="w3-section main-box">
         {% for section in course.sections %}
             <div class="content-box">
                 <button onclick="handleCourseContent('Demo{{loop.index}}')" class="content-box-btn w3-block w3-left-align">{{ loop.index }}. {{ section.section_title}}</button>
-                <div id="Demo{{loop.index}}" class="w3-hide content-box-content w3-animate-opacity">
+                <div id="Demo{{ loop.index }}" class="w3-hide content-box-content w3-animate-opacity">
                     {% for lecture in section.lectures %}
                         <a href="{{ url_for('course', course_id=section.course.id, lecture_id=lecture.id) }}" class="content-box-content-item">
                             <div>
@@ -23,6 +23,35 @@
                             </div>
                         </a>
                     {% endfor %}
+
+                    <!-- Completed section -->
+                    {% if loop.index<=completed_sections %}
+                        {% if enrolled==true %}
+                            <button type="submit" class="w3-btn w3-green">Completed</button>
+                        {% endif %}
+                    {% endif %}
+
+                    <!-- Current section -->
+                    {% if loop.index==completed_sections+1 %}
+                        {% if enrolled==true %}
+                            <form method="POST" action="{{ url_for('markSectionAsComplete') }}">
+                                <input type="hidden" name="courseid" value="{{ course.id }}">
+                                <input type="hidden" name="redirect_url" value="{{ request.url }}">
+                                <button type="submit" class="w3-btn w3-black">Mark as completed</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+
+                    <!-- Locked section -->
+                    {% if loop.index>completed_sections+1 %}
+                        {% if enrolled==true %}
+                            <form method="POST" action="{{ url_for('markSectionAsComplete') }}">
+                                <input type="hidden" name="courseid" value="{{ course.id }}">
+                                <input type="hidden" name="redirect_url" value="{{ request.url }}">
+                                <button type="submit" disabled>Mark as completed</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

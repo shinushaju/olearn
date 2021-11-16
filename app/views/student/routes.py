@@ -35,7 +35,7 @@ def course_enroll(cid):
     #Checking whether the course is previously enrolled
     #if not, enroll the course in the enrolled_courses table
     if len(enrolled) == 0:
-        db.session.add(Enrolled_courses( student_id = current_user.id, course_id = cid, progress = 0))
+        db.session.add(Enrolled_courses( student_id = current_user.id, course_id = cid, completed_sections=0))
         db.session.commit()
     return redirect(url_for('student_dashboard'))
 
