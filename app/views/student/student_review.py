@@ -4,9 +4,11 @@ from flask_login import login_required, current_user
 from app import app, db
 from app.models.courses import Course
 from app.models.student_review import Student_review
+from app.utils.student.decorators import student_role_required
 import math
 
 @login_required
+@student_role_required()
 @app.route('/student/student_review/<cid>/<lid>',methods=['GET','POST'])
 def student_review(cid,lid):
     "This function takes reviews and publish it"
@@ -41,6 +43,8 @@ def student_review(cid,lid):
     return render_template('student/student_review.html',user=current_user, form=form)
 
 @app.route('/student/delete_review')
+@login_required
+@student_role_required()
 def delete_review():
     Student_review.query.delete()
     return "<html><body><h1>All reviews are deleted Successfully</h1></body></html>"

@@ -3,8 +3,10 @@ from flask_login import login_required, current_user
 
 from app import app
 from app.models.courses import Course
+from app.utils.student.decorators import student_role_required
 
 @login_required
+@student_role_required()
 @app.route('/student/search')
 def search():
     # Collecting GET parameters

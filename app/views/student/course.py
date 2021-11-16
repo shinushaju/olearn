@@ -8,8 +8,10 @@ from app import app
 from app.models.courses import Course, Lecture
 from app.models.student_review import Student_review
 from app.models.enrolledCourses import Enrolled_courses
+from app.utils.student.decorators import student_role_required
 
 @login_required
+@student_role_required()
 @app.route("/student/course/<course_id>/lecture/<lecture_id>")
 def course(course_id, lecture_id):
     # Setting current course in session

@@ -4,10 +4,12 @@ from app import app,db
 from app.models.courses import Course
 from app.models.enrolledCourses import Enrolled_courses
 from app.models.student_review import Student_review
+from app.utils.student.decorators import student_role_required
 import math
 
 @app.route('/student/dashboard')
 @login_required
+@student_role_required()
 def student_dashboard():
     available = Course.query.all() #Storing all course record in Course table to a list varaible
     enrolled = Enrolled_courses.query.filter_by(student_id = current_user.id).all()#Storing all the enrolled courses for the logged in user
@@ -30,6 +32,7 @@ def student_dashboard():
 
 @app.route('/student/enroll/<cid>')
 @login_required
+@student_role_required()
 def course_enroll(cid):
     enrolled = Enrolled_courses.query.filter_by(student_id = current_user.id, course_id = cid).all()
     #Checking whether the course is previously enrolled

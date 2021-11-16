@@ -6,9 +6,11 @@ from flask_login import login_required, current_user
 from app import app, db
 from app.models.student_details import Student_details
 from app.utils.student.validate_phone import validate_phone
+from app.utils.student.decorators import student_role_required
 
 
 @login_required
+@student_role_required()
 @app.route('/student/student_details', methods=['GET','POST'])
 def student_details():
         if request.method == 'POST':
