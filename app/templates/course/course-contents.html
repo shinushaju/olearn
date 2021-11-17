@@ -1,7 +1,7 @@
 <div class="w3-section">
     <div class="action-button">
         {% if enrolled==true %}
-        <a style="text-decoration: none;" href="{{ url_for('drop_course', course_id = result.course.id) }}"><button class="w3-btn w3-round-large w3-block">DROP</button></a>
+        <a style="text-decoration: none;" href="{{ url_for('drop_course', course_id = course.id) }}"><button class="w3-btn w3-round-large w3-block">DROP</button></a>
             {% else %}
             <button class="w3-btn w3-round-large w3-block">ENROLL NOW</button>
         {% endif %}
@@ -24,34 +24,37 @@
                         </a>
                     {% endfor %}
 
-                    <!-- Completed section -->
-                    {% if loop.index<=completed_sections %}
-                        {% if enrolled==true %}
-                            <button type="submit" class="w3-btn w3-green">Completed</button>
+                    <div class="w3-margin-left">
+                        <!-- Completed section -->
+                            {% if loop.index<=completed_sections %}
+                            {% if enrolled==true %}
+                                <button type="submit" class="w3-button w3-round-large w3-borders w3-green">Completed</button>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
 
-                    <!-- Current section -->
-                    {% if loop.index==completed_sections+1 %}
-                        {% if enrolled==true %}
-                            <form method="POST" action="{{ url_for('markSectionAsComplete') }}">
-                                <input type="hidden" name="courseid" value="{{ course.id }}">
-                                <input type="hidden" name="redirect_url" value="{{ request.url }}">
-                                <button type="submit" class="w3-btn w3-black">Mark as completed</button>
-                            </form>
+                        <!-- Current section -->
+                        {% if loop.index==completed_sections+1 %}
+                            {% if enrolled==true %}
+                                <form method="POST" action="{{ url_for('markSectionAsComplete') }}">
+                                    <input type="hidden" name="courseid" value="{{ course.id }}">
+                                    <input type="hidden" name="redirect_url" value="{{ request.url }}">
+                                    <button type="submit" class="w3-button w3-round-large w3-border w3-border-green w3-hover-green">Mark as completed</button>
+                                </form>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
 
-                    <!-- Locked section -->
-                    {% if loop.index>completed_sections+1 %}
-                        {% if enrolled==true %}
-                            <form method="POST" action="{{ url_for('markSectionAsComplete') }}">
-                                <input type="hidden" name="courseid" value="{{ course.id }}">
-                                <input type="hidden" name="redirect_url" value="{{ request.url }}">
-                                <button type="submit" disabled>Mark as completed</button>
-                            </form>
+                        <!-- Locked section -->
+                        {% if loop.index>completed_sections+1 %}
+                            {% if enrolled==true %}
+                                <form method="POST" action="{{ url_for('markSectionAsComplete') }}">
+                                    <input type="hidden" name="courseid" value="{{ course.id }}">
+                                    <input type="hidden" name="redirect_url" value="{{ request.url }}">
+                                    <button type="submit" class="w3-button w3-round-large w3-border-green w3-white" disabled>Mark as completed</button>
+                                </form>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
+                    </div>
+
                 </div>
             </div>
         {% endfor %}

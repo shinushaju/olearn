@@ -45,10 +45,11 @@ def course(course_id, lecture_id):
     # If student is already enrolled, present DROP facility
     # Else present ENROLL facility
     result=Enrolled_courses.query.filter((Enrolled_courses.course_id==course_id) & (Enrolled_courses.student_id==current_user.id)).one_or_none()
-    enrolled=True
-    completed=result.completed_sections
-    if result is None:
-        enrolled=False
+    enrolled=False
+    completed=0
+    if result is not None:
+        enrolled=True
+        completed=result.completed_sections
 
     return render_template('course/course-page.html', course=course, lecture=lecture, review_list=review_list, enrolled=enrolled, can_write_review=can_write_review, completed_sections=completed)
 

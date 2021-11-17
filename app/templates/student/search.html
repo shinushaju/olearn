@@ -54,6 +54,7 @@
         {% for course in courses %}
         <div class="w3-section">
             <div class="w3-padding-24 w3-padding-small w3-stretch">
+                <a href="{{ url_for('course', course_id = course.id, lecture_id=course.sections[0].lectures[0].id) }}">
                 <div class="card-courses">
                     <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
                     <h6 class="w3-large" style="font-weight: 500;">{{course.course_name}}</h6>
@@ -61,6 +62,7 @@
                     <i class="far fa-clock"></i> {{course.course_duration}} hours<br>
                     Price : ₹{{course.course_price}}/-<br>
                 </div>
+                </a>
             </div>
             {% endfor %}
         </div>
