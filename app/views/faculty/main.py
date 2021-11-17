@@ -3,7 +3,7 @@ from flask import render_template, session
 from flask_login import login_required, current_user
 from app.models.courses import Course
 from app.utils.decorators import faculty_role_required
-
+from app.models.faculty import Faculty
 ### Faculty Dashboard View - only user with faculty role has access.
 @app.route('/faculty/dashboard')
 @login_required

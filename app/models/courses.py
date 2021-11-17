@@ -19,9 +19,9 @@ class Course(db.Model):
     is_draft = db.Column(db.Boolean, default=True, nullable=False)
     program = db.Column(db.String(150), nullable=False)
 
-    faculty_id = db.Column(db.Integer, db.ForeignKey('faculty.id'),nullable=False)
-    faculty = db.relationship('Faculty',backref=db.backref('faculties', cascade='all,delete-orphan', lazy=True))
-    sections = db.relationship("Section", back_populates="course")
+    faculty_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
+    faculty = db.relationship('User',backref=db.backref('users', cascade='all,delete-orphan', lazy=True))
+    sections = db.relationship("Section", back_populates="course", overlaps="courses")
 
     def __repr__(self):
         return '<Course %r>' % self.course_name
@@ -37,7 +37,7 @@ class Section(db.Model):
 
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'),nullable=False)
     course = db.relationship('Course',backref=db.backref('courses', cascade='all,delete-orphan', lazy=True))
-    lectures = db.relationship("Lecture", back_populates="section")
+    lectures = db.relationship("Lecture", back_populates="section", overlaps="sections")
 
     def __repr__(self):
         return '<Section %r>' % self.section_title
@@ -54,7 +54,7 @@ class Lecture(db.Model):
 
     section_id = db.Column(db.Integer, db.ForeignKey('section.id'),nullable=False)
     section = db.relationship('Section',backref=db.backref('sections', cascade='all,delete-orphan', lazy=True))
-    sections = db.relationship("Section", back_populates="lectures")
+    sections = db.relationship("Section", back_populates="lectures", overlaps="section,sections")
 
     def __repr__(self):
         return '<Lecture %r>' % self.lecture_title
