@@ -20,7 +20,7 @@
                 {% if not course.is_active %} 
                 <input type="submit" name="action" class="w3-right create-course-btn" value="Create and Publish" />
                 {% endif%}
-                {% if not course.is_draft and not course.is_active %}
+                {% if course.is_draft and not course.is_active %}
                 <input type="submit" name="action" class="w3-right w3-margin-right save-draft-btn" value="Save as Draft" />
                 {% endif %}
             </form>
