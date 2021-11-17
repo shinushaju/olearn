@@ -55,6 +55,11 @@
         </div>
 
         <!-- Enrolled courses -->
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class= "alert alert-danger w3-center w3-text-green">
+            {{ message }}
+        </div>
+        {%- endfor %}
         <div class="w3-row-padding">
             <div>
                 <h5 class="w3-left">Enrolled courses</h5>

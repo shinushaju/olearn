@@ -1,10 +1,11 @@
-from flask import render_template, session
+
+from flask import render_template, session, redirect, url_for, flash
 from flask_login import login_required, current_user
 import math
 
 from flask_sqlalchemy.model import camel_to_snake_case
 
-from app import app
+from app import app, db
 from app.models.courses import Course, Lecture
 from app.models.student_review import Student_review
 from app.models.enrolledCourses import Enrolled_courses
@@ -50,3 +51,12 @@ def course(course_id, lecture_id):
         enrolled=False
 
     return render_template('course/course-page.html', course=course, lecture=lecture, review_list=review_list, enrolled=enrolled, can_write_review=can_write_review, completed_sections=completed)
+
+@login_required
+@student_role_required()
+@app.route("/student/drop-course/<course_id>")
+def drop_course(course_id):
+    Enrolled_courses.query.filter((Enrolled_courses.student_id == current_user.id) & (Enrolled_courses.course_id == course_id)).delete()
+    db.session.commit()
+    flash('Course unenrolled successfully.', 'success')
+    return redirect(url_for('student_dashboard'))
