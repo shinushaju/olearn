@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Enrolled Courses {% endblock %}
+
+{% block content %}
+<table class="w3-table w3-striped">
+    <tr><th>Student</th><th>Course</th><th>Progress</th></tr>
+    {% for course in courses %}
+    <tr>
+        <td>{{ course.student.name }}</td>
+        <td>{{ course.course.course_name }}</td>
+        <td>{{ course.progress }} %</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

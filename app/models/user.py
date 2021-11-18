@@ -11,11 +11,15 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(24), nullable=False)
     role = db.Column(db.String(50), nullable=False)
 
-    # one to one relationship with model faculty
+    # one to one relationship with models faculty and student
     faculty = db.relationship("Faculty", back_populates="user", uselist=False)
+    student = db.relationship("Student", back_populates="user", uselist=False)
 
     def __repr__(self):
         return '<User %r>' % self.email
 
     def is_faculty(self):
         return self.role == 'faculty'
+
+    def is_student(self):
+        return self.role == 'student'

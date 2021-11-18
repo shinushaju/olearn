@@ -23,10 +23,19 @@
 
     <div class="w3-container" style="display: flex;justify-content: center;">
       <div class="w3-mobile">
-        <form class="w3-white">
+        <form class="w3-white" method="POST">
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+            <div class= "alert alert-danger {% if category=="error" %}w3-text-red w3-center {% else %}w3-text-red w3-tiny{% endif %}">
+                {{ message }}
+              </div>
+        {%- endfor %}
             <div style="margin-bottom: 8px;">
-              <label for="full-name">Full Name</label>
-              <input type="text" placeholder="Your full name" name="full name" id="first name" required>              
+              <label for="full-name">First Name</label>
+              <input type="text" placeholder="Your first name" name="fname" id="first name" required>              
+            </div>
+            <div style="margin-bottom: 8px;">
+              <label for="full-name">Last Name</label>
+              <input type="text" placeholder="Your last name" name="lname" id="Last name" >              
             </div>
             <div style="margin-bottom: 8px;">
               <label for="email">Email Address</label>
@@ -34,7 +43,7 @@
             </div>
             <div style="margin-bottom: 8px;">
               <label for="psw">Password</label>
-              <input type="password" placeholder="Enter password" name="psw" id="psw" required>
+              <input type="password" placeholder="Enter password" name="password" id="psw" required>
             </div>
             <!-- <div style="margin-bottom: 8px;">
               <label for="psw-repeat">Repeat Password</label>

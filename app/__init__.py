@@ -15,6 +15,7 @@ db.init_app(app)
 # ------------
 from app.models.user import User
 from app.models.faculty import Faculty
+from app.models.student import Student
 from app.models.courses import Course, Section, Lecture
 
 # login manager configuration
@@ -27,17 +28,23 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
-# Routes and View Functions
-# -------------------------
+    
+# View Functions
+# ------
 # import main views here
-from app.views import main
-# import student views here
-from app.views.student import auth, main
+from app.views import routes
 # import faculty views here
 from app.views.faculty import auth, main, course
+# import student views here
+from app.views.student import auth, routes, createDummyCourses, manage_profile, search, student_review, course, markSectionAsComplete
 # import course views here
 from app.views.course import routes
+
+# registering jinja2 template filter
+# ----------------------------------
+from app.utils.format_datetime import format_datetime
+from jinja2 import filters
+filters.FILTERS['format_datetime']=format_datetime
 
 # app context
 # -----------

@@ -1,0 +1,41 @@
+{%extends "student-base.html" %}
+
+{% block title %} Course Details{% endblock %}
+
+<!-- add custom css in here -->
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course/course-page.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{%block content%}
+<div class="course-container">
+    <div class="w3-row">
+        <div class="w3-col w3-container l8 m12">
+            <div class="w3-section w3-small"><span class="w3-text-gray">Courses / {{ course.program }} /
+                </span><b>{{ course.course_name }}</b></div>
+            <h2 class="course-title">{{ course.course_name }}</h2>
+            <!-- <div class="faculty-name">By <a href="#">Shinu Shaju</a></div> -->
+            <div class="w3-section">
+                <div class="video-wrapper">
+                    <iframe width="853" height="480" src="{{ lecture.lecture_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- <iframe width="560" height="324" src="https://www.youtube.com/embed?v=916GWv2Qs08&ab_channel=freeCodeCamp.org" allowfullscreen></iframe> -->
+                </div>
+                <div class="w3-section">
+                    {% include 'course/student/course-tabs.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="w3-col w3-container l4 m12">
+            {% include 'course/student/course-contents.html' %}
+        </div>
+    </div>
+</div>
+
+{% block customjs %}
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/main.js') }}" ></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/course/main.js') }}"></script>
+{% endblock %}
+
+{% endblock %}
