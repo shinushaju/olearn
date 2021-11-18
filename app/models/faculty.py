@@ -1,8 +1,7 @@
-from flask_login import UserMixin
 from app import db
 
 # Faculty Model
-class Faculty(UserMixin, db.Model):
+class Faculty(db.Model):
 
     __tablename__ = 'faculty'
 
@@ -11,7 +10,7 @@ class Faculty(UserMixin, db.Model):
     name = db.Column(db.String(50), nullable=False)
 
     # many to one relationship with class user
-    user = db.relationship("User", back_populates="faculty")
+    user = db.relationship("User", back_populates="faculty", cascade="all, delete")
     
     def __repr__(self):
         return '<Faculty %r>' % self.faculty_id
