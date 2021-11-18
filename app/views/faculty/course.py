@@ -141,6 +141,9 @@ def manage_course(course_id):
     '''
     course = Course.query.get(course_id)
 
+    if not course.faculty.id == current_user.id:
+        return redirect(url_for('faculty_login'))
+
     if request.method == 'POST':
         if request.form.get('action') == 'Edit Course Info':
             # add course_id to session

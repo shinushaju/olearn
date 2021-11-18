@@ -17,7 +17,7 @@
                 <div class="w3-margin-top">
                     <div class="w3-section w3-text-gray">{{ course.program }}</div>
                     <h1 class="course-title" style="line-height: 2vw;">{{ course.course_name }}</h1>
-                    <p>Created by <b>{{course.faculty.faculty[0].name}}</b></p>
+                    <p>Created by <b>{{course.faculty.faculty.name}}</b></p>
                 </div>
                     {% if user and user.is_faculty %}
                     <div class="w3-margin-top w3-padding-24">

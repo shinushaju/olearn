@@ -35,7 +35,7 @@
                 {% if user and user.is_authenticated %}
                 <span class="w3-right w3-dropdown-click w3-hide-small">
                     <button onclick="handleDropDownMenu()" class="dropdown-btn">
-                        <span style="color: #666666;">{{user.faculty[0].name}}&ensp;</span>
+                        <span style="color: #666666;">{{user.faculty.name}}&ensp;</span>
                         <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                     </button>
                     <div style="margin-right: 32px;margin-top: 16px;" id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">
@@ -66,7 +66,7 @@
             {%else%}
             <span class="w3-right w3-dropdown-click w3-hide-medium w3-hide-large">
                 <button onclick="handleDropDownMenu()" class="dropdown-btn">
-                    {% if user %}<span style="color: #666666;">{{user.faculty[0].name}}&ensp;</span>{% endif %}
+                    {% if user %}<span style="color: #666666;">{{user.faculty.name}}&ensp;</span>{% endif %}
                     <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                 </button>
                 <div style="margin-right: 32px;margin-top: 16px;" id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">

@@ -43,7 +43,7 @@
             <button class="w3-button w3-white w3-large w3-round-xlarge w3-hide-large" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 10px 50px;" onclick="w3_open()">&#9776;</button>
             <span class="w3-right w3-dropdown-click w3-hide-large w3-hide-medium">
                 <button onclick="handleDropDownMenuMobile()" class="dropdown-btn">
-                    {%if user %}<span style="color: #666666;">{{user.faculty[0].name}}&ensp;</span>{% endif %}
+                    {%if user %}<span style="color: #666666;">{{user.faculty.name}}&ensp;</span>{% endif %}
                     <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                 </button>
                 <div id="menu-mobile-links" class="w3-dropdown-content w3-bar-block">
@@ -67,7 +67,7 @@
                 </span>
                 <span class="w3-right w3-dropdown-click w3-hide-small">
                     <button onclick="handleDropDownMenu()" class="dropdown-btn">
-                        {% if user %}<span style="color: #666666;">{{user.faculty[0].name}}&ensp;</span>{% endif %}
+                        {% if user %}<span style="color: #666666;">{{user.faculty.name}}&ensp;</span>{% endif %}
                         <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                     </button>
                     <div id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">

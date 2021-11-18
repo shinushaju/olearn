@@ -10,6 +10,9 @@ class Faculty(UserMixin, db.Model):
     faculty_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     name = db.Column(db.String(50), nullable=False)
 
+    # many to one relationship with class user
+    user = db.relationship("User", back_populates="faculty")
+    
     def __repr__(self):
         return '<Faculty %r>' % self.faculty_id
 
