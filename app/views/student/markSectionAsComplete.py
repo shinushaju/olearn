@@ -21,5 +21,3 @@ def markSectionAsComplete():
         
     else:
         return "Something went wrong."
-
-    return courseid

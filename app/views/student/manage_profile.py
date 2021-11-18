@@ -4,7 +4,7 @@ from flask import render_template, request,flash, redirect, url_for
 from flask_login import login_required, current_user
 
 from app import app, db
-from app.models.student_details import Student_details
+from app.models.student import Student
 from app.utils.student.validate_phone import validate_phone
 from app.utils.student.decorators import student_role_required
 
@@ -20,11 +20,11 @@ def student_details():
                 date_of_birth=datetime.strptime(request.form.get('date_of_birth'), "%Y-%m-%d").date()
                 student_bio = request.form.get('student_bio')
  
-                res = Student_details.query.filter_by(student_id=current_user.id).one_or_none()
+                res = Student.query.filter_by(user_id=current_user.id).one_or_none()
 
                 if validate_phone(mobile_num)==True:
                         if res==None:
-                                student_detail=Student_details(student_id=current_user.id, roll_no=roll_no, mobile_num=mobile_num,date_of_birth=date_of_birth,student_bio=student_bio)
+                                student_detail=Student(user_id=current_user.id, roll_no=roll_no, mobile_num=mobile_num,date_of_birth=date_of_birth,student_bio=student_bio)
                                 db.session.add(student_detail)
                                 db.session.commit()
                                 flash("Details added successfully", 'success')
@@ -41,9 +41,9 @@ def student_details():
                 else:
                         flash('Enter a valid Mobile Number', 'error')
                         
-        res = Student_details.query.filter_by(student_id=current_user.id).one_or_none()
+        res = Student.query.filter_by(user_id=current_user.id).one_or_none()
         
-        if res==None:
+        if res.roll_no==None:
                 #Entering for first time- Return empty string to form
                 form1 = {"roll_no" : "" , "mob" : "" , "dob" : "" , "bio" : ""}
 

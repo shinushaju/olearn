@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+
 app = Flask(__name__)
 
 #initializing SQLAlchemy
@@ -11,16 +12,19 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
-# student login manager
-student_login_manager = LoginManager()
-student_login_manager.login_view = 'student_login'
-student_login_manager.init_app(app)
-
+from app.models.user import User
 from app.models.student import Student
-@student_login_manager.user_loader
+from app.models.faculty import Faculty
+
+# Login manager configuration
+login_manager = LoginManager()
+login_manager.login_view = 'student_login'
+login_manager.init_app(app)
+
+@login_manager.user_loader
 def load_user(id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
-    return Student.query.get(int(id))
+    return User.query.get(int(id))
     
 # VIEWS
 # ------
@@ -30,8 +34,6 @@ from app.views import routes
 from app.views.student import auth, routes, createDummyCourses, manage_profile, search, student_review, course, markSectionAsComplete
 # import faculty faculty views here
 from app.views.faculty import auth, main
-
-from app.models.faculty import Faculty
 
 from app.utils.format_datetime import format_datetime
 

@@ -51,7 +51,7 @@ def course(course_id, lecture_id):
         enrolled=True
         completed=result.completed_sections
 
-    return render_template('course/course-page.html', user=current_user, course=course, lecture=lecture, review_list=review_list, enrolled=enrolled, can_write_review=can_write_review, completed_sections=completed)
+    return render_template('course/student/course-page.html', user=current_user, course=course, lecture=lecture, review_list=review_list, enrolled=enrolled, can_write_review=can_write_review, completed_sections=completed)
 
 @login_required
 @student_role_required()

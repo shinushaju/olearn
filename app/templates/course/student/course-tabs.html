@@ -17,7 +17,7 @@
         <div>
             {% for review in review_list %}
             <div class="w3-text-gray w3-padding-16 review-box">
-                <div>Review By <b>{{ review[0].student.name }}</b> <span class="w3-text-black"> • </span>{{ review[0].created_on|format_datetime }}
+                <div>Review By <b>{{ review[0].student.student.name }}</b> <span class="w3-text-black"> • </span>{{ review[0].created_on|format_datetime }}
                 </div>
                 <div>{% for i in range(review[1]) %}<i class="fa fa-star" style="color:gold;"></i>{% endfor %}{% if review[2]==True %}<i class="fas fa-star-half" style="color:gold;"></i>{% endif %}</div>
                 <div style="margin-top: 8px;">

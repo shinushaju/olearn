@@ -3,7 +3,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, db
 # import db model
 from app.models.student import Student
-from flask_login import login_user, logout_user, login_required
+from app.models.user import User
+from flask_login import login_user
 from app.utils.student.validate_email import validate_email
 from app.utils.student.validate_password import validate_password
 from app.utils.student.validate_name import validate_name
@@ -16,7 +17,7 @@ def student_signup():
             fname = request.form.get('fname')
             lname = request.form.get('lname')
             password = request.form.get('password')
-            user = Student.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
+            user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
             name=fname+" "+lname
 
             if user: # if a user is found, we want to redirect back to signup page so user can try again
@@ -26,10 +27,14 @@ def student_signup():
                 if validate_name(name) == True:
                     if validate_email(email) == True :
                         if validate_password(password) == True:
-                            student = Student(email=email, name=name, password=generate_password_hash(password, method='sha256'))
                             # add the new user to the database
+                            user=User(email=email,password=generate_password_hash(password, method='sha256'), role="student")
+                            db.session.add(user)
+                            db.session.commit()
+                            student = Student(name=name, user_id=user.id)
                             db.session.add(student)
                             db.session.commit()
+
                             flash('Registered Successfully, Login Now.', 'success')
                             return redirect(url_for('student_login'))
                         else:
@@ -81,7 +86,7 @@ def student_login():
         email = request.form.get('email')
         password = request.form.get('password')
         remember = True if request.form.get('remember') else False
-        student = Student.query.filter_by(email=email).first()
+        student = User.query.filter_by(email=email).first()
         if not student or not check_password_hash(student.password, password):
             flash('Please check your login details and try again.', 'error')
             return redirect(url_for('student_login')) # if the user doesn't exist or password is wrong, reload the page
@@ -91,12 +96,3 @@ def student_login():
             return redirect(url_for('student_dashboard'))
     
     return render_template('home/student-login.html', role="Student")
-
-# log out a student
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('home'))
-
-

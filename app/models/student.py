@@ -1,16 +1,14 @@
-from flask_login import UserMixin
 from app import db
 
-# student model here
-class Student(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
-    email = db.Column(db.String(24), unique=True, nullable=False)
-    password = db.Column(db.String(24), nullable=False)
+class Student(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user=db.relationship('User', back_populates='student', cascade='delete')
     name = db.Column(db.String(50), nullable=False)
-    role = db.Column(db.String(50), nullable=False, default="student")
+    roll_no=db.Column(db.String, nullable=True)
+    mobile_num = db.Column(db.String, nullable=True)
+    date_of_birth = db.Column(db.Date, nullable=True)
+    student_bio = db.Column(db.String(70), nullable=True)
 
     def __repr__(self):
-        return '<Student %r>' % self.name
-
-    def is_student(self):
-        return self.role == 'student'
+        return '<Student  %r>' % self.name
