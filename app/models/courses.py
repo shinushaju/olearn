@@ -22,6 +22,7 @@ class Course(db.Model):
     faculty_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
     faculty = db.relationship('User',backref=db.backref('users', cascade='all,delete-orphan', lazy=True))
     sections = db.relationship("Section", back_populates="course", overlaps="courses")
+    queries = db.relationship("Query", back_populates="course")
 
     def __repr__(self):
         return '<Course %r>' % self.course_name
