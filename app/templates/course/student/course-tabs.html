@@ -2,8 +2,8 @@
     <div class="w3-bar w3-white" style="border-bottom: 1px solid #f4f0ff;">
         <button class="w3-bar-item tablink tab-active" onclick="handleTabs(event,'overview')">Overview</button>
         <button class="w3-bar-item tablink" onclick="handleTabs(event,'reviews')">Reviews</button>
-        <button class="w3-bar-item tablink" onclick="handleTabs(event,'discussion')">Discussion</button>
-        <button class="w3-bar-item tablink" onclick="handleTabs(event,'quiz')">Quiz</button>
+        {% if can_write_review==true %}<button class="w3-bar-item tablink" onclick="handleTabs(event,'discussion')">Discussion</button>{% endif %}
+        {% if can_write_review==true %}<button class="w3-bar-item tablink" onclick="handleTabs(event,'quiz')">Quiz</button>{% endif %}
     </div>
 
     <div id="overview" class="tab-content w3-padding-16">
@@ -27,6 +27,7 @@
             {% endfor %}
         </div>
     </div>
+    {% if can_write_review==true %}
     <div id="discussion" class="tab-content w3-padding-16" style="display:none">
         <h3 class="tab-content-header">Discussion Forum</h3>
         {% if can_write_review==true %}<a href="{{ url_for('post_query') }}"><button class="write-review-button w3-right w3-btn w3-round-large">Ask a Question</button></a>{% endif %}
@@ -44,7 +45,7 @@
                 </div>
                 <div style="margin-top: 16px;margin-bottom: 8px;">
                     <div style="display: inline-block;">
-                        <button id="reply-btn-{{loop.index}}" class="reply-btn" onclick="toggleReply('{{loop.index}}')">Reply</button>
+                        {% if can_write_review==true %}<button id="reply-btn-{{loop.index}}" class="reply-btn" onclick="toggleReply('{{loop.index}}')">Reply</button>{% endif %}
                         <button class="view-replies-btn" onclick="toggleDiscussion('{{loop.index}}')">{{ query.replies|count }} replies</button>
                     </div>
 
@@ -91,7 +92,10 @@
             </div>
         </div>
     </div>
+    {% endif %}
+    {% if can_write_review==true %}
     <div id="quiz" class="tab-content" style="display:none">
         <h3>Quiz content</h3>
     </div>
+    {% endif %}
 </div>

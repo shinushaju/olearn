@@ -47,6 +47,7 @@ def course(course_id, lecture_id):
     result=Enrolled_courses.query.filter((Enrolled_courses.course_id==course_id) & (Enrolled_courses.student_id==current_user.id)).one_or_none()
     enrolled=False
     completed=0
+    queries=list()
     if result is not None:
         enrolled=True
         completed=result.completed_sections
