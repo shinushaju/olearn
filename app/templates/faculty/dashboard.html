@@ -77,12 +77,12 @@
                             <div class="card-courses">
                                 <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
                                 <h6 class="w3-large" style="font-weight: 500;">{{ course.course_name [0:42]}}{% if course.course_name | length > 42 %} ...{% endif %}</h6>
-                                <div class="w3-section w3-light-grey w3-tiny"
+                                <!-- <div class="w3-section w3-light-grey w3-tiny"
                                     style="border-radius: 100px; height: 8px;">
                                     <div class="w3-container"
                                         style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:20%">
                                     </div>
-                                </div>
+                                </div> -->
                                 <a href="{{url_for('manage_course', course_id=course.id)}}" style="margin-top:4px"
                                     class="w3-btn w3-round-large w3-black w3-tiny">View Course</a>
                             </div>

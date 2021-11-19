@@ -77,7 +77,7 @@ def course_preview(course_id):
     return render_template('course/preview/course-preview.html', user=current_user, course=course, section_id=section.id, lecture_id=lecture.id, enrolled=enrolled, course_owner=course_owner, completed=completed, review_list=review_list, can_write_review=can_write_review)
 
 
-@app.route('/course/<course_id>/section/<section_id>/lecture/<lecture_id>')
+@app.route('/course/<course_id>/section/<section_id>/lecture/<lecture_id>', methods=['GET', 'POST'])
 @login_required
 def course_page(course_id, section_id, lecture_id):
 
@@ -92,6 +92,11 @@ def course_page(course_id, section_id, lecture_id):
     current_lecture_id = lecture.id
 
     if current_user.is_authenticated:
+
+        if current_user.id == course.faculty.id:
+            course_owner = True
+        else:
+            course_owner = False
 
         # Review section:
         reviews = Student_review.query.filter_by(course_id=course_id).all()
@@ -116,6 +121,11 @@ def course_page(course_id, section_id, lecture_id):
         result=Enrolled_courses.query.filter((Enrolled_courses.course_id==course_id) & (Enrolled_courses.student_id==current_user.id)).one_or_none()
         enrolled=False
         completed=0
+
+        # get discussions
+        queries=list()
+        queries=Query.query.filter(Query.course_id==course_id)
+
         if result is not None:
             enrolled=True
             completed=result.completed_sections
@@ -125,36 +135,16 @@ def course_page(course_id, section_id, lecture_id):
 
         if current_user.is_faculty() and not current_user.id == course.faculty.id:
             return redirect(url_for('faculty_dashboard'))
+            
+        # POST section
+        if request.method=='POST':
+            # Handling reply form in discussion section
+            new_reply=Reply(query_id=request.form.get("queryId").strip(), user_id=current_user.id, reply_text=request.form.get("reply").strip())
+            db.session.add(new_reply)
+            db.session.commit()
+            return redirect(url_for('course_page', course_id=session['course_id'], section_id=session['current_section_id'], lecture_id=session['current_lecture_id']))
 
-    return render_template('course/course-page.html', user=current_user, course=course, section=section, lecture=lecture, current_section_id=current_section_id, current_lecture_id=current_lecture_id, review_list=review_list, enrolled=enrolled, can_write_review=can_write_review, completed_sections=completed)
-
-@app.route('/discussions', methods=['GET', 'POST'])
-@login_required
-def course_discussions():
-    queries = Query.query.all()
-    if request.method == 'POST':
-        query_text = request.form['query_text']
-        student_name = "Harry Potter"
-        course_name = "Data science"
-        query = Query(query_text=query_text, student_name=student_name, course_name=course_name)
-        db.session.add(query)
-        db.session.commit()
-        return redirect(url_for('course_discussions'))
-    return render_template('course/discussions.html', user=current_user, queries=queries)
-
-@app.route('/discussions', methods=['GET', 'POST'])
-@login_required
-def course_reply():
-    replies = Reply.query.all()
-    if request.method == 'POST':
-        reply_text = request.form['reply_text']
-        faculty_id = 123
-        reply = Reply(reply_text=reply_text,
-                      faculty_id=Faculty.id)
-        db.session.add(reply)
-        db.session.commit()
-        return redirect(url_for('course_reply'))
-    return render_template('course/discussions.html', user=current_user, replies=replies)
+    return render_template('course/course-page.html', user=current_user, course=course, section=section, lecture=lecture, current_section_id=current_section_id, current_lecture_id=current_lecture_id, review_list=review_list, enrolled=enrolled, course_owner=course_owner, can_write_review=can_write_review, completed_sections=completed, query_list=queries)
 
 @app.route('/query', methods=['GET', 'POST'])
 @login_required
@@ -170,7 +160,7 @@ def post_query():
         new_query=Query(course_id=session['course_id'], query_title=form['query_title'], query_text=form['query_text'], user_id=current_user.id)
         db.session.add(new_query)
         db.session.commit()
-        return redirect(url_for('course', course_id=session['course_id'], lecture_id=session['lecture_id']))
+        return redirect(url_for('course_page', course_id=session['course_id'], section_id=session['current_section_id'], lecture_id=session['current_lecture_id']))
 
     return render_template('course/post-query.html', form=form, user=current_user)
 
