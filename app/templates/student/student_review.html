@@ -26,12 +26,12 @@
   <div class="w3-mobile">
   
     <form class="w3-white" action="" method="POST">
-      <textarea id="review_text" name="review_text" placeholder="Write something..." style="height:200px">{{ form.review_text }}</textarea>
+      <textarea required id="review_text" name="review_text" placeholder="Write something..." style="height:200px">{{ form.review_text }}</textarea>
       
 <br><br>
 <label for="rating" class="w3-left"><h3>Rating</h3></label>
 <fieldset class="rating">
-<input type="radio" id="star5" name="rating" value="5" {% if form.rating==5.0 %}checked{% endif %}/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+<input required type="radio" id="star5" name="rating" value="5" {% if form.rating==5.0 %}checked{% endif %}/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
 
 <input type="radio" id="star4half" name="rating" value="4.5"  {% if form.rating==4.5 %}checked{% endif %}/><label class="half" for="star4half" title="Pretty good - 4.5 stars" ></label>
 

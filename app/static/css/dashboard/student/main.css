@@ -3,7 +3,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #fafafa;
+  background-color: #ffffff;
 }
 
 h1,
@@ -15,10 +15,10 @@ h6 {
   font-family: "Poppins", sans-serif;
 }
 
-.side-nav-item  {
+.side-nav-item {
   margin-bottom: 24px;
   color: #666666;
-  background-color: #ffffff;
+  background-color: transparent;
   cursor: pointer;
   text-decoration: none;
 }
@@ -30,11 +30,15 @@ h6 {
 }
 
 .active {
-  color: #6e44ff;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: #6e44ff;
   font-weight: 700;
   box-shadow: rgba(149, 157, 165, 0.15) 0px 8px 24px;
   transition: 0.3s;
+}
+
+.active > .side-nav-item {
+  color: #fff;
 }
 
 .submenu-active {
@@ -54,10 +58,10 @@ h6 {
   border-radius: 100px;
 }
 
-#topnav input[type=text] {
+#topnav input[type="text"] {
   padding: 8px 16px;
   font-size: 14px;
-  border: none;
+  border: 1px solid #ebebeb;
   background-color: #ffffff;
   border-top-left-radius: 24px;
   border-bottom-left-radius: 24px;
@@ -72,7 +76,7 @@ h6 {
   border-bottom-right-radius: 24px;
   background: #ffffff;
   font-size: 14px;
-  border: none;
+  border: 1px solid #ebebeb;
   cursor: pointer;
 }
 
@@ -83,7 +87,7 @@ h6 {
 .container-main {
   margin-left:240px;
   padding: auto 16px;
-  background-color: #fafafa;
+  background-color: #ffffff;
   min-height: 100vh;
 }
 
@@ -127,13 +131,13 @@ h6 {
 }
 
 .dashboard-banner {
-  background-color: #6e44ff;
+  background-color: #F6EABE;
   border-radius: 20px;
   padding: 18px 24px;
 }
 
 .dashboard-banner .banner-content {
-  color: #ffffff;
+  color: #000000;
 }
 
 .dashboard-card {

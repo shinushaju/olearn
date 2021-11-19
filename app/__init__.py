@@ -63,6 +63,7 @@ with app.app_context():
     print("All Tables", db.engine.table_names())
 
     ### display all table data
+    '''
     print("Database Tables Data")
     print("--------------------")
     print("Users", User.query.all())
@@ -70,3 +71,4 @@ with app.app_context():
     print("Courses", Course.query.all())
     print("Sections", Section.query.all())
     print("Lectures", Lecture.query.all())
+    '''

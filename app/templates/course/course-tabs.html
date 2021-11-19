@@ -11,17 +11,21 @@
         <p class="w3-text-gray">{{course.course_overview}}</p>
     </div>
     <div id="reviews" class="tab-content w3-padding-16" style="display:none">
-        <h3><span class="tab-content-header">267 Reviews</span> <span class="w3-text-gray"
-                style="letter-spacing: -1px;">for Fundamentals of Web Design</span></h3>
+        <h5><span class="tab-content-header">{% if review_list %}{{ review_list|count }} Reviews{% else %}No reviews yet{% endif %}</span> <span class="w3-text-gray"
+            style="letter-spacing: -1px;">for {{ course.course_name }}</span></h5>
         <div>
-            {% for i in range (1,5)%}
+            {% if user.is_authenticated and can_write_review and user.is_student() %}<a href="{{ url_for('student_review', course_id=course.id) }}"><button class="write-review-button w3-right w3-btn w3-round-large">Write a review</button></a>{% endif %}
+        </div>
+        <div>
+            {% for review in review_list %}
             <div class="w3-text-gray w3-padding-16 review-box">
-                <div>Review By <b>Shinu Shaju</b> <span class="w3-text-black"> • </span>October 23, 2020
+                <div>Review By <b>{{ review[0].student.student.name }}</b> <span class="w3-text-black"> • </span>{{
+                    review[0].created_on|format_datetime }}
                 </div>
-                <div style="margin-top: 8px;">
-                    This course is just not about the theory it actually helps you to understand things
-                    on practical basis.The test and assignments helps you to apply the disciplines and
-                    makes you basic clear.
+                <div>{% for i in range(review[1]) %}<i class="fa fa-star" style="color:gold;"></i>{% endfor %}{% if
+                    review[2]==True %}<i class="fas fa-star-half" style="color:gold;"></i>{% endif %}</div>
+                <div style="margin-top: 4px;">
+                    <div>{{ review[0].review_text }}</div>
                 </div>
             </div>
             {% endfor %}

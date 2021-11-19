@@ -91,7 +91,7 @@ textarea[type="text"]::placeholder {
 #topnav input[type="text"] {
   padding: 8px 16px;
   font-size: 14px;
-  border: 1px solid #fafafa;
+  border: 1px solid #ebebeb;
   background-color: #ffffff;
   border-top-left-radius: 24px;
   border-bottom-left-radius: 24px;
@@ -106,7 +106,7 @@ textarea[type="text"]::placeholder {
   border-bottom-right-radius: 24px;
   background: #ffffff;
   font-size: 14px;
-  border: 1px solid #fafafa;
+  border: 1px solid #ebebeb;
   cursor: pointer;
 }
 

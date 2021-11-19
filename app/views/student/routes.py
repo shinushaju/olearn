@@ -40,7 +40,7 @@ def course_enroll(cid):
     if len(enrolled) == 0:
         db.session.add(Enrolled_courses( student_id = current_user.id, course_id = cid, completed_sections=0))
         db.session.commit()
-    return redirect(url_for('student_dashboard'))
+    return redirect(url_for('course_preview', course_id=cid))
 
 # @app.route('/student/course/<cid>')
 # @login_required

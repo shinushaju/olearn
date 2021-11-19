@@ -19,11 +19,25 @@
                     <h1 class="course-title" style="line-height: 2vw;">{{ course.course_name }}</h1>
                     <p>Created by <b>{{course.faculty.faculty.name}}</b></p>
                 </div>
-                    {% if user and user.is_faculty %}
-                    <div class="w3-margin-top w3-padding-24">
-                        <a href="{{url_for('course_page', course_id=course.id, section_id=section_id, lecture_id=lecture_id)}}" style="text-decoration: none;border: 1px solid #6e44ff;border-radius: 100px;padding: 8px 24px; color: #6e44ff;font-weight: 500;">Go To Course</a>
-                    </div>
+                <div class="w3-margin-top w3-padding-16">
+                    {% if user and user.is_authenticated %}
+                        {% if enrolled or course_owner %}
+                            <a href="{{url_for('course_page', course_id=course.id, section_id=section_id, lecture_id=lecture_id)}}" class="w3-padding-large" style="text-decoration: none;border: 1px solid #6e44ff;border-radius: 100px;padding: 8px 24px; color: #6e44ff;font-weight: 500;">Go To Course</a>
+                            {% if user.is_student() and not user.is_faculty() %}
+                            <a style="text-decoration: none;cursor: pointer;" href="{{ url_for('drop_course', course_id = course.id) }}"><button style="margin-left: 8px;" class="w3-button w3-round-xxlarge w3-padding-large w3-black w3-hover-black">Drop</button></a>
+                            {% endif %}
+                        {% else %}
+                            {% if user.is_student() %}
+                                <a href="{{ url_for('course_enroll', cid = course.id) }}" class="w3-button w3-round-xxlarge w3-indigo w3-hover-indigo w3-padding-large">Enroll Now</a>
+                            {% endif %}
+                            {% if user.is_faculty() %}
+                                <a href="{{url_for('student_login')}}" class="w3-button w3-round-xxlarge w3-indigo w3-hover-indigo w3-padding-large">Enroll Now</a>
+                            {% endif %}
+                        {% endif %}
+                    {% else %}
+                            <a href="{{url_for('student_login')}}" class="w3-button w3-round-xxlarge w3-indigo w3-hover-indigo w3-padding-large">Enroll Now</a>
                     {% endif %}
+                    </div>
             </div>
             <div class="w3-third">
                 <div class="video-wrapper">
@@ -47,31 +61,35 @@
                 <br>
                 <div class="w3-section">
                     {% include 'course/preview/course-content-preview.html' %}
-                </div> 
+                </div>
                 <div id="reviews">
-                    <h5 class="tab-content-header">Student Reviews</h5>
-                    <h6><span class="tab-content-header">267 Reviews</span> <span class="w3-text-gray"
-                            style="letter-spacing: -1px;">for {{course.course_name}}</span></h6>
+                    <div style="display: flex;justify-content: space-between;">
+                        <h5 class="tab-content-header">Student Reviews</h5>
+                        <div>
+                            {% if user.is_authenticated and can_write_review and user.is_student() %}<a href="{{ url_for('student_review', course_id=course.id) }}"><button class="write-review-button w3-right w3-btn w3-round-large">Write a review</button></a>{% endif %}
+                        </div>
+                    </div>
+                    <h6><span class="tab-content-header">{% if review_list %}{{ review_list|count }} Reviews{% else %}No reviews yet{% endif %}</span> <span class="w3-text-gray"
+                            style="letter-spacing: -1px;">for {{ course.course_name }}</span></h6>
                     <div>
-                        {% for i in range (1,5)%}
+                        {% for review in review_list %}
                         <div class="w3-text-gray w3-padding-16 review-box">
-                            <div>Review By <b>Shinu Shaju</b> <span class="w3-text-black"> • </span>October 23, 2020
+                            <div>Review By <b>{{ review[0].student.student.name }}</b> <span class="w3-text-black"> • </span>{{ review[0].created_on|format_datetime }}
                             </div>
-                            <div style="margin-top: 8px;">
-                                This course is just not about the theory it actually helps you to understand things
-                                on practical basis.The test and assignments helps you to apply the disciplines and
-                                makes you basic clear.
+                            <div>{% for i in range(review[1]) %}<i class="fa fa-star" style="color:gold;"></i>{% endfor %}{% if review[2]==True %}<i class="fas fa-star-half" style="color:gold;"></i>{% endif %}</div>
+                            <div style="margin-top: 4px;">
+                                <div>{{ review[0].review_text }}</div>
                             </div>
                         </div>
                         {% endfor %}
                     </div>
-                </div>
+                </div> 
             </div>
             <div class="w3-third">
                 <div class="w3-padding-large w3-round-xlarge" style="border: 1px solid #f0f0f0;box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;">
-                    <label class="w3-text-gray">Course Price</label>
+                    <!-- <label class="w3-text-gray">Course Price</label>
                     <h2 style="font-weight: 600; line-height: 2vw;margin-top: 4px;margin-bottom: 12px;">₹{{course.course_price}}</h2>
-                    <button type="button" style="display: block;" class="w3-block w3-button w3-indigo w3-round-large w3-hover-indigo">Buy Now</button>
+                    <button type="button" style="display: block;" class="w3-block w3-button w3-indigo w3-round-large w3-hover-indigo">Buy Now</button> -->
                     <div class="w3-section">
                         <b>This course includes:</b>
                         <div class="w3-text-gray">

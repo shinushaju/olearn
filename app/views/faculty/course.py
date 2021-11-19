@@ -132,13 +132,7 @@ def add_lecture():
 @login_required
 @faculty_role_required()
 def manage_course(course_id):
-   
-    '''
-    if 'course_id' in session:
-      session.pop('course_id', None)
-    if 'section_id' in session:
-      session.pop('section_id', None)
-    '''
+    
     course = Course.query.get(course_id)
 
     if not course.faculty.id == current_user.id:

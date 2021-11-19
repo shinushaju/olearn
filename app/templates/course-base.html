@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/course/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/faculty/main.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {% endblock %}
 
     {% block customcss %}
@@ -25,6 +25,7 @@
     <header class="w3-top nav-container">
         <div class="w3-bar w3-mobile w3-white nav-bar">
             <a href="{{ url_for('home') }}" class="w3-bar-item" style="text-decoration: none;font-size: 1.5rem; font-weight: bold;">O-Learn<span style="font-size: 2.5rem; line-height: 0rem; color: #6E44FF;">.</span></a>
+            
             <span class="w3-display-middle">
                 <a href="{{ url_for('programs') }}" class="{% if request.path == '/programs' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Programs</a>
                 <a href="{{ url_for('courses') }}" class="{% if request.path == '/courses' %} nav-link-active {% endif %} w3-bar-item w3-button w3-hover-white w3-hide-small menu-item">Courses</a>
@@ -35,12 +36,20 @@
                 {% if user and user.is_authenticated %}
                 <span class="w3-right w3-dropdown-click w3-hide-small">
                     <button onclick="handleDropDownMenu()" class="dropdown-btn">
-                        <span style="color: #666666;">{{user.faculty.name}}&ensp;</span>
+                        <span style="color: #666666;">
+                            {% if user.is_student() %}{{ user.student.name }}{% endif %}
+                            {% if user.is_faculty() %}{{ user.faculty.name }}{% endif %}&ensp;
+                        </span>
                         <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                     </button>
                     <div style="margin-right: 32px;margin-top: 16px;" id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">
                         <a href="#" class="w3-bar-item user-menu-item">My Profile</a>
+                        {% if user.is_student() %}
+                        <a href="{{ url_for('student_dashboard') }}" class="w3-bar-item user-menu-item">My Dashboard</a>
+                        {% endif %}
+                        {% if user.is_faculty() %}
                         <a href="{{ url_for('faculty_dashboard') }}" class="w3-bar-item user-menu-item">My Dashboard</a>
+                        {% endif %}
                         <a href="#" class="w3-bar-item user-menu-item">Settings</a>
                         <a href="{{ url_for('logout') }}" class="w3-bar-item user-menu-item">Logout</a>
                       </div>
@@ -66,11 +75,20 @@
             {%else%}
             <span class="w3-right w3-dropdown-click w3-hide-medium w3-hide-large">
                 <button onclick="handleDropDownMenu()" class="dropdown-btn">
-                    {% if user %}<span style="color: #666666;">{{user.faculty.name}}&ensp;</span>{% endif %}
+                    {% if user %}<span style="color: #666666;">
+                        {% if user.is_student() %}{{ user.student.name }}{% endif %}
+                        {% if user.is_faculty() %}{{ user.faculty.name }}{% endif %}
+                        &ensp;</span>{% endif %}
                     <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                 </button>
                 <div style="margin-right: 32px;margin-top: 16px;" id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">
                     <a href="#" class="w3-bar-item user-menu-item">My Profile</a>
+                    {% if user and user.is_student() %}
+                    <a href="{{ url_for('student_dashboard') }}" class="w3-bar-item user-menu-item">My Dashboard</a>
+                    {% endif %}
+                    {% if user and user.is_faculty() %}
+                    <a href="{{ url_for('faculty_dashboard') }}" class="w3-bar-item user-menu-item">My Dashboard</a>
+                    {% endif %}
                     <a href="#" class="w3-bar-item user-menu-item">Settings</a>
                     <a href="{{ url_for('logout') }}" class="w3-bar-item user-menu-item">Logout</a>
                   </div>

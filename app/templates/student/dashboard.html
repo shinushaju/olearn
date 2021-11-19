@@ -11,8 +11,15 @@
 
 <div class="w3-container w3-padding-16">
 
-    <div class="">
-
+    <div>
+        <!-- Enrolled courses -->
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class= "alert alert-danger w3-left w3-text-green">
+            <div class="w3-panel">
+                <h6>{{ message }}</h6>
+            </div>
+        </div>
+        {%- endfor %}
         <div class="w3-row-padding">
             <div class="w3-col l8 m8 w3-margin-bottom">
                 <div class="dashboard-banner">
@@ -20,10 +27,10 @@
                         <div class="w3-row">
                             <div class="w3-twothird">
                                 <div class="w3-left w3-padding-16">
-                                    <h3 class="main-header" style="color: #ffffff;font-weight: 700;">Hey, {{user.student.name}}
+                                    <h3 class="main-header" style="font-weight: 700;">Hey, {{user.student.name}}
                                         &#128075;
                                     </h3>
-                                    <h5 style="color: #ffffff;">It's Good To See You Again!</h5>
+                                    <h5>It's Good To See You Again!</h5>
                                     <a href="#" class="w3-btn w3-white w3-hover-white w3-round-large">Explore
                                         Courses</a>
                                 </div>
@@ -54,25 +61,18 @@
             </div>
         </div>
 
-        <!-- Enrolled courses -->
-        {%- for category, message in get_flashed_messages(with_categories = true) %}
-        <div class= "alert alert-danger w3-center w3-text-green">
-            <div class="w3-panel">
-                <h3>{{ message }}</h3>
-            </div>
-        </div>
-        {%- endfor %}
         <div class="w3-row-padding">
             <div>
                 <h5 class="w3-left">Enrolled courses</h5>
             </div>
-            {% for enrolledcourse in enrolledcoursesList%}
+            {% if enrolledcoursesList | length > 0 %}
             <div class="w3-section">
                 <!-- Slider main container -->
                 <div class="swiper w3-padding-24 w3-padding-small w3-stretch">
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                         <!-- Slides -->
+                        {% for enrolledcourse in enrolledcoursesList %}
                         <div class="swiper-slide">
                             <div class="card-courses">
                                 <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
@@ -84,15 +84,20 @@
                                         style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:{{ (enrolledcourse.completed_sections/enrolledcourse.course.sections|length)*100 }}%">
                                     </div>
                                 </div>
-                                <a href="{{ url_for('course', course_id = enrolledcourse.course.id, lecture_id=enrolledcourse.course.sections[0].lectures[0].id) }}" style="margin-top:4px" class="w3-btn w3-round-large w3-black">Continue</a>
+                                <a href="{{ url_for('course_preview', course_id = enrolledcourse.course.id) }}" style="margin-top:4px" class="w3-button w3-small w3-round-xxlarge w3-black">Continue</a>
                             </div>
-                        </div>   
+                        </div> 
+                        {% endfor %}  
                     </div>
                     <!-- If we need pagination -->
                     <div class="w3-section swiper-pagination"></div>
                 </div>
-                {% endfor %}
             </div>
+            {% else %}
+            <div class="w3-section w3-center w3-text-gray">
+                <br><p>You haven't enrolled in any course!</p>
+            </div>
+            {% endif %}
         </div>
         <!-- Enrolled course template ends here -->
         <!-- courses in progress starts here -->
@@ -100,32 +105,36 @@
             <div>
                 <h5 class="w3-left">Available courses</h5>
             </div>
-            {% for course in available %}
+            {% if available | length > 0 %}
             <div class="w3-section">
                 <!-- Slider main container -->
                 <div class="swiper w3-padding-24 w3-padding-small w3-stretch">
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
+                        {% for course in available %}
                         <!-- Slides -->
                         <div class="swiper-slide">
-                            <a href="{{ url_for('course', course_id = course.id, lecture_id=course.sections[0].lectures[0].id) }}">
                             <div class="card-courses">
                                 <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
                                 <h6 class="w3-large" style="font-weight: 500;">{{course.course_name}}</h6>
                                 <!-- {{course.course_description}} <br><br> -->
                                 <i class="far fa-clock"></i> {{course.course_duration}} hours<br>
                                 Price : ₹{{course.course_price}}/-<br>
-                                <a href="{{ url_for('course_enroll', cid = course.id) }}" style="margin-top:4px"
-                                    class="w3-btn w3-round-large w3-black">Enroll</a>
+                                <a href="{{ url_for('course_preview', course_id = course.id) }}" style="margin-top:12px"
+                                    class="w3-button w3-round-xxlarge w3-small w3-indigo">View</a>
                             </div>
-                            </a>
                         </div>
+                        {% endfor %}
                     </div>
                     <!-- If we need pagination -->
                     <div class="w3-section swiper-pagination"></div>
                 </div>
-                {% endfor %}
             </div>
+            {% else %}
+                <div class="w3-section w3-text-gray w3-center">
+                    <br><p>No available courses!</p>
+                </div>
+            {% endif %}
         </div>
         <!-- courses in progress ends here -->
     </div>

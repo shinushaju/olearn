@@ -2,8 +2,10 @@ from app import app, db
 from app.models.enrolledCourses import Enrolled_courses
 from flask_login import login_required,  current_user
 from flask import request, redirect
+from app.utils.student.decorators import student_role_required
 
 @login_required
+@student_role_required()
 @app.route('/student/markSectionAsComplete', methods=['POST'])
 def markSectionAsComplete():
     courseid=request.form['courseid']
