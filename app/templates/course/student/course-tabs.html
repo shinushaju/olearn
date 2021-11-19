@@ -29,36 +29,36 @@
     </div>
     <div id="discussion" class="tab-content w3-padding-16" style="display:none">
         <h3 class="tab-content-header">Discussion Forum</h3>
+        {% if can_write_review==true %}<a href="{{ url_for('post_query') }}"><button class="write-review-button w3-right w3-btn w3-round-large">Ask a Question</button></a>{% endif %}
         <div>
-            {% for i in range (1,3)%}
+            {% for query in query_list %}
             <div class="w3-padding-16 discussion-box">
-                <h4 style="font-weight: 400;letter-spacing: -0.5px;">Best way to increase the height of div</h4>
+                <h4 style="font-weight: 400;letter-spacing: -0.5px;">{{ query.query_title }}</h4>
                 <div class="w3-text-gray">
                     <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar"
                         class="user-avatar">
-                    &ensp;Posted By <b>Shinu Shaju</b> • October 23, 2020
+                    &ensp;Posted By <b>{% if query.user.role=='student' %} {{ query.user.student.name }} {% else %} {{ query.user.faculty.name }} {% endif %}</b> • {{ query.created_on|format_datetime }}
                 </div>
                 <div class="w3-text-gray" style="margin-top: 8px;">
-                    This course is just not about the theory it actually helps you to understand things
-                    on practical basis.The test and assignments helps you to apply the disciplines and
-                    makes you basic clear.
+                    {{ query.query_text }}
                 </div>
                 <div style="margin-top: 16px;margin-bottom: 8px;">
                     <div style="display: inline-block;">
-                        <button id="reply-btn-{{i}}" class="reply-btn" onclick="toggleReply('{{i}}')">Reply</button>
-                        <button class="view-replies-btn" onclick="toggleDiscussion('{{i}}')">32 replies</button>
+                        <button id="reply-btn-{{loop.index}}" class="reply-btn" onclick="toggleReply('{{loop.index}}')">Reply</button>
+                        <button class="view-replies-btn" onclick="toggleDiscussion('{{loop.index}}')">{{ query.replies|count }} replies</button>
                     </div>
 
                     <!-- reply form starts here -->
-                    <div id="{{i}}-form" class="w3-hide">
+                    <div id="{{loop.index}}-form" class="w3-hide">
                         <hr />
                         <div class="w3-margin-left w3-padding">
-                            <form method="POST">
-                                <textarea type="text" placeholder="Enter your reply here..." rows="4"
+                            <form method="POST" action="">
+                                <textarea name="reply" id="reply" type="text" placeholder="Enter your reply here..." rows="4"
                                     required></textarea>
+                                    <input type="hidden" name="queryId" value="{{ query.id }}">
                                 <div style="display: inline-block;">
                                     <button type="submit" class="w3-section reply-btn">Post Reply</button>
-                                    <button id="reply-btn-{{i}}" onclick="toggleReply('{{i}}')"
+                                    <button id="reply-btn-{{loop.index}}" onclick="toggleReply('{{loop.index}}')"
                                         class="cancel-btn">Cancel</button>
                                 </div>
                             </form>
@@ -67,19 +67,19 @@
                     <!-- reply form ends here -->
 
                     <!-- reply content -->
-                    <div id="{{i}}" class="w3-hide">
+                    <div id="{{loop.index}}" class="w3-hide">
+                        {% for reply in query.replies %}
                         <hr />
                         <div class="w3-margin-left w3-padding">
                             <div class="w3-text-gray">
                                 <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar"
-                                    class="user-avatar">&ensp;<b>Shinu Shaju</b> • October 23, 2020
+                                    class="user-avatar">&ensp;<b>{% if reply.user.role=='student' %} {{ reply.user.student.name }} {% else %} {{ reply.user.faculty.name }} {% endif %}</b> • {{ reply.created_on|format_datetime }}
                             </div>
                             <div class="w3-text-gray" style="margin-top: 8px;">
-                                This course is just not about the theory it actually helps you to understand things
-                                on practical basis.The test and assignments helps you to apply the disciplines and
-                                makes you basic clear.
+                                {{ reply.reply_text }}
                             </div>
                         </div>
+                    {% endfor %}
                     </div>
                     <!-- reply content ends here -->
 

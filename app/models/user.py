@@ -14,6 +14,8 @@ class User(UserMixin, db.Model):
     # one to one relationship with models faculty and student
     faculty = db.relationship("Faculty", back_populates="user", uselist=False)
     student = db.relationship("Student", back_populates="user", uselist=False)
+    queries = db.relationship("Query", back_populates="user")
+    replies = db.relationship("Reply", back_populates="user")
 
     def __repr__(self):
         return '<User %r>' % self.email

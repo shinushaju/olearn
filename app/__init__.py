@@ -17,6 +17,7 @@ from app.models.user import User
 from app.models.faculty import Faculty
 from app.models.student import Student
 from app.models.courses import Course, Section, Lecture
+from app.models.discussions import Query, Reply
 
 # login manager configuration
 # ------------------------------------
@@ -56,6 +57,8 @@ with app.app_context():
     #Course.__table__.drop(db.engine)
     #Section.__table__.drop(db.engine)
     #Lecture.__table__.drop(db.engine)
+    # Query.__table__.drop(db.engine)
+    # Reply.__table__.drop(db.engine)
 
     db.create_all()
     #db.drop_all()

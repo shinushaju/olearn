@@ -1,22 +1,22 @@
 
-from flask import render_template, session, redirect, url_for, flash
+from flask import render_template, session, redirect, url_for, flash, request
 from flask_login import login_required, current_user
 import math
-
-from flask_sqlalchemy.model import camel_to_snake_case
 
 from app import app, db
 from app.models.courses import Course, Lecture
 from app.models.student_review import Student_review
 from app.models.enrolledCourses import Enrolled_courses
+from app.models.discussions import Query, Reply
 from app.utils.student.decorators import student_role_required
 
 @login_required
 @student_role_required()
-@app.route("/student/course/<course_id>/lecture/<lecture_id>")
+@app.route("/student/course/<course_id>/lecture/<lecture_id>", methods=['GET', 'POST'])
 def course(course_id, lecture_id):
     # Setting current course in session
     session['course_id']=course_id
+    session['lecture_id']=lecture_id
 
     # Getting course from database
     course=Course.query.get(course_id)
@@ -50,8 +50,18 @@ def course(course_id, lecture_id):
     if result is not None:
         enrolled=True
         completed=result.completed_sections
+        # Section to display queries
+        queries=Query.query.filter(Query.course_id==result.course_id)
 
-    return render_template('course/student/course-page.html', user=current_user, course=course, lecture=lecture, review_list=review_list, enrolled=enrolled, can_write_review=can_write_review, completed_sections=completed)
+    # POST section
+    if request.method=='POST':
+        # Handling reply form in discussion section
+        new_reply=Reply(query_id=request.form.get("queryId").strip(), user_id=current_user.id, reply_text=request.form.get("reply").strip())
+        db.session.add(new_reply)
+        db.session.commit()
+        return redirect(url_for('course', course_id=session['course_id'], lecture_id=session['lecture_id']))
+
+    return render_template('course/student/course-page.html', user=current_user, course=course, lecture=lecture, review_list=review_list, enrolled=enrolled, can_write_review=can_write_review, completed_sections=completed, query_list=queries)
 
 @login_required
 @student_role_required()
