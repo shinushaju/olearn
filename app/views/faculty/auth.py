@@ -21,7 +21,7 @@ def faculty_signup():
             if name and email and password:
                 user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
                 if user: # if a user is found, we want to redirect back to signup page so user can try again
-                    flash("User already exits!", 'error')
+                    flash("User already exits!, Try Login", 'error')
                 else:
                     if validate_name(first_name) and validate_name(last_name) and validate_email(email) and validate_password(password):
                         user = User(email=email, password=generate_password_hash(password, method='sha256'))

@@ -21,7 +21,7 @@ def student_signup():
             name=fname+" "+lname
 
             if user: # if a user is found, we want to redirect back to signup page so user can try again
-                flash('Already Registered, Try Login.')
+                flash("User already exits!, Try Login", 'error')
                 return redirect(url_for('student_login'))
             else:
                 if validate_name(name) == True:
@@ -35,7 +35,7 @@ def student_signup():
                             db.session.add(student)
                             db.session.commit()
 
-                            flash('Registered Successfully, Login Now.', 'success')
+                            flash("Sign Up Success🎉, Please Login to Continue!", "success")
                             return redirect(url_for('student_login'))
                         else:
                             flash('Please enter a valid Password.','error')
@@ -93,6 +93,7 @@ def student_login():
         else:
             # if the above check passes, then we know the user has the right credentials
             login_user(student, remember=remember)
+            flash("Login Success!", "success")
             return redirect(url_for('student_dashboard'))
     
     return render_template('home/student-login.html', role="Student")
