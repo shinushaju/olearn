@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #ffffff;
 }
 
@@ -85,12 +85,11 @@ h6 {
 }
 
 .container-main {
-  margin-left:240px;
+  margin-left: 240px;
   padding: auto 16px;
   background-color: #ffffff;
   min-height: 100vh;
 }
-
 
 .nav-container {
   background-color: #ffffff;
@@ -110,7 +109,7 @@ h6 {
   background-color: red;
   padding: 12px 8px;
   border-radius: 16px;
-  border: 1px solid #fafafa
+  border: 1px solid #fafafa;
 }
 
 .user-menu-item {
@@ -131,7 +130,7 @@ h6 {
 }
 
 .dashboard-banner {
-  background-color: #F6EABE;
+  background-color: #f6eabe;
   border-radius: 20px;
   padding: 18px 24px;
 }
@@ -145,8 +144,9 @@ h6 {
 }
 
 .dashboard-card .content {
-  padding: 30px 16px; 
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  padding: 30px 16px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   background-color: #ffff;
   border-radius: 18px;
 }
@@ -177,9 +177,10 @@ h6 {
   background-color: #ffffff;
   padding: 24px;
   border-radius: 16px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px 0px, rgba(0, 0, 0, 0.03) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.03) 0px 1px 2px 0px;
 }
-a{
+a {
   text-decoration: none;
 }
 .w3-dropdown-click:hover {
@@ -201,4 +202,16 @@ a{
   right: 12px;
   background-color: #ffffff;
   box-sizing: border-box;
+}
+
+.flash-card {
+  padding: 6px 0px;
+  font-weight: 500;
+  background-color: #ffffff;
+}
+
+.dashboard-flash-card {
+  padding: 12px 18px;
+  font-weight: 500;
+  background-color: #ffffff;
 }
