@@ -1,25 +1,32 @@
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 
 from app import app
 from app.models.courses import Course
-from app.utils.student.decorators import student_role_required
 
 @login_required
-@student_role_required()
-@app.route('/student/search')
+@app.route('/search/results')
 def search():
     # Collecting GET parameters
-    q=request.args.get('q')
+    q=''
+    duration=''
+    if request.args.get('q'):
+        q=request.args.get('q').strip()
     # searchFilter=request.args.get('filter')
-    duration=request.args.get('duration')
+    if request.args.get('duration'):
+        duration=request.args.get('duration').strip()
 
     # Note: All searches are case-insensitive
 
     # Search by course name
-    results=Course.query.filter(Course.course_name.ilike('%'+"%".join(q.split(" "))+'%')).all()
+    if request.args.get('q'):
+        results=Course.query.filter(Course.course_name.ilike('%'+"%".join(q.split(" "))+'%')).all()
     # Filter by course duration
-    if (duration is not None) and (duration!='any'):
+    if duration and (duration!='any') and q:
         results=Course.query.filter(Course.course_name.ilike('%'+"%".join(q.split(" "))+'%') & (Course.course_duration<=int(duration))).all()
-
-    return render_template('student/search.html', courses=results, user=current_user)
+    if not q:
+        if current_user.is_faculty():
+            return redirect(url_for('faculty_dashboard'))
+        if current_user.is_student():
+            return redirect(url_for('student_dashboard'))
+    return render_template('search.html', courses=results, user=current_user)
