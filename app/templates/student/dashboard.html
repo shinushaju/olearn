@@ -100,10 +100,8 @@
                                 <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
                                 <h6 class="w3-large" style="font-weight: 500;">{{enrolledcourse.course.course_name}}</h6>
                                 <p>{{ enrolledcourse.completed_sections }}/{{ enrolledcourse.course.sections|length }} sections completed</p>
-                                <div class="w3-section w3-light-grey w3-tiny"
-                                    style="border-radius: 100px; height: 8px;">
-                                    <div class="w3-container"
-                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:{{ (enrolledcourse.completed_sections/enrolledcourse.course.sections|length)*100 }}%">
+                                <div class="w3-section w3-light-grey w3-tiny" style="border-radius: 100px; height: 8px;">
+                                    <div style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:{{ (enrolledcourse.completed_sections/enrolledcourse.course.sections|length)*100 }}%">
                                     </div>
                                 </div>
                                 <a href="{{ url_for('course_preview', course_id = enrolledcourse.course.id) }}" style="margin-top:4px" class="w3-button w3-small w3-round-xxlarge w3-black">Continue</a>
@@ -140,8 +138,8 @@
                                 <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
                                 <h6 class="w3-large" style="font-weight: 500;">{{course.course_name}}</h6>
                                 <!-- {{course.course_description}} <br><br> -->
-                                <i class="far fa-clock"></i> {{course.course_duration}} hours<br>
-                                Price : ₹{{course.course_price}}/-<br>
+                                <p class="w3-text-gray"><i class="far fa-clock w3-text-gray"></i> {{course.course_duration}} hours<br>
+                                Price : ₹{{course.course_price}}/-<br></p>
                                 <a href="{{ url_for('course_preview', course_id = course.id) }}" style="margin-top:12px"
                                     class="w3-button w3-round-xxlarge w3-small w3-indigo">View</a>
                             </div>
