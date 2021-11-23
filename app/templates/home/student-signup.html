@@ -24,11 +24,24 @@
     <div class="w3-container" style="display: flex;justify-content: center;">
       <div class="w3-mobile">
         <form class="w3-white" method="POST">
-        {%- for category, message in get_flashed_messages(with_categories = true) %}
-            <div class= "alert alert-danger {% if category=="error" %}w3-text-red w3-center {% else %}w3-text-red w3-tiny{% endif %}">
-                {{ message }}
-              </div>
-        {%- endfor %}
+            <!-- Success Messages -->
+            {% with success_messages = get_flashed_messages(category_filter=["success"]) %}
+              {% if success_messages %}
+                  {%- for message in success_messages %}
+                    <div class="flash-card"><i style="color: #32CB34;" class="bi bi-check-circle-fill"></i>&ensp;{{ message }}</div>
+                  {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <!-- Success Messages -->
+            <!-- Error Messages -->
+            {% with errors = get_flashed_messages(category_filter=["error"]) %}
+              {% if errors %}
+                  {%- for error in errors %}
+                    <div style="color: #FF4E26;" class="flash-card"><i class="bi bi-exclamation-circle-fill"></i>&ensp;{{ error }}</div>
+                  {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <!-- Error Messages -->
             <div style="margin-bottom: 8px;">
               <label for="full-name">First Name</label>
               <input type="text" placeholder="Your first name" name="fname" id="first name" required>              

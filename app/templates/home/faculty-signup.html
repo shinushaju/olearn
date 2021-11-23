@@ -11,7 +11,7 @@
 
 <div class="w3-container">
   <div class="w3-row" style="min-height: 100vh;">
-    <div class="container w3-padding-32">
+    <div class="container w3-padding-24">
       <h1 class="w3-xxlarge w3-center w3-hide-small" style="letter-spacing: -1px; font-weight: 700;">
         Join O-Learn's Global Community of Expert Instructors
       </h1>
@@ -24,26 +24,35 @@
     <div class="w3-container" style="display: flex;justify-content: center;">
       <div class="w3-mobile">
         <form class="w3-white" method="POST">
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                  <div class="w3-text-red w3-center">
-                      {% for message in messages %}
-                        <div>{{ message }}</div>
-                      {% endfor %}
-                  </div>
+            <!-- Success Messages -->
+            {% with success_messages = get_flashed_messages(category_filter=["success"]) %}
+              {% if success_messages %}
+                  {%- for message in success_messages %}
+                    <div class="flash-card"><i style="color: #32CB34;" class="bi bi-check-circle-fill"></i>&ensp;{{ message }}</div>
+                  {% endfor %}
               {% endif %}
             {% endwith %}
+            <!-- Success Messages -->
+            <!-- Error Messages -->
+            {% with errors = get_flashed_messages(category_filter=["error"]) %}
+              {% if errors %}
+                  {%- for error in errors %}
+                    <div style="color: #FF4E26;" class="flash-card"><i class="bi bi-exclamation-circle-fill"></i>&ensp;{{ error }}</div>
+                  {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <!-- Error Messages -->
             <div style="margin-bottom: 8px;">
                 <label for="first-name">First Name</label>
-                <input type="text" placeholder="First name" name="first_name" id="first_name" required>                              
+                <input type="text" placeholder="e.g. James" name="first_name" id="first_name" required>                              
             </div>
             <div style="margin-bottom: 8px;">
               <label for="last-name">Last Name</label>
-              <input type="text" placeholder="Last name" name="last_name" id="last_name" required>  
+              <input type="text" placeholder="e.g. Alex" name="last_name" id="last_name" required>  
             </div>
             <div style="margin-bottom: 8px;">
               <label for="email">Email Address</label>
-              <input type="email" placeholder="Your email" name="email" id="email" required>
+              <input type="email" placeholder="e.g. yourname@example.com" name="email" id="email" required>
             </div>
             <div style="margin-bottom: 8px;">
               <label for="psw">Password</label>

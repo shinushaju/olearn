@@ -371,3 +371,15 @@ section {
   font-size: small;
   margin: 0;
 }
+
+.flash-card {
+  padding: 6px 0px;
+  font-weight: 500;
+  background-color: #ffffff;
+}
+
+.dashboard-flash-card {
+  padding: 12px 18px;
+  font-weight: 500;
+  background-color: #ffffff;
+}

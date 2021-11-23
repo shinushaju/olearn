@@ -28,6 +28,28 @@
             </div>
         </div>
     </div>
+        <!-- Success Messages -->
+        {% with success_messages = get_flashed_messages(category_filter=["success"]) %}
+            {% if success_messages %}
+                <div id="flash" class="w3-small">
+                {%- for message in success_messages %}
+                    <div class="dashboard-flash-card"><i style="color: #32CB34;" class="bi bi-check-circle-fill"></i>&ensp;{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <!-- Success Messages -->
+        <!-- Error Messages -->
+        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+                <div id="flash" class="w3-small">
+                {%- for error in errors %}
+                    <div style="color: #FF4E26;" class="dashboard-flash-card"><i class="bi bi-exclamation-circle-fill"></i>&ensp;{{ error }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <!-- Error Messages -->
     <div class="w3-padding-16">
             <div>
                 <span>Course Information</span>
@@ -114,6 +136,13 @@
     </form>
 </div>
 
-{% block customjs %}{% endblock %}
+{% block customjs %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>  
+$(document).ready( function() {
+    $('#flash').delay(3500).fadeOut();
+  });
+</script>
+{% endblock %}
 
 {% endblock %}

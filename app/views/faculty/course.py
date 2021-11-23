@@ -30,6 +30,7 @@ def create_course():
             db.session.commit()
             # add course_id to session
             session['course_id'] = course.id
+            flash('Course Created Successfully🎉, Add Some Course Sections!', 'success')
             return redirect(url_for('add_section'))
         else:
             flash('Please enter all the mandatory fields!', 'error')
@@ -63,6 +64,7 @@ def add_section():
                 section = Section(section_title=section_title, section_outcome=section_outcome, course_id=course_id)
                 db.session.add(section)
                 db.session.commit()
+            flash('New Section Added Successfully!', 'success')
             return redirect(url_for('add_section'))
 
         if request.form.get('action') == 'Add Lectures':
@@ -78,6 +80,7 @@ def add_section():
             db.session.commit()
             session.pop('course_id', None)
             session.pop('section_id', None)
+            flash('Course Saved As Draft!', 'success')
             return redirect(url_for('faculty_courses'))
 
         if request.form.get('action') == 'Create and Publish':
@@ -88,6 +91,7 @@ def add_section():
             db.session.commit()
             session.pop('course_id', None)
             session.pop('section_id', None)
+            flash('Course Created and Published Successfully!', 'success')
             return redirect(url_for('faculty_courses'))
 
     return render_template('faculty/course/add-section.html', user=current_user, course=course)
@@ -119,6 +123,7 @@ def add_lecture():
                 lecture = Lecture(lecture_title=lecture_title, lecture_link=lecture_link, lecture_duration=lecture_duration, section_id=section_id)
                 db.session.add(lecture)
                 db.session.commit()
+            flash('New Lecture Added Successfully!', 'success')
             return redirect(url_for('add_lecture'))
    
     return render_template('faculty/course/add-lecture.html', user=current_user, course=course, section=section)
@@ -166,6 +171,7 @@ def manage_course(course_id):
             course.is_active = is_active
             course.is_draft = is_draft
             db.session.commit()
+            flash('Course Created and Published Successfully!', 'success')
             return redirect(url_for('faculty_courses'))
 
         if request.form.get('action') == 'Archive Course':
@@ -174,6 +180,7 @@ def manage_course(course_id):
             course.is_active = is_active
             course.is_draft = is_draft
             db.session.commit()
+            flash('Course Archived Successfully!', 'success')
             return redirect(url_for('faculty_courses'))
 
     return render_template('faculty/course/manage-course.html', user=current_user, course=course)
@@ -228,6 +235,7 @@ def edit_course_info():
                 course.program = program
                 db.session.commit()
                 session.pop('course_id', None)
+                flash('Course Info Updated Successfully!', 'success')
                 return redirect(url_for('manage_course', course_id = course_id))
 
     return render_template('faculty/course/edit-course-info.html', user=current_user, course=course)
@@ -252,6 +260,7 @@ def edit_section_info(course_id, section_id):
             section.section_title = section_title
             section.section_outcome = section_outcome
             db.session.commit()
+            flash('Section Info Updated Successfully!', 'success')
             return redirect(url_for('manage_course', course_id = course_id))
     return render_template('faculty/course/edit-section-info.html', user=current_user, course=course, section=section)
 # --------------------------------------------------------------- #
@@ -277,6 +286,7 @@ def edit_lecture_info(course_id, section_id, lecture_id):
             lecture.lecture_link = lecture_link
             lecture.lecture_duration = lecture_duration
             db.session.commit()
+            flash('Lecture Info Updated Successfully!', 'success')
             return redirect(url_for('add_lecture'))
     return render_template('faculty/course/edit-lecture-info.html', user=current_user, course=course, section=section, lecture=lecture)
 # --------------------------------------------------------------- #
@@ -293,6 +303,7 @@ def delete_section(course_id, section_id):
     if section:
         db.session.delete(section)
         db.session.commit()
+        flash('Section Deleted Successfully!', 'success')
     return redirect(url_for('manage_course', course_id=course_id))
 # --------------------------------------------------------------- #
 
@@ -308,5 +319,6 @@ def delete_lecture(lecture_id):
     if lecture:
         db.session.delete(lecture)
         db.session.commit()
+    flash('Lecture Deleted Successfully!', 'success')
     return redirect(url_for('add_lecture'))
 # --------------------------------------------------------------- #

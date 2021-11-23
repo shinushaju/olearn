@@ -10,8 +10,9 @@ def validate_email(email):
         
 
 def validate_name(name):
-    #print(name)
-    regex_name=re.compile('^([A-Za-z]{3,24})+[ A-Za-z]{3,24}$')
+    print(name)
+    #regex_name=re.compile('^([A-Za-z]{3,24})+[ A-Za-z]{3,24}$')
+    regex_name=re.compile('^[\w+]{3,24}$')
     res = regex_name.search(name)
     if res:
         return True
