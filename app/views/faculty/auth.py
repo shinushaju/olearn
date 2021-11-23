@@ -67,24 +67,36 @@ def faculty_login():
 @app.route('/faculty_profile', methods=['GET', 'POST'])
 @login_required
 def faculty_profile():
-    users = current_user
-    names = users.name.split()
+    user = current_user
+    names = user.name.split()
     if request.method == 'POST':
-            name = request.form.get('Name')
-            email = request.form.get('email')
-            #password = request.form.get('password')
-            phoneNo = request.form.get('mobileNumber')
-            address = request.form.get('address')    
-            qualification = request.form.get('qualification')
-            Faculty.email = email
-            Faculty.name = name
-            Faculty.phoneNo = phoneNo
-            Faculty.address = address
-            Faculty.qualification = qualification
-            db.session.commit()
-            return render_template('faculty/faculty_profile.html', user=current_user, names=names)
+        name=user.name
+        if request.form.get('Name1') is not None and request.form.get('Name2') is not None:
+            name = request.form.get('Name1')+" "+request.form.get('Name2')
+        email = request.form.get('email') or user.email
+        gender = request.form.get('gender') or user.gender
+        #password = request.form.get('password')
+        phoneNo = request.form.get('mobileNumber') or user.phoneNo
+        address = request.form.get('address') or user.address
+        qualification = request.form.get('qualification') or user.qualification
+        if request.form.get('password') is not None:
+            if validate_password(request.form.get('password')):
+                new_password=request.form.get('password')
+                user.password=generate_password_hash(new_password, method='sha256')
+            else:
+                flash("Password not valid!", 'error')
+        user.email = email
+        user.name = name
+        user.gender = gender
+        user.phoneNo = phoneNo
+        user.address = address
+        user.qualification = qualification
+        db.session.add(user)
+        db.session.commit()
+        names
+        return render_template('faculty/faculty_profile.html', user=user, names=names)
 
-    return render_template('faculty/faculty_profile.html',user=users, names=names)
+    return render_template('faculty/faculty_profile.html',user=user, names=names)
 
 
 ### Faculty Logout View

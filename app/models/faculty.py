@@ -14,7 +14,7 @@ class Faculty(UserMixin, db.Model):
     phoneNo = db.Column(db.Integer)
     qualification = db.Column(db.String(50))
     address = db.Column(db.String(50))
-    gender = db.Column(db.String(20))
+    gender = db.Column(db.String(20), default="NIL")
 
     def __repr__(self):
         return '<Faculty %r>' % self.name, self.email,self.role,self.address,self.qualification,self.phoneNo
