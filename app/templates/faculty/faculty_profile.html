@@ -1,0 +1,158 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} My Profile{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+{% endblock %}
+
+
+{%block content%}
+<style>
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  font-family: arial;
+}
+
+.card1 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.inline-element {
+  display: inline;
+  margin-right: 2.5em
+}
+
+img {
+  border-radius: 75%;
+}
+.column {
+  float: left;
+  padding: 10px;
+ 
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
+
+.radio-inline{
+    margin-right: 2.5em
+}
+
+</style>
+
+<script>
+function changeText(className)
+{
+  elements = document.getElementsByClassName(className);
+/*  let btn = document.createElement("button");
+  btn.innerHTML = "Submit";
+  btn.type = "submit";
+  btn.name = "formBtn";
+  document.body.appendChild(btn);*/
+  for(element of elements){
+    element.disabled = false;
+  }
+}
+
+function saveText(className)
+{
+  elements = document.getElementsByClassName(className);
+  for(element of elements){
+    element.disabled = true;
+  }
+}
+
+</script>
+
+<div class="w3-container w3-padding-16">
+
+    <h1 style="font-weight: 500;">My Profile</h1>
+    <div class="column left">
+        <div class="card1 " text-align="center">
+            <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="John" style="width:25%">
+            <h3 style="font-weight: 500;">{{user.name}}</h3>
+            <p class="title">{{user.role}}</p>
+            <p>Kochi, Kerala</p>
+            <div class="card w3-container w3-padding-16">
+                <h4><button>Payment<i class="fas fa-greater-than"></i></button></h4>
+            </div>
+            
+        </div>
+    </div>
+    <div class="column right card">
+      <form class="w3-white" method="POST">
+        <h3 class="inline-element" style="font-weight: 500;">Personal Information</h3>
+        <button class="w3-button inline-element" onclick='changeText("Name")' style="color:blue;">Edit</button>
+        <button type='submit' class="w3-button inline-element Name" onclick='saveText("Name")' style="color:blue;" disabled>Save</button>
+        <br>
+        {% for name in names%}
+        <input class="Name" type="text" name="Name" id="Name" required="" autocomplete="name" tabindex="1" value={{name}} disabled>
+        {% endfor %}
+        <br><br>
+        <h4 style="font-weight: 500;">Gender</h4>
+        <label class="radio-inline tab">
+          <input type="radio" name="optradio" checked>Male
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="optradio">Female
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="optradio">Do not wish to disclose
+        </label>
+        <br><br>
+        <h3 class="inline-element" style="font-weight: 500;">Email Address</h3>
+        <button class="w3-button inline-element" onclick='changeText("email")' style="color:blue;">Edit</button>
+        <button class="w3-button inline-element" onclick='changeText("password")' style="color:blue;">Change Password</button>
+        <button class="w3-button inline-element email" onclick='saveText("email")' style="color:blue;" disabled>Save</button>
+        <br><br>
+        <input class="email" type="email" name="email" required="" autocomplete="email" tabindex="1" value={{user.email}} disabled>
+        <br><br>
+        <h3 class="inline-element" style="font-weight: 500;">Mobile Number</h3>
+        <button class="w3-button inline-element" onclick='changeText("mobileNumber")' style="color:blue;">Edit</button>
+        <button class="w3-button inline-element mobileNumber" onclick='saveText("mobileNumber")' style="color:blue;" disabled>Save</button>
+        <br><br>
+        <input class="mobileNumber" type="tel" name="Number" required="" autocomplete="Number" pattern="[0-9]{10}" value={{user.phoneNo}} disabled>
+        <br><br>
+        <h3 class="inline-element" style="font-weight: 500;">Address</h3>
+        <button class="w3-button inline-element" onclick='changeText("address")' style="color:blue;">Edit</button>
+        <button class="w3-button inline-element address" onclick='saveText("address")' style="color:blue;" disabled>Save</button>
+        <br><br>
+        <input class="address" type="text" name="address" required="" autocomplete="text" value={{user.address}} disabled>
+        <br><br>
+        <h3 class="inline-element" style="font-weight: 500;">Qualification</h3>
+        <button class="w3-button inline-element" onclick='changeText("qualification")' style="color:blue;">Edit</button>
+        <button class="w3-button inline-element address" onclick='saveText("qualification")' style="color:blue;" disabled>Save</button>
+        <br><br>
+        <input class="qualification" type="text" name="qualification" required="" autocomplete="text" value={{user.qualification}} disabled>
+      </form>
+    </div>
+
+
+    </div>
+
+</div>
+
+
+
+{% block customjs %}
+
+{% endblock %}
+
+{% endblock %}

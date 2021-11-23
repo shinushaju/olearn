@@ -1,9 +1,11 @@
+from os import name
 from flask import render_template, redirect, session, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from app import app, db
 from app.models.faculty import Faculty
 from app.utils.auth import validate_email, validate_name, validate_password
+from app.views.main import faculty
 
 ### Faculty SignUp View
 @app.route('/faculty/join',methods=['GET','POST'])
@@ -58,6 +60,32 @@ def faculty_login():
                 if not email or not password:
                     flash("Fill the Mandatory Fields", "error")
     return render_template('home/faculty-login.html', role="Faculty")
+
+
+
+### Faculty Profile
+@app.route('/faculty_profile', methods=['GET', 'POST'])
+@login_required
+def faculty_profile():
+    users = current_user
+    names = users.name.split()
+    if request.method == 'POST':
+            name = request.form.get('Name')
+            email = request.form.get('email')
+            #password = request.form.get('password')
+            phoneNo = request.form.get('mobileNumber')
+            address = request.form.get('address')    
+            qualification = request.form.get('qualification')
+            Faculty.email = email
+            Faculty.name = name
+            Faculty.phoneNo = phoneNo
+            Faculty.address = address
+            Faculty.qualification = qualification
+            db.session.commit()
+            return render_template('faculty/faculty_profile.html', user=current_user, names=names)
+
+    return render_template('faculty/faculty_profile.html',user=users, names=names)
+
 
 ### Faculty Logout View
 @app.route('/logout')
