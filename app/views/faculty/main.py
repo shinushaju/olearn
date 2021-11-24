@@ -6,6 +6,7 @@ from app.models.courses import Course
 from app.utils.decorators import faculty_role_required
 from app.models.faculty import Faculty
 from app.utils.auth import validate_email, validate_name, validate_password
+from app.utils.student.validate_phone import validate_phone
 ### Faculty Dashboard View - only user with faculty role has access.
 @app.route('/faculty/dashboard')
 @login_required
@@ -43,7 +44,6 @@ def page_not_found(e):
 def faculty_profile():
     user = current_user
     faculty=user.faculty
-    flash(faculty.name, 'debug')
     names = faculty.name.split()
     if request.method == 'POST':
         name=faculty.name
@@ -64,16 +64,23 @@ def faculty_profile():
         phoneNo = request.form.get('mobileNumber') or faculty.phoneNo
         address = request.form.get('address') or faculty.address
         qualification = request.form.get('qualification') or faculty.qualification
+
         if request.form.get('password') is not None:
             if validate_password(request.form.get('password')):
                 new_password=request.form.get('password')
                 user.password=generate_password_hash(new_password, method='sha256')
             else:
                 flash("Password not valid!", 'error')
+        
+        if request.form.get('mobileNumber') is not None:
+            if validate_phone(request.form.get('mobileNumber')):
+                faculty.phoneNo=request.form.get('mobileNumber')
+            else:
+                flash("Mobile number not valid!", 'error')
+
         user.email = email
         faculty.name = name
         faculty.gender = gender
-        faculty.phoneNo = phoneNo
         faculty.address = address
         faculty.qualification = qualification
         db.session.add(user)
