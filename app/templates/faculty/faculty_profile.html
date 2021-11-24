@@ -1,0 +1,177 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} My Profile{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+{% endblock %}
+
+
+{%block content%}
+<style>
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  font-family: arial;
+}
+
+.card1 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.inline-element {
+  display: inline;
+  margin-right: 2.5em
+}
+
+img {
+  border-radius: 75%;
+}
+.column {
+  float: left;
+  padding: 10px;
+ 
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
+
+.radio-inline{
+    margin-right: 2.5em
+}
+
+</style>
+
+<script>
+function changeText(className)
+{
+  elements = document.getElementsByClassName(className);
+/*  let btn = document.createElement("button");
+  btn.innerHTML = "Submit";
+  btn.type = "submit";
+  btn.name = "formBtn";
+  document.body.appendChild(btn);*/
+  for(element of elements){
+    element.disabled = false;
+  }
+}
+
+function saveText(className)
+{
+  elements = document.getElementsByClassName(className);
+  for(element of elements){
+    element.disabled = true;
+  }
+}
+
+</script>
+
+<div class="w3-container w3-padding-16">
+
+    <h1 style="font-weight: 500;">My Profile</h1>
+    <div class="column left">
+        <div class="card1 " text-align="center">
+            <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="John" style="width:25%">
+            <h3 style="font-weight: 500;">{{current_user.faculty.name}}</h3>
+            <!-- <p class="title">{{current_user.role}}</p> -->
+            <span class="w3-small" style="background-color: #ffefed;color: #FF6347;border-radius: 100px;padding: 4px 16px;">Faculty</span>
+            <p>{% if current_user.faculty.address %}{{ current_user.faculty.address }}{% endif %}</p>
+            <div class="card w3-container w3-padding-16">
+                <h4><button>Payment<i class="fas fa-greater-than"></i></button></h4>
+            </div>
+            
+        </div>
+    </div>
+    <div class="column right card">
+      <form class="w3-white" method="POST">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                  <div class="w3-center">
+                      {% for category, message in messages %}
+                        <div class="{% if category=='error' %}w3-text-red {% else %}w3-text-green{% endif %}">{{ message }}</div>
+                      {% endfor %}
+                  </div>
+              {% endif %}
+            {% endwith %}
+        <h3 class="inline-element" style="font-weight: 500;">Personal Information</h3>
+        <a class="w3-button inline-element" onclick='changeText("Name")' style="color:blue;">Edit</a>
+        <button type='submit' class="w3-button inline-element Name" style="color:blue;" disabled>Save</button>
+        <br>
+        {% for name in names%}
+        <input class="Name" type="text" name="Name{{loop.index}}" id="Name{{loop.index}}" required autocomplete="name" tabindex="1" value={{name}} disabled>
+        {% endfor %}
+        <br><br>
+        <h4 class="inline-element" style="font-weight: 500;">Gender</h4>
+        <a class="w3-button inline-element" onclick='changeText("Gender")' style="color:blue;">Edit</a>
+        <button type='submit' class="w3-button inline-element Gender" style="color:blue;" disabled>Save</button>
+        <br><br>
+        <label class="radio-inline tab Gender">
+          <input type="radio" class="Gender" name="gender" value="Male" {% if current_user.faculty.gender=="Male" %}checked{% endif %}>Male
+        </label>
+        <label class="radio-inline">
+          <input type="radio" class="Gender" name="gender" value="Female" {% if current_user.faculty.gender=="Female" %}checked{% endif %}>Female
+        </label>
+        <label class="radio-inline">
+          <input type="radio" class="Gender" name="gender" value="NIL" {% if current_user.faculty.gender=="NIL" %}checked{% endif %}>Do not wish to disclose
+        </label>
+        <br><br>
+        <h3 class="inline-element" style="font-weight: 500;">Email Address</h3>
+        <a class="w3-button inline-element" onclick='changeText("email")' style="color:blue;">Edit</a>
+        <button class="w3-button inline-element email" style="color:blue;" disabled>Save</button>
+        <br><br>
+        <input class="email" type="email" name="email" required autocomplete="email" tabindex="1" value={{current_user.email}} disabled>
+        <br><br>
+        <h3 class="inline-element" style="font-weight: 500;">Password</h3>
+        <a class="w3-button inline-element" onclick='changeText("password")' style="color:blue;">Change Password</a>
+        <!-- <button class="w3-button inline-element" onclick='changeText("password")' style="color:blue;">Change Password</button> -->
+        <button class="w3-button inline-element password" style="color:blue;" disabled>Save</button>
+        <br><br>
+        <input class="password" type="password" name="password" required autocomplete="" tabindex="1" value="" disabled>
+        <br><br>
+        <h3 class="inline-element" style="font-weight: 500;">Mobile Number</h3>
+        <a class="w3-button inline-element" onclick='changeText("mobileNumber")' style="color:blue;">Edit</a>
+        <button class="w3-button inline-element mobileNumber" style="color:blue;" disabled>Save</button>
+        <br><br>
+        <input class="mobileNumber" type="tel" name="Number" autocomplete="Number" pattern="[0-9]{10}" value="{{current_user.faculty.phoneNo}}" disabled>
+        <br><br>
+        <h3 class="inline-element" style="font-weight: 500;">Address</h3>
+        <a class="w3-button inline-element" onclick='changeText("address")' style="color:blue;">Edit</a>
+        <button class="w3-button inline-element address" style="color:blue;" disabled>Save</button>
+        <br><br>
+        <input class="address" type="text" name="address" required autocomplete="text" value="{{current_user.faculty.address}}" disabled>
+        <br><br>
+        <h3 class="inline-element" style="font-weight: 500;">Qualification</h3>
+        <a class="w3-button inline-element" onclick='changeText("qualification")' style="color:blue;">Edit</a>
+        <button class="w3-button inline-element address" style="color:blue;" disabled>Save</button>
+        <br><br>
+        <input class="qualification" type="text" name="qualification" required autocomplete="text" value="{{current_user.faculty.qualification}}" disabled>
+      </form>
+    </div>
+
+
+    </div>
+
+</div>
+
+
+
+{% block customjs %}
+
+{% endblock %}
+
+{% endblock %}

@@ -47,7 +47,7 @@
                     <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                 </button>
                 <div id="menu-mobile-links" class="w3-dropdown-content w3-bar-block">
-                    <a href="#" class="w3-bar-item w3-button">My Profile</a>
+                    <a href="{{ url_for('faculty_profile') }}" class="w3-bar-item w3-button">My Profile</a>
                     <a href="#" class="w3-bar-item w3-button">Settings</a>
                     <a href="{{ url_for('logout') }}" class="w3-bar-item w3-button">Logout</a>
                   </div>
@@ -71,7 +71,7 @@
                         <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar" class="avatar">
                     </button>
                     <div id="menu-links" class="w3-dropdown-content w3-bar-block user-menu">
-                        <a href="#" class="w3-bar-item user-menu-item">My Profile</a>
+                        <a href="{{ url_for('faculty_profile') }}" class="w3-bar-item user-menu-item">My Profile</a>
                         <a href="#" class="w3-bar-item user-menu-item">Settings</a>
                         <a href="{{ url_for('logout') }}" class="w3-bar-item user-menu-item">Logout</a>
                       </div>
