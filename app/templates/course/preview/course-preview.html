@@ -1,0 +1,111 @@
+{%extends "course-base.html" %}
+
+{% block title %} {{course.course_name}} {% endblock %}
+
+<!-- add custom css in here -->
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course/course-page.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course/course-preview.css') }}">
+{% endblock %}
+
+{%block content%}
+<div class="course-container">
+        
+        <div class="w3-row-padding" style="background-color: #fff; color: #000; border-radius: 32px;">
+            <div class="w3-twothird">
+                <br>
+                <div class="w3-margin-top">
+                    <div class="w3-section w3-text-gray">{{ course.program }}</div>
+                    <h1 class="course-title" style="line-height: 2vw;">{{ course.course_name }}</h1>
+                    <p>Created by <b>{{course.faculty.faculty.name}}</b></p>
+                </div>
+                <div class="w3-margin-top w3-padding-16">
+                    {% if user and user.is_authenticated %}
+                        {% if enrolled or course_owner %}
+                            <a href="{{url_for('course_page', course_id=course.id, section_id=section_id, lecture_id=lecture_id)}}" class="w3-padding-large" style="text-decoration: none;border: 1px solid #6e44ff;border-radius: 100px;padding: 8px 24px; color: #6e44ff;font-weight: 500;">Go To Course</a>
+                            {% if user.is_student() and not user.is_faculty() %}
+                            <a style="text-decoration: none;cursor: pointer;" href="{{ url_for('drop_course', course_id = course.id) }}"><button style="margin-left: 8px;" class="w3-button w3-round-xxlarge w3-padding-large w3-black w3-hover-black">Drop</button></a>
+                            {% endif %}
+                        {% else %}
+                            {% if user.is_student() %}
+                                <a href="{{ url_for('course_enroll', cid = course.id) }}" class="w3-button w3-round-xxlarge w3-indigo w3-hover-indigo w3-padding-large">Enroll Now</a>
+                            {% endif %}
+                            {% if user.is_faculty() %}
+                                <a href="{{url_for('student_login')}}" class="w3-button w3-round-xxlarge w3-indigo w3-hover-indigo w3-padding-large">Enroll Now</a>
+                            {% endif %}
+                        {% endif %}
+                    {% else %}
+                            <a href="{{url_for('student_login')}}" class="w3-button w3-round-xxlarge w3-indigo w3-hover-indigo w3-padding-large">Enroll Now</a>
+                    {% endif %}
+                    </div>
+            </div>
+            <div class="w3-third">
+                <div class="video-wrapper">
+                    <iframe width="853" height="480" src="{{course.preview_link}}" title="{{ course.course_name }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-row-padding w3-section w3-padding-24">
+            <div class="w3-twothird">
+                <div>
+                    <div class="w3-margin-bottom">
+                        <h5 class="tab-content-header">Course Overview</h5>
+                        <p class="w3-text-gray">{{course.course_overview}}</p>
+                    </div>
+                    <div class="w3-margin-bottom">
+                        <h5 class="tab-content-header">Course Skills</h5>
+                        <p class="w3-text-gray">{{course.course_skills}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="w3-section">
+                    {% include 'course/preview/course-content-preview.html' %}
+                </div>
+                <div id="reviews">
+                    <div style="display: flex;justify-content: space-between;">
+                        <h5 class="tab-content-header">Student Reviews</h5>
+                        <div>
+                            {% if user.is_authenticated and can_write_review and user.is_student() %}<a href="{{ url_for('student_review', course_id=course.id) }}"><button class="write-review-button w3-right w3-btn w3-round-large">Write a review</button></a>{% endif %}
+                        </div>
+                    </div>
+                    <h6><span class="tab-content-header">{% if review_list %}{{ review_list|count }} Reviews{% else %}No reviews yet{% endif %}</span> <span class="w3-text-gray"
+                            style="letter-spacing: -1px;">for {{ course.course_name }}</span></h6>
+                    <div>
+                        {% for review in review_list %}
+                        <div class="w3-text-gray w3-padding-16 review-box">
+                            <div>Review By <b>{{ review[0].student.student.name }}</b> <span class="w3-text-black"> • </span>{{ review[0].created_on|format_datetime }}
+                            </div>
+                            <div>{% for i in range(review[1]) %}<i class="fa fa-star" style="color:gold;"></i>{% endfor %}{% if review[2]==True %}<i class="fas fa-star-half" style="color:gold;"></i>{% endif %}</div>
+                            <div style="margin-top: 4px;">
+                                <div>{{ review[0].review_text }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div> 
+            </div>
+            <div class="w3-third">
+                <div class="w3-padding-large w3-round-xlarge" style="border: 1px solid #f0f0f0;box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;">
+                    <!-- <label class="w3-text-gray">Course Price</label>
+                    <h2 style="font-weight: 600; line-height: 2vw;margin-top: 4px;margin-bottom: 12px;">₹{{course.course_price}}</h2>
+                    <button type="button" style="display: block;" class="w3-block w3-button w3-indigo w3-round-large w3-hover-indigo">Buy Now</button> -->
+                    <div class="w3-section">
+                        <b>This course includes:</b>
+                        <div class="w3-text-gray">
+                            <div><i class="bi bi-collection-play"></i>&ensp;{{course.course_duration}} hours on-demand video</div>
+                            <div><i class="bi bi-folder"></i>&ensp;{{ course.sections | length }} sections</div>
+                            <div><i class="bi bi-clock"></i>&ensp;Full lifetime access</div>
+                            <div><i class="bi bi-award"></i>&ensp;Certificate of completion</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% block customjs %}
+    <script src="{{ url_for('static', filename='js/course/main.js') }}"></script>
+{% endblock %}
+
+{% endblock %}

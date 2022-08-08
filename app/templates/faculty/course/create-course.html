@@ -1,0 +1,83 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Create Course{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/faculty/course.css') }}">
+{% endblock %}
+
+{%block content%}
+
+<div class="w3-container">
+        <h4 style="font-weight: 600;">Create New Course</h4>
+        <div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="w3-text-red w3-center">
+                    {% for message in messages %}
+                        <div>{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        </div>
+        <form method="POST" id="form">
+            <div class="w3-row">
+                <div class="w3-third w3-margin-top">
+                    <label class="w3-text-gray">Program</label>
+                    <select name="program" required>
+                        <option value="">--</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Full-Stack Programming">Full-Stack Programming</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Cloud Computing">Cloud Computing</option>
+                        <option value="Blockchain">Blockchain</option>
+                        <option value="Quantum Computing">Quantum Computing</option>
+                    </select>
+                </div>
+                <div class="w3-third w3-margin-top" style="padding-left: 24px;">
+                    <label class="w3-text-gray">Difficulty Level</label>
+                    <select name="difficulty_level" required>
+                        <option value="">--</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+                </div>
+            </div>
+            <div class="w3-row w3-margin-top">
+                <label class="w3-text-gray">Course Name</label>
+                <input type="text" placeholder="Give your course a name..." name="course_name" required>
+            </div>
+            <div class="w3-row w3-margin-top">
+                <label class="w3-text-gray">Course Overview</label>
+                <textarea type="text" placeholder="Give your course an overview..." name="course_overview" rows="5" required></textarea>
+            </div>
+            <div class="w3-row w3-margin-top">
+                <label class="w3-text-gray">Course Skills</label>
+                <input type="text" name="course_skills" placeholder="Enter course skills seperated by commas.." required/>
+            </div>
+            <div class="w3-row">
+                <div class="w3-half w3-margin-top">
+                    <label class="w3-text-gray">Course Preview Link</label>
+                    <input type="url" name="preview_link" placeholder="https://example.com" required/>
+                </div>
+                <div class="w3-quarter w3-margin-top"  style="padding-left: 24px;">
+                    <label class="w3-text-gray">Course Duration In Hours</label>
+                    <input type="number" min="0" placeholder="Enter duration..." name="course_duration" required/>
+                </div>
+                <div class="w3-quarter w3-margin-top"  style="padding-left: 24px;">
+                    <label class="w3-text-gray">Course Price In Rupees</label>
+                    <input type="number" min="0" placeholder="Enter price..." name="course_price" required/>
+                </div>
+            </div>
+            <div class="w3-center w3-section">
+                <input type="submit" class="w3-right submit-btn w3-section" value="Save and Continue" required/>
+            </div>
+    </form>
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}

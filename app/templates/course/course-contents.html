@@ -1,0 +1,63 @@
+<div class="w3-section">
+    <div>
+        <h5 class="tab-content-header">Course Content</h5>
+        <div class="w3-section">
+            {% for section in course.sections %}
+            <details {% if section.id==current_section_id %} open {% endif %}>
+                <summary>
+                    <span style="font-weight: 500;">{{section.section_title}}</span>
+
+                    <!-- <span style="float: right;font-size: small;">{{ section.lectures | length }} {% if section.lectures
+                        | length > 1 %}lectures{% else %}lecture{% endif %}</span> -->
+                </summary>
+                <div>
+                    {% for lecture in section.lectures %}
+                    <p class='{{"lecture-active" if lecture.id == current_lecture_id else "lecture-inactive"}}'
+                        style="font-weight: 400;"><i class="bi bi-caret-right"></i>&ensp;
+                        <a class="lecture-link"
+                            href="{{url_for('course_page', course_id=course.id, section_id=section.id, lecture_id=lecture.id)}}">{{lecture.lecture_title}}</a>
+                        <span style="float: right;font-weight:400;font-size: small;">{{ lecture.lecture_duration
+                            }}m</span>
+                    </p>
+                    {% endfor %}
+                    {% if user and user.is_student() %}
+                    <hr>
+                    <div class="w3-border-0" style="margin: 0;padding: 0;margin-bottom: 8px;">
+                        <!-- Completed section -->
+                        {% if loop.index<=completed_sections %} {% if enrolled==true %} <button type="button"
+                            class="w3-button w3-tiny w3-round-xxlarge w3-indigo w3-hover-indigo">Section Completed</button>
+                            {% endif %}
+                            {% endif %}
+    
+                            <!-- Current section -->
+                            {% if loop.index==completed_sections+1 %}
+                            {% if enrolled==true %}
+                            <form method="POST" action="{{ url_for('markSectionAsComplete') }}">
+                                <input type="hidden" name="courseid" value="{{ course.id }}">
+                                <input type="hidden" name="redirect_url" value="{{ request.url }}">
+                                <button type="submit"
+                                    class="w3-button w3-tiny w3-round-xxlarge w3-border w3-border-indigo w3-text-indigo w3-hover-indigo">Mark Section Complete</button>
+                            </form>
+                            {% endif %}
+                            {% endif %}
+    
+                            <!-- Locked section -->
+                            {% if loop.index>completed_sections+1 %}
+                            {% if enrolled==true %}
+                            <form method="POST" action="{{ url_for('markSectionAsComplete') }}">
+                                <input type="hidden" name="courseid" value="{{ course.id }}">
+                                <input type="hidden" name="redirect_url" value="{{ request.url }}">
+                                <button type="submit" class="w3-button w3-tiny w3-round-xxlarge w3-border-indigo w3-text-indigo w3-white"
+                                    disabled>Mark Section Complete</button>
+                            </form>
+                            {% endif %}
+                            {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+            </details>
+            {% endfor %}
+        </div>
+        <br />
+    </div>
+</div>

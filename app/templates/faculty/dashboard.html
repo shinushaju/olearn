@@ -1,0 +1,144 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Dashboard{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+{% endblock %}
+
+{%block content%}
+
+<div class="w3-padding-16">
+
+    <div>
+        <!-- Success Messages -->
+        {% with success_messages = get_flashed_messages(category_filter=["success"]) %}
+            {% if success_messages %}
+                <div id="flash" class="w3-margin-bottom">
+                {%- for message in success_messages %}
+                    <div class="dashboard-flash-card"><i style="color: #32CB34;" class="bi bi-check-circle-fill"></i>&ensp;{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <!-- Success Messages -->
+        <!-- Error Messages -->
+        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+                <div id="flash" class="w3-margin-bottom">
+                {%- for error in errors %}
+                    <div style="color: #FF4E26;" class="dashboard-flash-card"><i class="bi bi-exclamation-circle-fill"></i>&ensp;{{ error }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <!-- Error Messages -->
+        <div class="w3-row-padding">
+            <div class="w3-col w3-half w3-margin-bottom">
+                <div class="dashboard-banner">
+                    <div class="banner-content">
+                        <div class="w3-row">
+                            <div class="w3-twothird">
+                                <div class="w3-left w3-padding-16">
+                                    <h4 class="main-header" style="color: #000000;font-weight: 600;">Hey, {{user.faculty.name}}
+                                        &#128075;
+                                    </h4>
+                                    <h6 style="color: #000000;">It's Good To See You Again!</h6>
+                                    <div class="w3-margin-top">
+                                    <a href="{{url_for('create_course')}}" style="text-decoration: none;" class="w3-padding w3-white w3-round-large">Create New Course</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w3-third" style="display: flex;justify-content: center;">
+                                <img style="height: 136px; width: auto;object-fit: cover;"
+                                    src="{{ url_for('static', filename='images/faculty/faculty.png') }}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col w3-half w3-margin-bottom">
+                <div class="w3-row">
+                    <div class="w3-third dashboard-card">
+                        <div class="content">
+                            <div class="card-header">{{active_courses | length}}</div>
+                            <div class="card-body">Total Active Courses</div>
+                        </div>
+                    </div>
+                    <div class="w3-third dashboard-card">
+                        <div class="content">
+                            <div class="card-header">{{draft_courses_count}}</div>
+                            <div class="card-body">Total Courses in Drafts</div>
+                        </div>
+                    </div>
+                    <div class="w3-third dashboard-card">
+                        <div class="content">
+                            <div class="card-header">0</div>
+                            <div class="card-body">Total Certificates Given</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- courses in progress starts here -->
+        <div class="w3-row-padding">
+            <div>
+                <h5 class="w3-left">Active Courses</h5>
+            </div>
+            {% if active_courses | length > 0%}
+            <div class="w3-margin-top">
+                <!-- Slider main container -->
+                <div class="swiper w3-padding-16 w3-padding-small w3-stretch">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        {% for course in active_courses %}
+                        <div class="swiper-slide">
+                            <div class="card-courses">
+                                <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                                <h6 class="w3-large" style="font-weight: 500;">{{ course.course_name [0:42]}}{% if course.course_name | length > 42 %} ...{% endif %}</h6>
+                                <!-- <div class="w3-section w3-light-grey w3-tiny"
+                                    style="border-radius: 100px; height: 8px;">
+                                    <div class="w3-container"
+                                        style="background-color: #6E44FF; height:8px; color: #ffffff; border-radius: 100px; width:20%">
+                                    </div>
+                                </div> -->
+                                <a href="{{url_for('manage_course', course_id=course.id)}}" style="margin-top:4px"
+                                    class="w3-btn w3-round-large w3-black w3-tiny">View Course</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="w3-section swiper-pagination"></div>
+                </div>
+            </div>
+            {% else %}
+            <br>
+            <div class="w3-section">
+                <div class="w3-text-gray w3-large w3-center w3-padding-64">
+                    You don't have any courses
+                    <div class="w3-margin-top">
+                        <a href="{{url_for('create_course')}}" style="text-decoration: none;" class="w3-margin-top w3-padding w3-black w3-medium w3-round-large">Create a Course</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <!-- courses in progress ends here -->
+    </div>
+
+
+    {% block customjs %}
+    <!-- cutom js -->
+    <script type="module" src="{{ url_for('static', filename='js/dashboard/faculty/swiper.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>  
+    $(document).ready( function() {
+        $('#flash').delay(3000).fadeOut();
+      });
+    </script>
+    {% endblock %}
+
+    {% endblock %}

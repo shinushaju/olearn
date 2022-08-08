@@ -23,10 +23,32 @@
 
     <div class="w3-container" style="display: flex;justify-content: center;">
       <div class="w3-mobile">
-        <form class="w3-white">
+        <form class="w3-white" method="POST">
+            <!-- Success Messages -->
+            {% with success_messages = get_flashed_messages(category_filter=["success"]) %}
+              {% if success_messages %}
+                  {%- for message in success_messages %}
+                    <div class="flash-card"><i style="color: #32CB34;" class="bi bi-check-circle-fill"></i>&ensp;{{ message }}</div>
+                  {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <!-- Success Messages -->
+            <!-- Error Messages -->
+            {% with errors = get_flashed_messages(category_filter=["error"]) %}
+              {% if errors %}
+                  {%- for error in errors %}
+                    <div style="color: #FF4E26;" class="flash-card"><i class="bi bi-exclamation-circle-fill"></i>&ensp;{{ error }}</div>
+                  {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <!-- Error Messages -->
             <div style="margin-bottom: 8px;">
-              <label for="full-name">Full Name</label>
-              <input type="text" placeholder="Your full name" name="full name" id="first name" required>              
+              <label for="full-name">First Name</label>
+              <input type="text" placeholder="Your first name" name="fname" id="first name" required>              
+            </div>
+            <div style="margin-bottom: 8px;">
+              <label for="full-name">Last Name</label>
+              <input type="text" placeholder="Your last name" name="lname" id="Last name" >              
             </div>
             <div style="margin-bottom: 8px;">
               <label for="email">Email Address</label>
@@ -34,7 +56,7 @@
             </div>
             <div style="margin-bottom: 8px;">
               <label for="psw">Password</label>
-              <input type="password" placeholder="Enter password" name="psw" id="psw" required>
+              <input type="password" placeholder="Enter password" name="password" id="psw" required>
             </div>
             <!-- <div style="margin-bottom: 8px;">
               <label for="psw-repeat">Repeat Password</label>

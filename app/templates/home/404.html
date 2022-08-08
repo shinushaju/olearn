@@ -1,0 +1,10 @@
+{%extends "base.html" %}
+{% block title %}Page Not Found{% endblock %}
+{% block content %}
+<div style="height: 60vh;" class="w3-display-container">
+    <div class="w3-display-middle w3-center">
+        <h2>Page Not Found!</h2>
+        <a href="{{url_for('home')}}">Go To Home</a>
+    </div>
+</div>
+{% endblock %}

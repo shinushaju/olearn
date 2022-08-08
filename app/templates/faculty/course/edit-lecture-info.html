@@ -1,0 +1,53 @@
+{%extends "faculty-base.html" %}
+
+{% block title %} Create Course - Edit Lecture Info{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/faculty/course.css') }}">
+{% endblock %}
+
+{%block content%}
+
+
+<div class="w3-container">
+    <div class="w3-text-gray"><a href="{{url_for('add_lecture')}}" style="text-decoration: none;color: #6e44ff;"><i
+        class="bi bi-arrow-left-short"></i> Back</a>&emsp;Edit Lecture Info</div>
+    <div class="w3-row">
+        <div class="w3-twothird">
+            <h6 class="w3-text-gray w3-small">Course: {{course.course_name}}</h6>
+            <h6 class="w3-text-gray w3-small">Section: {{section.section_title}}</h6>
+            <h5>Lecture - <span style="font-weight: 600;">{{lecture.lecture_title}}</span></h5>
+        </div>
+    </div>
+    <div class="w3-section">
+        <div class="w3-row">
+            <div class="w3-twothird">
+                <form method="POST" id="form">
+                    <div class="w3-margin-top">
+                        <label class="w3-text-gray">Lecture Title</label>
+                        <input type="text" placeholder="Enter lecture title..." name="lecture_title" value="{{lecture.lecture_title}}" required>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-twothird w3-margin-top">
+                            <label class="w3-text-gray">Lecture Link</label>
+                            <input type="url" placeholder="Enter lecture link..." name="lecture_link" value="{{lecture.lecture_link}}" required>
+                        </div>
+                        <div class="w3-third w3-margin-top" style="padding-left: 16px;">
+                            <label class="w3-text-gray">Lecture Duration</label>
+                            <input type="number" min="0" placeholder="Duration in mins" name="lecture_duration" value="{{lecture.lecture_duration}}" required>
+                        </div>
+                    </div>
+                    <div class="w3-center w3-section">
+                        <input type="submit" name="action" class="w3-section w3-right submit-btn" value="Update Lecture Info"/>
+                        <a href="{{url_for('add_lecture')}}" class="w3-right w3-section w3-padding-small w3-margin-right w3-text-black" style="text-decoration: none;">Cancel</a>
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% block customjs %}{% endblock %}
+
+{% endblock %}

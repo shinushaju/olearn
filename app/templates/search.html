@@ -1,0 +1,74 @@
+{% if user.is_student() %} {% extends "student-base.html" %} {% endif %}
+{% if user.is_faculty() %} {% extends "faculty-base.html" %} {% endif %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block customcss %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{% block content %}
+
+<div class="w3-container">
+    <div class="w3-row-padding">
+        <div>
+            <form method="GET" action="">
+                <!-- The following section was commented out because multiple input fields with same name was
+                     affecting form mechanism : Abhiram -->
+                <!-- <span class="search-container w3-hide-large w3-hide-medium w3-margin-top w3-block">
+                    <input type="text" placeholder="Search Courses.." name="q">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </span> -->
+                <span class="search-container w3-hide">
+                    <input type="text" placeholder="Search Courses.." name="q" value="{% if request.args.get('q') %}{{request.args.get('q')}}{% endif %}">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </span>
+                <p><b>Filter by duration</b></p>
+                <input type="radio" name="duration" id="10hrs" value="10" {% if request.args.get('duration')=='10' %}checked{% endif %}>
+                <label for="10hrs">Up to 10 hours</label>&ensp;
+                <input type="radio" name="duration" id="50hrs" value="50" {% if request.args.get('duration')=='50' %}checked{% endif %}>
+                <label for="10hrs">Up to 50 hours</label>&ensp;
+                <input type="radio" name="duration" id="100hrs" value="100" {% if request.args.get('duration')=='100' %}checked{% endif %}>
+                <label for="10hrs">Up to 100 hours</label>&ensp;
+                <input type="radio" name="duration" id="200hrs" value="200" {% if request.args.get('duration')=='200' %}checked{% endif %}>
+                <label for="10hrs">Up to 200 hours</label>&ensp;
+                <input type="radio" name="duration" id="300hrs" value="300" {% if request.args.get('duration')=='300' %}checked{% endif %}>
+                <label for="10hrs">Up to 300 hours</label>&ensp;
+                <input type="radio" name="duration" id="any" value="any" {% if request.args.get('duration')=='any' %}checked{% endif %}>
+                <label for="10hrs">Any duration</label>
+                <br><br>
+                <button type="submit" class="w3-button w3-round-xxlarge w3-black w3-hover-black w3-small">Apply</button>
+            </form>
+            <br>
+            {% if courses %}
+            <h5 class="w3-left">Search Results for "<b>{{ request.args.get('q') }}</b>"</h5>
+            {% else %}
+            <h5 class="w3-left"><i class="bi bi-emoji-frown"></i> No Results for "<b>{{ request.args.get('q') }}</b>"</h5>
+            {% endif %}
+            <br>
+        </div>
+        <br>
+        <hr>
+        <div class="w3-row">
+        {% for course in courses %}
+        <div class="w3-quarter w3-padding">
+            <div class="w3-padding-small w3-stretch">
+                <a href="{{ url_for('course_preview', course_id = course.id) }}" style="text-decoration: none;">
+                <div class="card-courses" style="border: 1px solid #f0f0f0">
+                    <i class="bi bi-server w3-xlarge" style="color: #6E44FF;"></i>
+                    <h6 class="w3-large" style="font-weight: 500;">{{course.course_name}}</h6>
+                    <!-- {{course.course_description}} <br><br> -->
+                    <div><p class="w3-text-gray"><i class="far fa-clock"></i> {{course.course_duration}} hours
+                        <br>Price : ₹{{course.course_price}}/-</p>
+                    </div>
+                    
+                </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

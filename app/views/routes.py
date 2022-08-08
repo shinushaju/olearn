@@ -1,5 +1,6 @@
-from flask import render_template
+from flask import render_template, session, redirect, url_for
 from app import app
+from flask_login import logout_user, login_required
 
 @app.route('/')
 def home():
@@ -74,4 +75,17 @@ def sign_up():
 @app.route('/login')
 def login():
     return render_template('home/login.html')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('home/404.html'), 404
+
+# user logout
+@app.route('/logout')
+@login_required
+def logout():
+    session.clear()
+    logout_user()
+    return redirect(url_for('home'))
 

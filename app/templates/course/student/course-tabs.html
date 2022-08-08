@@ -1,0 +1,101 @@
+<div class="w3-row w3-padding-16">
+    <div class="w3-bar w3-white" style="border-bottom: 1px solid #f4f0ff;">
+        <button class="w3-bar-item tablink tab-active" onclick="handleTabs(event,'overview')">Overview</button>
+        <button class="w3-bar-item tablink" onclick="handleTabs(event,'reviews')">Reviews</button>
+        {% if can_write_review==true %}<button class="w3-bar-item tablink" onclick="handleTabs(event,'discussion')">Discussion</button>{% endif %}
+        {% if can_write_review==true %}<button class="w3-bar-item tablink" onclick="handleTabs(event,'quiz')">Quiz</button>{% endif %}
+    </div>
+
+    <div id="overview" class="tab-content w3-padding-16">
+        <h3 class="tab-content-header">Course Overview</h3>
+        <p class="w3-text-gray">{{ course.course_overview }}</p>
+    </div>
+    <div id="reviews" class="tab-content w3-padding-16" style="display:none">
+        <h3><span class="tab-content-header">{% if review_list %}{{ review_list|count }} Reviews{% else %}No reviews yet{% endif %}</span> <span class="w3-text-gray"
+                style="letter-spacing: -1px;">for {{ course.course_name }}</span></h3>
+                {% if can_write_review==true %}<a href="{{ url_for('student_review', course_id=course.id) }}"><button class="write-review-button w3-right w3-btn w3-round-large">Write a review</button></a>{% endif %}
+        <div>
+            {% for review in review_list %}
+            <div class="w3-text-gray w3-padding-16 review-box">
+                <div>Review By <b>{{ review[0].student.student.name }}</b> <span class="w3-text-black"> • </span>{{ review[0].created_on|format_datetime }}
+                </div>
+                <div>{% for i in range(review[1]) %}<i class="fa fa-star" style="color:gold;"></i>{% endfor %}{% if review[2]==True %}<i class="fas fa-star-half" style="color:gold;"></i>{% endif %}</div>
+                <div style="margin-top: 8px;">
+                    <p>{{ review[0].review_text }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if can_write_review==true %}
+    <div id="discussion" class="tab-content w3-padding-16" style="display:none">
+        <h3 class="tab-content-header">Discussion Forum</h3>
+        {% if can_write_review==true %}<a href="{{ url_for('post_query') }}"><button class="write-review-button w3-right w3-btn w3-round-large">Ask a Question</button></a>{% endif %}
+        <div>
+            {% for query in query_list %}
+            <div class="w3-padding-16 discussion-box">
+                <h4 style="font-weight: 400;letter-spacing: -0.5px;">{{ query.query_title }}</h4>
+                <div class="w3-text-gray">
+                    <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar"
+                        class="user-avatar">
+                    &ensp;Posted By <b>{% if query.user.role=='student' %} {{ query.user.student.name }} {% else %} {{ query.user.faculty.name }} {% endif %}</b> • {{ query.created_on|format_datetime }}
+                </div>
+                <div class="w3-text-gray" style="margin-top: 8px;">
+                    {{ query.query_text }}
+                </div>
+                <div style="margin-top: 16px;margin-bottom: 8px;">
+                    <div style="display: inline-block;">
+                        {% if can_write_review==true %}<button id="reply-btn-{{loop.index}}" class="reply-btn" onclick="toggleReply('{{loop.index}}')">Reply</button>{% endif %}
+                        <button class="view-replies-btn" onclick="toggleDiscussion('{{loop.index}}')">{{ query.replies|count }} replies</button>
+                    </div>
+
+                    <!-- reply form starts here -->
+                    <div id="{{loop.index}}-form" class="w3-hide">
+                        <hr />
+                        <div class="w3-margin-left w3-padding">
+                            <form method="POST" action="">
+                                <textarea name="reply" id="reply" type="text" placeholder="Enter your reply here..." rows="4"
+                                    required></textarea>
+                                    <input type="hidden" name="queryId" value="{{ query.id }}">
+                                <div style="display: inline-block;">
+                                    <button type="submit" class="w3-section reply-btn">Post Reply</button>
+                                    <button id="reply-btn-{{loop.index}}" onclick="toggleReply('{{loop.index}}')"
+                                        class="cancel-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- reply form ends here -->
+
+                    <!-- reply content -->
+                    <div id="{{loop.index}}" class="w3-hide">
+                        {% for reply in query.replies %}
+                        <hr />
+                        <div class="w3-margin-left w3-padding">
+                            <div class="w3-text-gray">
+                                <img src="https://www.globemoving.com/wp-content/uploads/2015/08/user.jpg" alt="Avatar"
+                                    class="user-avatar">&ensp;<b>{% if reply.user.role=='student' %} {{ reply.user.student.name }} {% else %} {{ reply.user.faculty.name }} {% endif %}</b> • {{ reply.created_on|format_datetime }}
+                            </div>
+                            <div class="w3-text-gray" style="margin-top: 8px;">
+                                {{ reply.reply_text }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <!-- reply content ends here -->
+
+                </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="w3-center w3-padding-32">
+                <a href="#" class="view-more-btn">View More</a>
+            </div> -->
+        </div>
+    </div>
+    {% endif %}
+    {% if can_write_review==true %}
+    <div id="quiz" class="tab-content" style="display:none">
+        <h3>Quiz content</h3>
+    </div>
+    {% endif %}
+</div>

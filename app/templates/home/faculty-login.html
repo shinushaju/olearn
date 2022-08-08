@@ -15,17 +15,36 @@
 <div class="w3-container w3-padding-32">
     <div class=" w3-padding-32 w3-display-container" style="height:75vh" >
         <div class=" w3-display-middle">
-            
-                            
-                    <form class="box" method="post">
 
-                    <h3>Login as {{role}}</h3>           
+                    <div class="w3-section">
+                        <!-- Success Messages -->
+                        {% with success_messages = get_flashed_messages(category_filter=["success"]) %}
+                        {% if success_messages %}
+                            {%- for message in success_messages %}
+                                <div class="flash-card"><i style="color: #32CB34;" class="bi bi-check-circle-fill"></i>&ensp;{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <!-- Success Messages -->
+                        <!-- Error Messages -->
+                        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                        {% if errors %}
+                            {%- for error in errors %}
+                                <div style="color: #FF4E26;" class="flash-card"><i class="bi bi-exclamation-circle-fill"></i>&ensp;{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <!-- Error Messages -->
+                    </div>
+                            
+                    <form class="box" method="POST">
+                    <h3>Login as {{role}}</h3>       
                     <label class="form-label" for="inputEmail">Email</label>
-                    <input type="email" class="form-control w3-round-xxlarge" id="inputEmail" placeholder="Email" required> 
+                    <input type="email" class="form-control w3-round-xxlarge" id="inputEmail" name="email" placeholder="Your email" required> 
                     <label class="form-label" for="inputPassword">Password</label>
-                    <input type="password" class="form-control w3-round-xxlarge" id="inputPassword" placeholder="Password" required>   
+                    <input type="password" class="form-control w3-round-xxlarge" id="inputPassword" name="password" placeholder="Password" required>   
                     <br>        
-                    <button class="w3-button w3-section w3-block w3-large w3-round-xxlarge w3-hover-indigo" style="background-color:#6E44FF;color:#FFFFFF">Log in</button>
+                    <button type="submit" class="w3-button w3-section w3-block w3-large w3-round-xxlarge w3-hover-indigo" style="background-color:#6E44FF;color:#FFFFFF">Log in</button>
                   
                     </form>                                       
             
